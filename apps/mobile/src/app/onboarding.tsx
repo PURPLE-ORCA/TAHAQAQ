@@ -73,11 +73,7 @@ export default function OnboardingScreen() {
   return (
     <SafeScreen scrollable safeArea="both" className="">
       <View style={styles.shell}>
-
         <View className="gap-3 p-4">
-          <View className="gap-4">
-            <WireCard title={step.title} body={step.body} />
-          </View>
           <View className="mt-4 flex-row gap-3">
             <Button
               variant="secondary"

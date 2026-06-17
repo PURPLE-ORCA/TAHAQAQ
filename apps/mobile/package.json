@@ -20,6 +20,7 @@
     "postinstall": "npm rebuild @shopify/react-native-skia"
   },
   "dependencies": {
+    "@gorhom/bottom-sheet": "^5.2.9",
     "@react-navigation/bottom-tabs": "^7.15.5",
     "@react-navigation/elements": "^2.9.10",
     "@react-navigation/native": "^7.1.33",
@@ -36,7 +37,7 @@
     "expo-symbols": "~55.0.8",
     "expo-system-ui": "~55.0.17",
     "expo-web-browser": "~55.0.15",
-    "heroui-native": "^1.0.3",
+    "heroui-native": "^1.0.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-native": "0.83.6",
