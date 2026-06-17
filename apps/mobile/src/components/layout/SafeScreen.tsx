@@ -31,7 +31,7 @@ export function SafeScreen({
   if (!scrollable) {
     return (
       <View className={`flex-1 bg-background ${className}`} {...props}>
-        <View className={`flex-1 px-2 ${safeAreaClasses} ${contentClassName}`}>
+        <View className={`flex-1 px-6 ${safeAreaClasses} ${contentClassName}`}>
           {children}
         </View>
       </View>
@@ -42,7 +42,7 @@ export function SafeScreen({
     <View className={`flex-1 bg-background ${className}`} {...props}>
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
-        className="flex-1 px-2"
+        className="flex-1 px-6"
         contentContainerClassName={`grow ${safeAreaClasses} ${contentClassName}`}
         keyboardShouldPersistTaps="handled"
         bottomOffset={20}

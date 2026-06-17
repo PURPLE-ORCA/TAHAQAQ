@@ -38,3 +38,20 @@
     }
   }
 }
+
+@layer theme {
+  :root {
+    @variant light {
+      --accent: #00a040;
+      --accent-foreground: #ffffff;
+      --default: #e5e7eb;
+      --default-foreground: #161d16;
+    }
+    @variant dark {
+      --accent: #4ade80;
+      --accent-foreground: #0f1410;
+      --default: #1f2937;
+      --default-foreground: #eaf3e6;
+    }
+  }
+}
