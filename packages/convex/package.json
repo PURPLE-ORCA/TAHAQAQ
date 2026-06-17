@@ -1,0 +1,26 @@
+{
+  "name": "convex-boilate",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "convex dev",
+    "predev": "convex dev --once",
+    "build": "tsc --noEmit",
+    "api": "bunx convex-helpers ts-api-spec"
+  },
+  "dependencies": {
+    "@auth/core": "^0.41.1",
+    "@convex-dev/auth": "^0.0.91",
+    "@oslojs/crypto": "^1.0.1",
+    "convex": "^1.34.1",
+    "convex-helpers": "^0.1.114",
+    "resend": "^6.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

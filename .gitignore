@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+.expo/
+.expo-shared/
+.next/
+dist/
+build/
+.turbo/
+coverage/
+.env
+.env.*
+!.env.example
