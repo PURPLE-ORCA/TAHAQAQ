@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { Image } from 'expo-image';
 import { Button, Typography } from 'heroui-native';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { womenHoldingEqualityVector } from '@tahaqaq/assets/vectors';
 import { SafeScreen } from '@/components/layout/SafeScreen';
 import { Icon } from '@/components/ui/icon';
@@ -20,7 +20,7 @@ export default function OnboardingScreen() {
         <View className="gap-4">
           <Typography type="h2" weight="bold" className="text-4xl">
             Report equality issues with{' '}
-            <Text className="text-4xl font-semibold text-[#00a040]">confidence</Text>
+            <Typography type="h2" className="text-4xl font-bold text-[#00a040]">confidence</Typography>
           </Typography>
 
           <Typography type="body" className="text-muted">
