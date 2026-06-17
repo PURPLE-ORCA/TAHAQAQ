@@ -16,16 +16,10 @@ export default function LoginScreen() {
     <SafeScreen safeArea="both" className="bg-background">
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text variant="xsBold" className="uppercase tracking-[0.2em] text-secondary">
-            EXPO-BOILATE
-          </Text>
           <Text variant="title">Sign in to the starter shell</Text>
-          <Text variant="default" className="text-muted">
-            HeroUI Native and Uniwind are wired. Convex auth comes later.
-          </Text>
         </View>
 
-        <View className="gap-4 rounded-3xl border border-border bg-card p-5 shadow-sm">
+        <View className="">
           <View className="gap-2">
             <Text variant="smallBold">Email</Text>
             <TextInput
