@@ -5,7 +5,7 @@ Reusable Convex backend for NexVex-style SaaS starters.
 ## Setup
 
 1. Run `bun install`.
-2. Run `bunx convex dev` manually to create deployment and generated types.
+2. In this monorepo, run `bun run dev:convex` from repo root or `ln -sf ../../.env .env.local && bunx convex dev` from `packages/convex`. The symlink makes [[Convex]] write `CONVEX_DEPLOYMENT` into the shared root `.env` on first bootstrap.
 3. Set Convex dashboard env vars: `CONVEX_SITE_URL`, `RESEND_API_KEY`, `AUTH_RESEND_FROM`.
 4. Copy deployment URL into frontend as `NEXT_PUBLIC_CONVEX_URL`.
 

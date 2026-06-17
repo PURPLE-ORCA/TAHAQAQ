@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "convex dev",
-    "predev": "convex dev --once",
+    "dev": "ln -sf ../../.env .env.local && convex dev",
+    "predev": "ln -sf ../../.env .env.local && convex dev --once",
     "build": "tsc --noEmit",
     "api": "bunx convex-helpers ts-api-spec"
   },
