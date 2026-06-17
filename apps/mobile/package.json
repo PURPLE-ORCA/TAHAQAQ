@@ -20,6 +20,7 @@
     "postinstall": "npm rebuild @shopify/react-native-skia"
   },
   "dependencies": {
+    "@tahaqaq/assets": "workspace:*",
     "@gorhom/bottom-sheet": "^5.2.9",
     "@react-navigation/bottom-tabs": "^7.15.5",
     "@react-navigation/elements": "^2.9.10",

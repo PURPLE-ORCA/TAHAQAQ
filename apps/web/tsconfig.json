@@ -20,7 +20,9 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@tahaqaq/assets": ["../../packages/assets/src/index.ts"],
+      "@tahaqaq/assets/*": ["../../packages/assets/src/*"]
     }
   },
   "include": [

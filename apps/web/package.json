@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@tahaqaq/assets": "workspace:*",
     "@base-ui/react": "^1.4.1",
     "@convex-dev/auth": "^0.0.91",
     "class-variance-authority": "^0.7.1",
