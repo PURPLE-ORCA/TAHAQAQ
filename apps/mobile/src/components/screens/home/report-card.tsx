@@ -1,6 +1,5 @@
 import { View } from "react-native";
-import { Card, Chip } from "heroui-native";
-import { Text } from "@/components/ui/text";
+import { Card, Chip, Typography } from "heroui-native";
 import { Icon } from "@/components/ui/icon";
 
 export type ReportStatus = "verified" | "pending" | "resolved";
@@ -44,9 +43,9 @@ export function ReportCard({
         <View className="flex-row items-center justify-between">
           <View className="flex-row items-center gap-2 flex-1">
             <Icon name="business-outline" size={16} className="text-primary" />
-            <Text variant="smallBold" className="flex-1" numberOfLines={1}>
+            <Typography type="body-sm" weight="semibold" numberOfLines={1} className="flex-1">
               {facilityName}
-            </Text>
+            </Typography>
           </View>
           <Chip size="sm" variant="secondary" color={badge.color}>
             <Chip.Label>{badge.label}</Chip.Label>
@@ -54,21 +53,21 @@ export function ReportCard({
         </View>
 
         {/* Description */}
-        <Text variant="default" className="text-foreground/90">
+        <Typography type="body" color="default">
           {description}
-        </Text>
+        </Typography>
 
         {/* Footer: time + evidence */}
         <View className="flex-row items-center gap-2">
-          <Text variant="xs" className="text-muted">
+          <Typography type="body-xs" color="muted">
             {timeAgo}
-          </Text>
-          <Text variant="xs" className="text-muted">
+          </Typography>
+          <Typography type="body-xs" color="muted">
             ·
-          </Text>
-          <Text variant="xs" className="text-muted">
+          </Typography>
+          <Typography type="body-xs" color="muted">
             {evidenceLabels[evidence]}
-          </Text>
+          </Typography>
         </View>
       </View>
     </Card>

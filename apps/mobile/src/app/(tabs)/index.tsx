@@ -1,7 +1,6 @@
-import { View, ScrollView } from "react-native";
+import { View } from "react-native";
 import { router } from "expo-router";
-import { Avatar, Card, PressableFeedback, Separator } from "heroui-native";
-import { Text } from "@/components/ui/text";
+import { Avatar, Card, PressableFeedback, Separator, Typography } from "heroui-native";
 import { Icon } from "@/components/ui/icon";
 import { SafeScreen } from "@/components/layout/SafeScreen";
 import {
@@ -38,7 +37,7 @@ export default function HomeScreen() {
     <SafeScreen safeArea="top" scrollable contentClassName="gap-5">
       {/* Header */}
       <View className="flex-row items-center justify-between">
-        <Text variant="title">TAHAQAQ</Text>
+        <Typography type="h1">TAHAQAQ</Typography>
         <View className="flex-row items-center gap-3">
           <PressableFeedback className="relative h-10 w-10 items-center justify-center rounded-full bg-card border border-border/50">
             <Icon name="notifications-outline" size={20} className="text-foreground" />
@@ -53,18 +52,16 @@ export default function HomeScreen() {
       </View>
 
       {/* Welcome */}
-      <View>
-        <Text variant="subtitle">Welcome back 👋</Text>
-      </View>
+      <Typography type="h2">Welcome back 👋</Typography>
 
       <Separator />
 
       {/* Recent Activity */}
       <View className="gap-3">
         <View className="flex-row items-center justify-between">
-          <Text variant="large">Recent activity</Text>
+          <Typography type="h3">Recent activity</Typography>
           <PressableFeedback>
-            <Text variant="xs" className="text-primary font-semibold">See all</Text>
+            <Typography type="body-xs" weight="semibold" className="text-accent">See all</Typography>
           </PressableFeedback>
         </View>
 
@@ -78,10 +75,10 @@ export default function HomeScreen() {
         <View className="flex-row items-center gap-3">
           <Icon name="stats-chart-outline" size={20} className="text-primary" />
           <View className="flex-1">
-            <Text variant="smallBold">Your reports</Text>
-            <Text variant="xs" className="text-muted">
+            <Typography type="body-sm" weight="semibold">Your reports</Typography>
+            <Typography type="body-xs" color="muted">
               3 submitted · 1 verified · 1 pending
-            </Text>
+            </Typography>
           </View>
           <Icon name="chevron-forward" size={16} className="text-muted" />
         </View>
