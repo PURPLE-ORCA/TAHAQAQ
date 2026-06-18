@@ -18,7 +18,7 @@ export default function NotFoundScreen() {
 
         <Link href="/" asChild>
           <Pressable style={styles.link}>
-            <Text variant="smallBold" className="text-primary">
+            <Text variant="smallBold" className="text-accent">
               Go home
             </Text>
           </Pressable>

@@ -12,9 +12,6 @@ export default function HomeScreen() {
     <View className="flex-1 bg-background">
       <SafeScreen safeArea="top" scrollable contentClassName="gap-5">
         <HomeHeader />
-
-        <Typography type="h2">Welcome back 👋</Typography>
-
         <Separator />
 
         <RecentActivity />
@@ -23,10 +20,10 @@ export default function HomeScreen() {
       </SafeScreen>
 
       {/* FAB — outside scroll, always fixed */}
-      <View className="absolute bottom-24 right-6">
+      <View className="absolute bottom-2 right-6">
         <PressableFeedback
           onPress={() => router.push("/(tabs)/map")}
-          className="size-14 items-center justify-center rounded-2xl bg-primary"
+          className="size-14 items-center justify-center rounded-full bg-accent"
         >
           <Icon name="add" size={28} className="text-white" />
         </PressableFeedback>

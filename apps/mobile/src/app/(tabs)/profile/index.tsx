@@ -23,7 +23,7 @@ export default function ProfileScreen() {
           </Text>
         </View>
 
-        <View className="gap-3 rounded-3xl border border-border bg-card p-5">
+        <View className="gap-3 rounded-3xl border border-border bg-surface p-5">
           <Text variant="smallBold">Account</Text>
           <Text variant="small" className="text-muted">
             Email, avatar, preferences, and sign-out actions will live here.
@@ -33,7 +33,7 @@ export default function ProfileScreen() {
           </Button>
         </View>
 
-        <View className="gap-3 rounded-3xl border border-border bg-card p-5">
+        <View className="gap-3 rounded-3xl border border-border bg-surface p-5">
           <Text variant="smallBold">Test Bottom Sheet</Text>
           <Button variant="secondary" onPress={() => sheetRef.current?.present()}>
             <Button.Label>Open Bottom Sheet</Button.Label>

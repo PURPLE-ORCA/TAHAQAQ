@@ -6,7 +6,7 @@ const text = tv({
   variants: {
     variant: {
       default: 'text-base leading-6 font-medium text-foreground/80',
-      title: 'text-5xl font-semibold leading-[52px] text-foreground text-primary',
+      title: 'text-5xl font-semibold leading-[52px] text-foreground text-accent',
       subtitle: 'text-[32px] leading-[40px] font-semibold text-foreground',
       large: 'text-xl font-semibold leading-7 text-foreground',
       small: 'text-sm leading-5 font-medium text-foreground/80',

@@ -42,7 +42,7 @@ export function ReportCard({
         {/* Header: facility + status */}
         <View className="flex-row items-center justify-between">
           <View className="flex-row items-center gap-2 flex-1">
-            <Icon name="business-outline" size={16} className="text-primary" />
+            <Icon name="business-outline" size={16} className="text-accent" />
             <Typography type="body-sm" weight="semibold" numberOfLines={1} className="flex-1">
               {facilityName}
             </Typography>

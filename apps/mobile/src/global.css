@@ -5,6 +5,7 @@
 @source '../app';
 @source '../node_modules/heroui-native/lib';
 
+/* ── Fonts ── */
 @layer theme {
   :root {
     --font-display:
@@ -14,44 +15,44 @@
       ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
     --font-rounded: 'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif;
     --font-serif: Georgia, 'Times New Roman', serif;
-
-    --color-background: #f4fcef;
-    --color-foreground: #161d16;
-    --color-card: #ffffff;
-    --color-border: #6d7b6b;
-    --color-muted: #3e4a3d;
-    --color-primary: #00a040;
-    --color-secondary: #006020;
-    --color-success: #008735;
-    --color-danger: #ba1a1a;
-
-    @variant dark {
-      --color-background: #0f1410;
-      --color-foreground: #eaf3e6;
-      --color-card: #161d16;
-      --color-border: #3a4a38;
-      --color-muted: #a8b8a3;
-      --color-primary: #4ade80;
-      --color-secondary: #2b322a;
-      --color-success: #86d98a;
-      --color-danger: #f87171;
-    }
   }
 }
 
+/* ── HeroUI token overrides (Tahaqaq Civic Verdant) ── */
 @layer theme {
   :root {
     @variant light {
+      --background: #f4fcef;
+      --foreground: #161d16;
+      --surface: #ffffff;
+      --border: #6d7b6b;
+      --muted: #3e4a3d;
       --accent: #00a040;
       --accent-foreground: #ffffff;
+      --success: #008735;
+      --danger: #ba1a1a;
       --default: #e5e7eb;
       --default-foreground: #161d16;
     }
+
     @variant dark {
+      --background: #0f1410;
+      --foreground: #eaf3e6;
+      --surface: #161d16;
+      --border: #3a4a38;
+      --muted: #a8b8a3;
       --accent: #4ade80;
       --accent-foreground: #0f1410;
+      --success: #86d98a;
+      --danger: #f87171;
       --default: #1f2937;
       --default-foreground: #eaf3e6;
     }
   }
+}
+
+/* ── Custom tokens (no HeroUI equivalent) ── */
+@theme inline {
+  --color-secondary: #006020;
+  --color-secondary-foreground: #ffffff;
 }

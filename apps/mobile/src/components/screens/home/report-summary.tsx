@@ -6,7 +6,7 @@ export function ReportSummary() {
   return (
     <Card variant="secondary">
       <View className="flex-row items-center gap-3">
-        <Icon name="stats-chart-outline" size={20} className="text-primary" />
+        <Icon name="stats-chart-outline" size={20} className="text-accent" />
         <View className="flex-1">
           <Typography type="body-sm" weight="semibold">
             Your reports
