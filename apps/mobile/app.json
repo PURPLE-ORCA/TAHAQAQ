@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "tabs",
-    "slug": "tabs",
+    "name": "TAHAQAQ",
+    "slug": "tahaqaq",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "tabs",
+    "scheme": "tahaqaq",
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon"
