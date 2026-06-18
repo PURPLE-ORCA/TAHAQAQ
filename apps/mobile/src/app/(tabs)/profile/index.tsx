@@ -9,7 +9,7 @@ export default function ProfileScreen() {
   return (
     <SafeScreen safeArea="both">
       <View>
-        <View >
+        <View>
           <Text variant="title">Personal shell</Text>
           <Text variant="default" className="text-muted">
             This route is ready for account details once Convex auth lands.
@@ -21,8 +21,11 @@ export default function ProfileScreen() {
           <Text variant="small" className="text-muted">
             Email, avatar, preferences, and sign-out actions will live here.
           </Text>
-          <Button onPress={() => router.replace('/login')} >
+          <Button onPress={() => router.replace("/login")}>
             Back to login
+          </Button>
+          <Button onPress={() => router.push("/onboarding")}>
+            Open onboarding wireframe
           </Button>
         </View>
       </View>
