@@ -1,31 +1,44 @@
 import { Tabs } from 'expo-router';
-import { Text } from 'react-native';
-
-function TabIcon({ icon, color }: { icon: string; color: string }) {
-  return <Text style={{ color, fontSize: 20, lineHeight: 22 }}>{icon}</Text>;
-}
+import { Icon } from '@/components/ui/icon';
 
 export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#208aef',
-        tabBarInactiveTintColor: '#64748b',
+        tabBarActiveTintColor: '#00a040',
+        tabBarInactiveTintColor: '#6d7b6b',
+        tabBarStyle: {
+          backgroundColor: '#ffffff',
+          borderTopColor: '#e5e7eb',
+        },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <TabIcon icon="⌂" color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="home-outline" size={size} color={color} />
+          ),
         }}
       />
+        <Tabs.Screen
+          name="map"
+          options={{
+            title: 'Map',
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="map-outline" size={size} color={color} />
+            ),
+          }}
+        />
       <Tabs.Screen
         name="profile/index"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color }) => <TabIcon icon="○" color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="person-outline" size={size} color={color} />
+          ),
         }}
       />
     </Tabs>

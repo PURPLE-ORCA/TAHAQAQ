@@ -8,11 +8,8 @@ import { Text } from '@/components/ui/text';
 export default function ProfileScreen() {
   return (
     <SafeScreen safeArea="both" className="bg-background">
-      <View style={styles.container}>
-        <View style={styles.hero}>
-          <Text variant="xsBold" className="uppercase tracking-[0.2em] text-secondary">
-            Profile
-          </Text>
+      <View>
+        <View >
           <Text variant="title">Personal shell</Text>
           <Text variant="default" className="text-muted">
             This route is ready for account details once Convex auth lands.
@@ -24,7 +21,7 @@ export default function ProfileScreen() {
           <Text variant="small" className="text-muted">
             Email, avatar, preferences, and sign-out actions will live here.
           </Text>
-          <Button onPress={() => router.replace('/login')} style={styles.button}>
+          <Button onPress={() => router.replace('/login')} >
             Back to login
           </Button>
         </View>
@@ -33,16 +30,3 @@ export default function ProfileScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    gap: 24,
-    justifyContent: 'center',
-  },
-  hero: {
-    gap: 12,
-  },
-  button: {
-    marginTop: 4,
-  },
-});
