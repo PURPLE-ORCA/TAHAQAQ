@@ -43,8 +43,8 @@ export default function ProfileScreen() {
 
       <AppBottomSheetModal
         ref={sheetRef}
-        title="Bottom sheet works"
-        description="This is a shared bottom sheet component using HeroUI Native."
+        title="Write a review"
+        description="Share your experience — your feedback helps others make better decisions."
       >
         <Button variant="primary" onPress={() => sheetRef.current?.dismiss()}>
           <Button.Label>Confirm</Button.Label>
