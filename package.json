@@ -9,7 +9,6 @@
   "scripts": {
     "dev:web": "bun run --env-file=.env --cwd apps/web dev",
     "dev:mobile": "bun run --env-file=.env --cwd apps/mobile dev",
-    "dev:mobile:client": "bun run --env-file=.env --cwd apps/mobile dev:client",
     "dev:convex": "cd packages/convex && ln -sf ../../.env .env.local && bunx convex dev",
     "setup:convex": "cd packages/convex && ln -sf ../../.env .env.local && bunx convex dev --once",
     "build:web": "bun run --env-file=.env --cwd apps/web build",
