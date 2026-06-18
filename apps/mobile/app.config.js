@@ -46,13 +46,34 @@ try {
 }
 
 const convexUrl = process.env.EXPO_PUBLIC_CONVEX_URL ?? rootEnv.EXPO_PUBLIC_CONVEX_URL;
+const googleMapsApiKey =
+  process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY ??
+  rootEnv.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY;
 
 if (convexUrl) {
   process.env.EXPO_PUBLIC_CONVEX_URL = convexUrl;
 }
 
+if (googleMapsApiKey) {
+  process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY = googleMapsApiKey;
+}
+
 module.exports = () => ({
   ...expoConfig,
+  android: {
+    ...(expoConfig.android ?? {}),
+    ...(googleMapsApiKey
+      ? {
+          config: {
+            ...(expoConfig.android?.config ?? {}),
+            googleMaps: {
+              ...(expoConfig.android?.config?.googleMaps ?? {}),
+              apiKey: googleMapsApiKey,
+            },
+          },
+        }
+      : {}),
+  },
   extra: {
     ...(expoConfig.extra ?? {}),
     EXPO_PUBLIC_CONVEX_URL: convexUrl,

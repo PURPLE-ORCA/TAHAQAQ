@@ -10,7 +10,7 @@ import { ReportSummary } from "@/components/screens/home/report-summary";
 
 export default function HomeScreen() {
   return (
-    <View className="flex-1 bg-background">
+    <View className="flex-1">
       <SafeScreen safeArea="top" scrollable contentClassName="gap-5">
         <HomeHeader />
         <DraftReviewCard />
