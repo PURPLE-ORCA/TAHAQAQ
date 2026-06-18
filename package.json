@@ -18,7 +18,5 @@
     "typecheck:mobile": "bun run --env-file=.env --cwd apps/mobile typecheck",
     "typecheck:convex": "bun run --env-file=.env --cwd packages/convex build"
   },
-  "dependencies": {
-    "@expo/vector-icons": "^15.1.1"
-  }
+  "dependencies": {}
 }
