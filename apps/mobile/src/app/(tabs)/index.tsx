@@ -1,5 +1,6 @@
-import { Pressable, View, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import { router } from "expo-router";
+import { Avatar, Card, PressableFeedback, Separator } from "heroui-native";
 import { Text } from "@/components/ui/text";
 import { Icon } from "@/components/ui/icon";
 import { SafeScreen } from "@/components/layout/SafeScreen";
@@ -34,73 +35,65 @@ const MOCK_REPORTS: ReportCardProps[] = [
 
 export default function HomeScreen() {
   return (
-    <SafeScreen safeArea="top" className="bg-background">
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 120 }}
-      >
-        {/* Header */}
-        <View className="flex-row items-center justify-between px-6 pt-2 pb-2">
-          <Text variant="title">TAHAQAQ</Text>
-          <View className="flex-row items-center gap-3">
-            <Pressable className="relative h-10 w-10 items-center justify-center rounded-full bg-card border border-border/50">
-              <Icon name="notifications-outline" size={20} className="text-foreground" />
-              <View className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-danger" />
-            </Pressable>
-            <Pressable onPress={() => router.push("/profile")}>
-              <View className="h-10 w-10 items-center justify-center rounded-full border-2 border-primary bg-secondary">
-                <Text variant="xsBold" className="text-primary">U</Text>
-              </View>
-            </Pressable>
-          </View>
+    <SafeScreen safeArea="top" scrollable contentClassName="gap-5">
+      {/* Header */}
+      <View className="flex-row items-center justify-between">
+        <Text variant="title">TAHAQAQ</Text>
+        <View className="flex-row items-center gap-3">
+          <PressableFeedback className="relative h-10 w-10 items-center justify-center rounded-full bg-card border border-border/50">
+            <Icon name="notifications-outline" size={20} className="text-foreground" />
+            <View className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-danger" />
+          </PressableFeedback>
+          <PressableFeedback onPress={() => router.push("/profile")}>
+            <Avatar size="md" color="accent">
+              <Avatar.Fallback>U</Avatar.Fallback>
+            </Avatar>
+          </PressableFeedback>
+        </View>
+      </View>
+
+      {/* Welcome */}
+      <View>
+        <Text variant="subtitle">Welcome back 👋</Text>
+      </View>
+
+      <Separator />
+
+      {/* Recent Activity */}
+      <View className="gap-3">
+        <View className="flex-row items-center justify-between">
+          <Text variant="large">Recent activity</Text>
+          <PressableFeedback>
+            <Text variant="xs" className="text-primary font-semibold">See all</Text>
+          </PressableFeedback>
         </View>
 
-        {/* Welcome */}
-        <View className="px-6 pt-3 pb-5">
-          <Text variant="subtitle">Welcome back 👋</Text>
+        {MOCK_REPORTS.map((report, i) => (
+          <ReportCard key={i} {...report} />
+        ))}
+      </View>
+
+      {/* Summary */}
+      <Card variant="secondary">
+        <View className="flex-row items-center gap-3">
+          <Icon name="stats-chart-outline" size={20} className="text-primary" />
+          <View className="flex-1">
+            <Text variant="smallBold">Your reports</Text>
+            <Text variant="xs" className="text-muted">
+              3 submitted · 1 verified · 1 pending
+            </Text>
+          </View>
+          <Icon name="chevron-forward" size={16} className="text-muted" />
         </View>
-
-        {/* Recent Activity */}
-        <View className="px-6">
-          <View className="flex-row items-center justify-between mb-3">
-            <Text variant="large">Recent activity</Text>
-            <Pressable>
-              <Text variant="xs" className="text-primary font-semibold">See all</Text>
-            </Pressable>
-          </View>
-
-          <View className="gap-3">
-            {MOCK_REPORTS.map((report, i) => (
-              <ReportCard key={i} {...report} />
-            ))}
-          </View>
-
-          {/* Summary */}
-          <View className="mt-5 rounded-2xl border border-border/50 bg-card p-4">
-            <View className="flex-row items-center gap-3">
-              <View className="h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
-                <Icon name="stats-chart-outline" size={20} className="text-primary" />
-              </View>
-              <View className="flex-1">
-                <Text variant="smallBold">Your reports</Text>
-                <Text variant="xs" className="text-muted">
-                  3 submitted · 1 verified · 1 pending
-                </Text>
-              </View>
-              <Icon name="chevron-forward" size={16} className="text-muted" />
-            </View>
-          </View>
-        </View>
-      </ScrollView>
+      </Card>
 
       {/* Floating Action Button */}
-      <Pressable
+      <PressableFeedback
         onPress={() => router.push("/(tabs)/map")}
-        className="absolute bottom-24 right-6 h-14 w-14 items-center justify-center rounded-2xl bg-primary shadow-lg"
-        style={{ shadowColor: "#00a040", shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8, elevation: 8 }}
+        className="absolute bottom-24 right-6 h-14 w-14 items-center justify-center rounded-2xl bg-primary"
       >
         <Icon name="add" size={28} className="text-white" />
-      </Pressable>
+      </PressableFeedback>
     </SafeScreen>
   );
 }
