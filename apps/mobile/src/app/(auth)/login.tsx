@@ -91,7 +91,7 @@ export default function LoginScreen() {
               </View>
               <InputOTP
                 value={otp}
-                onChange={(v) => {
+                onChange={(v: string) => {
                   setOtp(v.replace(/[^0-9]/g, ""));
                   clearError();
                 }}

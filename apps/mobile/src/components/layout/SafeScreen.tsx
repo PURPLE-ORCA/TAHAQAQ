@@ -1,15 +1,17 @@
+import { type PropsWithChildren } from "react";
 import { View, type ViewProps } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 
 type SafeArea = "top" | "bottom" | "both" | "none";
 
-export interface SafeScreenProps extends ViewProps {
-  children: React.ReactNode;
-  scrollable?: boolean;
-  safeArea?: SafeArea;
-  className?: string;
-  contentClassName?: string;
-}
+export type SafeScreenProps = PropsWithChildren<
+  ViewProps & {
+    scrollable?: boolean;
+    safeArea?: SafeArea;
+    className?: string;
+    contentClassName?: string;
+  }
+>;
 
 const safeStyles: Record<SafeArea, string> = {
   top: "pt-safe-offset-1 pb-safe-offset-4",
