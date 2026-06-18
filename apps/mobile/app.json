@@ -8,9 +8,11 @@
     "scheme": "tahaqaq",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.purpleorca.tahaqaq"
     },
     "android": {
+      "package": "com.purpleorca.tahaqaq",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
