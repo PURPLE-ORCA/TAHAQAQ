@@ -1,9 +1,10 @@
 import { View } from "react-native";
 import { router } from "expo-router";
-import { PressableFeedback, Separator, Typography } from "heroui-native";
+import { PressableFeedback, Separator } from "heroui-native";
 import { Icon } from "@/components/ui/icon";
 import { SafeScreen } from "@/components/layout/SafeScreen";
 import { HomeHeader } from "@/components/screens/home/home-header";
+import { DraftReviewCard } from "@/components/screens/home/draft-review-card";
 import { RecentActivity } from "@/components/screens/home/recent-activity";
 import { ReportSummary } from "@/components/screens/home/report-summary";
 
@@ -12,10 +13,9 @@ export default function HomeScreen() {
     <View className="flex-1 bg-background">
       <SafeScreen safeArea="top" scrollable contentClassName="gap-5">
         <HomeHeader />
+        <DraftReviewCard />
         <Separator />
-
         <RecentActivity />
-
         <ReportSummary />
       </SafeScreen>
 

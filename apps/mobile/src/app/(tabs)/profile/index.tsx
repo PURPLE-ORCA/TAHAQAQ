@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { router } from 'expo-router';
 import { Button } from 'heroui-native/button';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 
 import { SafeScreen } from '@/components/layout/SafeScreen';
 import { Text } from '@/components/ui/text';

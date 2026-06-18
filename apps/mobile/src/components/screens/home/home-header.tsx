@@ -8,7 +8,7 @@ export function HomeHeader() {
     <View className="flex-row items-center justify-between">
       <Typography type="h3" weight="bold">Welcome back 👋</Typography>
       <View className="flex-row items-center gap-3">
-        <PressableFeedback className="relative size-10 items-center justify-center rounded-full bg-surface border border-border/50">
+        <PressableFeedback className="relative size-10 items-center justify-center rounded-full">
           <Icon
             name="notifications-outline"
             size={20}
