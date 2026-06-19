@@ -2,13 +2,11 @@ import { useMemo, useRef, useState } from 'react';
 import {
   Alert,
   Platform,
-  Pressable,
-  ScrollView,
   useWindowDimensions,
   View,
 } from 'react-native';
 import { AppleMaps, GoogleMaps } from 'expo-maps';
-import { Button } from 'heroui-native/button';
+import { Button, Card } from 'heroui-native';
 
 import { SafeScreen } from '@/components/layout/SafeScreen';
 import {
@@ -132,10 +130,6 @@ const mapCamera = {
   zoom: 6.5,
 };
 
-function formatCounter(value: number, label: string) {
-  return `${value} ${label}${value === 1 ? '' : 's'}`;
-}
-
 function MapUnavailableFallback() {
   return (
     <View className="flex-1 items-center justify-center gap-3 rounded-[28px] border border-border bg-surface px-5 py-8">
@@ -213,28 +207,9 @@ export default function MapScreen() {
   };
 
   return (
-    <SafeScreen safeArea="top" scrollable contentClassName="gap-4 pb-8">
-      <View className="gap-2">
-        <Text variant="title">Map</Text>
-        <Text variant="default" className="text-muted">
-          Tap a pin or an establishment card to open the sheet.
-        </Text>
-      </View>
-
-      <View className="flex-row flex-wrap gap-2">
-        <View className="rounded-full bg-surface px-3 py-2">
-          <Text variant="xsBold">All establishments</Text>
-        </View>
-        <View className="rounded-full bg-surface px-3 py-2">
-          <Text variant="xsBold">Static demo</Text>
-        </View>
-        <View className="rounded-full bg-surface px-3 py-2">
-          <Text variant="xsBold">Bottom sheet first</Text>
-        </View>
-      </View>
-
+    <SafeScreen scrollable>
       <View
-        className="-mx-6 overflow-hidden border border-border bg-surface"
+        className="-mx-6"
         style={{ height: mapHeight }}
       >
         {Platform.OS === 'ios' ? (
@@ -263,11 +238,7 @@ export default function MapScreen() {
           <MapUnavailableFallback />
         )}
 
-        <View className="pointer-events-none absolute left-4 top-4 rounded-full bg-background/90 px-3 py-2">
-          <Text variant="xsBold">Static establishments</Text>
-        </View>
-
-        <View className="pointer-events-none absolute bottom-4 left-4 right-4 rounded-2xl bg-background/90 px-4 py-3">
+        <Card className="pointer-events-none absolute bottom-4 left-4 right-4 rounded-2xl bg-background/90 px-4 py-3">
           <View className="flex-row items-center justify-between">
             <View>
               <Text variant="smallBold">{selected.name}</Text>
@@ -281,71 +252,7 @@ export default function MapScreen() {
               </Text>
             </View>
           </View>
-        </View>
-      </View>
-
-      <View className="gap-3">
-        <View className="flex-row items-center justify-between">
-          <Text variant="large">Establishments</Text>
-          <Text variant="xs" className="text-muted">
-            {formatCounter(establishments.length, 'pin')}
-          </Text>
-        </View>
-
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ gap: 12, paddingBottom: 4 }}
-        >
-          {establishments.map((item) => {
-            const isSelected = item.id === selectedId;
-
-            return (
-              <Pressable
-                key={item.id}
-                onPress={() => openEstablishment(item.id)}
-                className={`w-[248px] rounded-3xl border p-4 ${
-                  isSelected ? 'border-accent bg-accent/5' : 'border-border bg-surface'
-                }`}
-              >
-                <View className="mb-3 flex-row items-start justify-between gap-3">
-                  <View className="flex-1 gap-1">
-                    <Text variant="smallBold">{item.name}</Text>
-                    <Text variant="xs" className="text-muted">
-                      {item.address}
-                    </Text>
-                  </View>
-                  <View className={`rounded-full px-3 py-1 ${statusStyles[item.status]}`}>
-                    <Text variant="xsBold" className={statusStyles[item.status]}>
-                      {statusLabels[item.status]}
-                    </Text>
-                  </View>
-                </View>
-
-                <View className="flex-row flex-wrap gap-2">
-                  <View className="rounded-full bg-background px-3 py-1">
-                    <Text variant="xsBold">{item.category}</Text>
-                  </View>
-                  <View className="rounded-full bg-background px-3 py-1">
-                    <Text variant="xsBold">{item.city}</Text>
-                  </View>
-                </View>
-
-                <View className="mt-4 gap-1">
-                  <Text variant="xs" className="text-muted">
-                    {item.reviews} reviews
-                  </Text>
-                  <Text variant="xs" className="text-muted">
-                    {item.complaints} complaints
-                  </Text>
-                  <Text variant="xs" className="text-muted">
-                    {item.recentSignal}
-                  </Text>
-                </View>
-              </Pressable>
-            );
-          })}
-        </ScrollView>
+        </Card>
       </View>
 
       <AppBottomSheetModal

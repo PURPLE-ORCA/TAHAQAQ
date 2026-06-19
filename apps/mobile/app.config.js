@@ -58,8 +58,16 @@ if (googleMapsApiKey) {
   process.env.EXPO_PUBLIC_GOOGLE_MAPS_API_KEY = googleMapsApiKey;
 }
 
-module.exports = () => ({
+module.exports = ({ config } = {}) => ({
+  ...config,
   ...expoConfig,
+  ios: {
+    ...(expoConfig.ios ?? {}),
+    infoPlist: {
+      ...(expoConfig.ios?.infoPlist ?? {}),
+      ITSAppUsesNonExemptEncryption: false,
+    },
+  },
   android: {
     ...(expoConfig.android ?? {}),
     ...(googleMapsApiKey
