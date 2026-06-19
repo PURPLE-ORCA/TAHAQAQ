@@ -1,11 +1,15 @@
 import { useRef, useState } from 'react';
 import { Alert } from 'react-native';
 import type { AppBottomSheetModalRef } from '@/components/ui/bottom-sheet';
-import { establishments } from '../lib/constants';
+import { establishments, mapCenter } from '../lib/constants';
+import { useUserLocation } from './useUserLocation';
 
 export function useMap() {
   const sheetRef = useRef<AppBottomSheetModalRef>(null);
   const [selectedId, setSelectedId] = useState(establishments[0].id);
+  const { location } = useUserLocation();
+
+  const cameraCoordinates = location ?? mapCenter;
 
   const selected =
     establishments.find((item) => item.id === selectedId) ?? establishments[0];
@@ -32,5 +36,7 @@ export function useMap() {
     selected,
     openEstablishment,
     handleAction,
+    cameraCoordinates,
   };
 }
+

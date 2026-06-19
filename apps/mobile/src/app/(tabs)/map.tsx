@@ -5,12 +5,12 @@ import { SafeScreen } from '@/components/layout/SafeScreen';
 import { AppBottomSheetModal } from '@/components/ui/bottom-sheet';
 import { useMap } from '@/components/screens/map/hooks/useMap';
 import { MapUnavailableFallback } from '@/components/screens/map/MapUnavailableFallback';
-import { mapCamera, markers } from '@/components/screens/map/lib/constants';
+import { markers } from '@/components/screens/map/lib/constants';
 import { SelectedEstablishmentCard } from '@/components/screens/map/ui/SelectedEstablishmentCard';
 import { EstablishmentDetails } from '@/components/screens/map/ui/EstablishmentDetails';
 
 export default function MapScreen() {
-  const { sheetRef, selected, openEstablishment, handleAction } =
+  const { sheetRef, selected, openEstablishment, handleAction, cameraCoordinates } =
     useMap();
 
   return (
@@ -19,7 +19,13 @@ export default function MapScreen() {
         {Platform.OS === 'ios' ? (
           <AppleMaps.View
             style={{ flex: 1 }}
-            cameraPosition={mapCamera}
+            cameraPosition={{
+              coordinates: {
+                latitude: cameraCoordinates.latitude,
+                longitude: cameraCoordinates.longitude,
+              },
+              zoom: 14,
+            }}
             markers={markers}
             onMarkerClick={(event) => {
               if (event.id) {
@@ -30,7 +36,13 @@ export default function MapScreen() {
         ) : Platform.OS === 'android' ? (
           <GoogleMaps.View
             style={{ flex: 1 }}
-            cameraPosition={mapCamera}
+            cameraPosition={{
+              coordinates: {
+                latitude: cameraCoordinates.latitude,
+                longitude: cameraCoordinates.longitude,
+              },
+              zoom: 14,
+            }}
             markers={markers}
             onMarkerClick={(event) => {
               if (event.id) {
