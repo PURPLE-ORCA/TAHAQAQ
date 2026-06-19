@@ -102,8 +102,6 @@ export const mapCamera = {
 export const markers = establishments.map((item) => ({
   id: item.id,
   coordinates: item.coordinates,
-  title: item.name,
-  snippet: `${item.category} • ${item.city}`,
-  showCallout: true,
+  showCallout: false,
   zIndex: item.status === 'priority' ? 10 : 1,
 }));

@@ -1,10 +1,8 @@
 import { Platform, View } from 'react-native';
 import { AppleMaps, GoogleMaps } from 'expo-maps';
 import { Button } from 'heroui-native';
-
 import { SafeScreen } from '@/components/layout/SafeScreen';
 import { AppBottomSheetModal } from '@/components/ui/bottom-sheet';
-
 import { useMap } from '@/components/screens/map/hooks/useMap';
 import { MapUnavailableFallback } from '@/components/screens/map/MapUnavailableFallback';
 import { mapCamera, markers } from '@/components/screens/map/lib/constants';
@@ -12,12 +10,12 @@ import { SelectedEstablishmentCard } from '@/components/screens/map/ui/SelectedE
 import { EstablishmentDetails } from '@/components/screens/map/ui/EstablishmentDetails';
 
 export default function MapScreen() {
-  const { sheetRef, selected, mapHeight, openEstablishment, handleAction } =
+  const { sheetRef, selected, openEstablishment, handleAction } =
     useMap();
 
   return (
     <SafeScreen scrollable>
-      <View className="-mx-6" style={{ height: mapHeight }}>
+      <View className="-mx-6" style={{ flex: 1 }}>
         {Platform.OS === 'ios' ? (
           <AppleMaps.View
             style={{ flex: 1 }}
