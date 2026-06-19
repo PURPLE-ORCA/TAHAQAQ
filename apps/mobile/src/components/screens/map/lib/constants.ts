@@ -99,9 +99,20 @@ export const mapCamera = {
   zoom: 6.5,
 };
 
+export const categoryColors: Record<string, string> = {
+  Hospital: 'red',
+  School: 'blue',
+  Marketplace: 'green',
+  'Public Office': 'purple',
+  Clinic: 'orange',
+  Library: 'teal',
+};
+
 export const markers = establishments.map((item) => ({
   id: item.id,
   coordinates: item.coordinates,
   showCallout: false,
   zIndex: item.status === 'priority' ? 10 : 1,
+  tintColor: categoryColors[item.category] || 'red',
 }));
+
