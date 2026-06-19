@@ -12,6 +12,8 @@
     "android": "expo run:android",
     "preios": "node ./scripts/link-root-env.cjs",
     "ios": "expo run:ios",
+    "predev:simulator": "node ./scripts/link-root-env.cjs",
+    "dev:simulator": "bash ./scripts/dev-simulator.sh",
     "preweb": "node ./scripts/link-root-env.cjs",
     "web": "expo start --web",
     "lint": "eslint ./src",
