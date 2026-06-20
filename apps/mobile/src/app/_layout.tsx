@@ -8,8 +8,9 @@ import { Stack } from 'expo-router';
 import { ConvexReactClient } from 'convex/react';
 import { HeroUINativeProvider } from 'heroui-native/provider';
 import * as SecureStore from 'expo-secure-store';
-import { Platform } from 'react-native';
+import { Appearance, Platform } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useEffect } from 'react';
 
 const convexUrl =
   process.env.EXPO_PUBLIC_CONVEX_URL ??
@@ -32,7 +33,37 @@ const secureStorage = {
   removeItem: SecureStore.deleteItemAsync,
 };
 
+// Prevent flash of wrong theme on startup by checking synchronously
+if (Platform.OS !== 'web') {
+  try {
+    const stored = SecureStore.getItem('theme-preference');
+    if (stored === 'light' || stored === 'dark') {
+      Appearance.setColorScheme(stored as any);
+    } else if (stored === 'system') {
+      Appearance.setColorScheme(null as any);
+    }
+  } catch (e) {
+    // Ignore error on startup sync
+  }
+}
+
 export default function RootLayout() {
+  useEffect(() => {
+    async function initTheme() {
+      try {
+        const stored = await SecureStore.getItemAsync('theme-preference');
+        if (stored === 'light' || stored === 'dark') {
+          Appearance.setColorScheme(stored as any);
+        } else if (stored === 'system') {
+          Appearance.setColorScheme(null as any);
+        }
+      } catch (e) {
+        console.warn('Failed to load theme preference on launch', e);
+      }
+    }
+    initTheme();
+  }, []);
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ConvexAuthProvider

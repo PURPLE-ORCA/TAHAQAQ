@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { View } from "react-native";
+import { useRouter } from "expo-router";
 import { Accordion, Separator, Surface, Typography } from "heroui-native";
 import { SafeScreen } from "@/components/layout/SafeScreen";
 import { ProfileHeader } from "@/components/screens/profile/profile-header";
@@ -12,6 +13,7 @@ import { TermsSheet } from "@/components/screens/profile/about/terms-sheet";
 import { AppBottomSheetModalRef } from "@/components/ui/bottom-sheet";
 
 export default function ProfileScreen() {
+  const router = useRouter();
   const howItWorksRef = useRef<AppBottomSheetModalRef>(null);
   const privacyRef = useRef<AppBottomSheetModalRef>(null);
   const termsRef = useRef<AppBottomSheetModalRef>(null);
@@ -59,7 +61,7 @@ export default function ProfileScreen() {
           icon="moon-outline"
           title="Appearance"
           subtitle="Dark mode, theme"
-          onPress={() => {}}
+          onPress={() => router.push('/profile/appearance')}
           isLast
         />
       </Surface>
