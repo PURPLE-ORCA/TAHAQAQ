@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { View } from "react-native";
 import { Accordion, Separator, Surface, Typography } from "heroui-native";
 import { SafeScreen } from "@/components/layout/SafeScreen";
@@ -5,8 +6,16 @@ import { ProfileHeader } from "@/components/screens/profile/profile-header";
 import { SettingsRow } from "@/components/screens/profile/settings-row";
 import { SectionHeader } from "@/components/screens/profile/section-header";
 import { faqItems } from "@/components/screens/profile/lib/faq";
+import { HowItWorksSheet } from "@/components/screens/profile/about/how-it-works-sheet";
+import { PrivacySheet } from "@/components/screens/profile/about/privacy-sheet";
+import { TermsSheet } from "@/components/screens/profile/about/terms-sheet";
+import { AppBottomSheetModalRef } from "@/components/ui/bottom-sheet";
 
 export default function ProfileScreen() {
+  const howItWorksRef = useRef<AppBottomSheetModalRef>(null);
+  const privacyRef = useRef<AppBottomSheetModalRef>(null);
+  const termsRef = useRef<AppBottomSheetModalRef>(null);
+
   return (
     <SafeScreen safeArea="top" scrollable contentClassName="gap-5 pb-10">
       <ProfileHeader />
@@ -60,19 +69,27 @@ export default function ProfileScreen() {
       <Surface className="gap-3">
         <SectionHeader title="General" />
         <SettingsRow
+          icon="help-circle-outline"
+          title="How TAHAQAQ Works"
+          subtitle="Learn how it works"
+          onPress={() => howItWorksRef.current?.present()}
+        />
+        <SettingsRow
+          icon="shield-checkmark-outline"
+          title="Privacy Policy"
+          subtitle="Your data is safe"
+          onPress={() => privacyRef.current?.present()}
+        />
+        <SettingsRow
+          icon="document-text-outline"
+          title="Terms & Conditions"
+          subtitle="Usage terms"
+          onPress={() => termsRef.current?.present()}
+        />
+        <SettingsRow
           icon="chatbubble-outline"
           title="Contact Us"
           subtitle="Get in touch with support"
-          onPress={() => {}}
-        />
-        <SettingsRow
-          icon="document-outline"
-          title="Terms & Condition"
-          onPress={() => {}}
-        />
-        <SettingsRow
-          icon="lock-closed-outline"
-          title="Privacy Policy"
           onPress={() => {}}
         />
         <SettingsRow
@@ -112,6 +129,10 @@ export default function ProfileScreen() {
           ))}
         </Accordion>
       </Surface>
+
+      <HowItWorksSheet triggerRef={howItWorksRef} />
+      <PrivacySheet triggerRef={privacyRef} />
+      <TermsSheet triggerRef={termsRef} />
     </SafeScreen>
   );
 }
