@@ -11,9 +11,11 @@ import { HowItWorksSheet } from "@/components/screens/profile/about/how-it-works
 import { PrivacySheet } from "@/components/screens/profile/about/privacy-sheet";
 import { TermsSheet } from "@/components/screens/profile/about/terms-sheet";
 import { AppBottomSheetModalRef } from "@/components/ui/bottom-sheet";
+import { useI18n } from "@/hooks/useI18n";
 
 export default function ProfileScreen() {
   const router = useRouter();
+  const { t } = useI18n();
   const howItWorksRef = useRef<AppBottomSheetModalRef>(null);
   const privacyRef = useRef<AppBottomSheetModalRef>(null);
   const termsRef = useRef<AppBottomSheetModalRef>(null);
@@ -25,22 +27,22 @@ export default function ProfileScreen() {
       <Separator />
 
       <Surface className="gap-3">
-        <SectionHeader title="Account" />
+        <SectionHeader title={t('profile.account')} />
         <SettingsRow
           icon="pencil-outline"
-          title="Edit Profile"
-          subtitle="Update your personal info"
+          title={t('profile.editProfile')}
+          subtitle={t('profile.updateYourPersonalInfo')}
           onPress={() => {}}
         />
         <SettingsRow
           icon="document-text-outline"
-          title="My Reports"
+          title={t('profile.myReports')}
           subtitle="8 submitted"
           onPress={() => {}}
         />
         <SettingsRow
           icon="notifications-outline"
-          title="Notifications"
+          title={t('profile.notifications')}
           subtitle="3 new"
           onPress={() => {}}
           isLast
@@ -50,16 +52,16 @@ export default function ProfileScreen() {
       <View className="py-2" />
 
       <Surface className="gap-3">
-        <SectionHeader title="Setting" />
+        <SectionHeader title={t('profile.setting')} />
         <SettingsRow
-          icon="settings-outline"
-          title="Settings"
-          subtitle="App preferences and language"
-          onPress={() => {}}
+          icon="globe-outline"
+          title={t('settings.language')}
+          subtitle={t('settings.appPreferences')}
+          onPress={() => router.push('/profile/language')}
         />
         <SettingsRow
           icon="moon-outline"
-          title="Appearance"
+          title={t('settings.appearance')}
           subtitle="Dark mode, theme"
           onPress={() => router.push('/profile/appearance')}
           isLast
@@ -69,40 +71,40 @@ export default function ProfileScreen() {
       <Separator />
 
       <Surface className="gap-3">
-        <SectionHeader title="General" />
+        <SectionHeader title={t('profile.general')} />
         <SettingsRow
           icon="help-circle-outline"
-          title="How TAHAQAQ Works"
-          subtitle="Learn how it works"
+          title={t('about.howItWorks')}
+          subtitle={t('about.learnHowItWorks')}
           onPress={() => howItWorksRef.current?.present()}
         />
         <SettingsRow
           icon="shield-checkmark-outline"
-          title="Privacy Policy"
-          subtitle="Your data is safe"
+          title={t('about.privacyPolicy')}
+          subtitle={t('about.yourDataIsSafe')}
           onPress={() => privacyRef.current?.present()}
         />
         <SettingsRow
           icon="document-text-outline"
-          title="Terms & Conditions"
-          subtitle="Usage terms"
+          title={t('about.terms')}
+          subtitle={t('about.usageTerms')}
           onPress={() => termsRef.current?.present()}
         />
         <SettingsRow
           icon="chatbubble-outline"
-          title="Contact Us"
-          subtitle="Get in touch with support"
+          title={t('about.contactUs')}
+          subtitle={t('about.getInTouch')}
           onPress={() => {}}
         />
         <SettingsRow
           icon="information-circle-outline"
-          title="About TAHAQAQ"
+          title={t('about.aboutTahaqaq')}
           subtitle="v1.0"
           onPress={() => {}}
         />
         <SettingsRow
           icon="log-out-outline"
-          title="Sign Out"
+          title={t('about.signOut')}
           variant="danger"
           onPress={() => {}}
           isLast
@@ -112,7 +114,7 @@ export default function ProfileScreen() {
       <View className="py-2" />
 
       <Surface className="gap-3">
-        <SectionHeader title="FAQ" />
+        <SectionHeader title={t('profile.faq')} />
         <Accordion>
           {faqItems.map((item) => (
             <Accordion.Item key={item.value} value={item.value}>

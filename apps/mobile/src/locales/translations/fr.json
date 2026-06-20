@@ -1,0 +1,50 @@
+{
+  "settings": {
+    "title": "Paramètres",
+    "language": "Langue",
+    "appearance": "Apparence",
+    "appPreferences": "Préférences de l'application et langue"
+  },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "back": "Retour",
+    "loading": "Chargement...",
+    "ok": "OK"
+  },
+  "profile": {
+    "editProfile": "Modifier le profil",
+    "updateYourPersonalInfo": "Mettre à jour vos informations personnelles",
+    "myReports": "Mes rapports",
+    "notifications": "Notifications",
+    "account": "Compte",
+    "setting": "Paramètres",
+    "general": "Général",
+    "faq": "FAQ"
+  },
+  "audit": {
+    "submit": "Soumettre",
+    "thankYou": "Merci",
+    "stepOf": "Étape {{current}} sur {{total}}"
+  },
+  "about": {
+    "howItWorks": "Comment TAHAQAQ fonctionne",
+    "privacyPolicy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contactUs": "Nous contacter",
+    "aboutTahaqaq": "À propos de TAHAQAQ",
+    "signOut": "Déconnexion",
+    "learnHowItWorks": "Découvrez comment ça marche",
+    "yourDataIsSafe": "Vos données sont en sécurité",
+    "usageTerms": "Conditions d'utilisation",
+    "getInTouch": "Contactez le support"
+  },
+  "language": {
+    "title": "Langue",
+    "arabic": "العربية",
+    "french": "Français",
+    "english": "English",
+    "restartRequired": "Veuillez redémarrer l'application pour appliquer les nouvelles modifications de langue et de disposition.",
+    "currentLanguage": "Langue actuelle"
+  }
+}

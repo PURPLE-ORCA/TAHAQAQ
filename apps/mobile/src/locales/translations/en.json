@@ -1,0 +1,50 @@
+{
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "appearance": "Appearance",
+    "appPreferences": "App preferences and language"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "loading": "Loading...",
+    "ok": "OK"
+  },
+  "profile": {
+    "editProfile": "Edit Profile",
+    "updateYourPersonalInfo": "Update your personal info",
+    "myReports": "My Reports",
+    "notifications": "Notifications",
+    "account": "Account",
+    "setting": "Setting",
+    "general": "General",
+    "faq": "FAQ"
+  },
+  "audit": {
+    "submit": "Submit",
+    "thankYou": "Thank You",
+    "stepOf": "Step {{current}} of {{total}}"
+  },
+  "about": {
+    "howItWorks": "How TAHAQAQ Works",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "contactUs": "Contact Us",
+    "aboutTahaqaq": "About TAHAQAQ",
+    "signOut": "Sign Out",
+    "learnHowItWorks": "Learn how it works",
+    "yourDataIsSafe": "Your data is safe",
+    "usageTerms": "Usage terms",
+    "getInTouch": "Get in touch with support"
+  },
+  "language": {
+    "title": "Language",
+    "arabic": "العربية",
+    "french": "Français",
+    "english": "English",
+    "restartRequired": "Please restart the app to apply the new language and layout changes.",
+    "currentLanguage": "Current Language"
+  }
+}

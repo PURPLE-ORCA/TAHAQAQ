@@ -9,7 +9,11 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon",
-      "bundleIdentifier": "com.purpleorca.tahaqaq"
+      "bundleIdentifier": "com.purpleorca.tahaqaq",
+      "CFBundleAllowMixedLocalizations": true,
+      "infoPlist": {
+        "CFBundleDevelopmentRegion": "en"
+      }
     },
     "android": {
       "package": "com.purpleorca.tahaqaq",
@@ -36,7 +40,8 @@
             "imageWidth": 76
           }
         }
-      ]
+      ],
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true,

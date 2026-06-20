@@ -1,0 +1,50 @@
+{
+  "settings": {
+    "title": "الإعدادات",
+    "language": "اللغة",
+    "appearance": "المظهر",
+    "appPreferences": "تفضيلات التطبيق واللغة"
+  },
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "back": "رجوع",
+    "loading": "جاري التحميل...",
+    "ok": "موافق"
+  },
+  "profile": {
+    "editProfile": "تعديل الملف الشخصي",
+    "updateYourPersonalInfo": "تحديث معلوماتك الشخصية",
+    "myReports": "تقاريري",
+    "notifications": "الإشعارات",
+    "account": "الحساب",
+    "setting": "الإعدادات",
+    "general": "عام",
+    "faq": "الأسئلة الشائعة"
+  },
+  "audit": {
+    "submit": "إرسال",
+    "thankYou": "شكراً لك",
+    "stepOf": "الخطوة {{current}} من {{total}}"
+  },
+  "about": {
+    "howItWorks": "كيف يعمل تحققق",
+    "privacyPolicy": "سياسة الخصوصية",
+    "terms": "الشروط والأحكام",
+    "contactUs": "اتصل بنا",
+    "aboutTahaqaq": "عن تحققق",
+    "signOut": "تسجيل الخروج",
+    "learnHowItWorks": "تعرّف على كيف يعمل",
+    "yourDataIsSafe": "بياناتك آمنة",
+    "usageTerms": "شروط الاستخدام",
+    "getInTouch": "تواصل مع الدعم"
+  },
+  "language": {
+    "title": "اللغة",
+    "arabic": "العربية",
+    "french": "الفرنسية",
+    "english": "الإنجليزية",
+    "restartRequired": "يرجى إعادة تشغيل التطبيق لتطبيق التغييرات الجديدة على اللغة والتخطيط.",
+    "currentLanguage": "اللغة الحالية"
+  }
+}
