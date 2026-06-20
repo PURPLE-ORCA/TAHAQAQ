@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, I18nManager } from "react-native";
 import { PressableFeedback, Typography } from "heroui-native";
 import { Icon } from "@/components/ui/icon";
 import { SettingsRowProps } from "./types";
@@ -42,7 +42,7 @@ export function SettingsRow({
           <Icon name="log-out-outline" size={18} className="text-danger" />
         ) : (
           <Icon
-            name="chevron-forward-outline"
+            name={I18nManager.isRTL ? "chevron-back-outline" : "chevron-forward-outline"}
             size={18}
             className="text-muted"
           />

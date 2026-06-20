@@ -8,7 +8,7 @@ import { Stack } from "expo-router";
 import { ConvexReactClient } from "convex/react";
 import { HeroUINativeProvider } from "heroui-native/provider";
 import * as SecureStore from "expo-secure-store";
-import { Appearance, Platform } from "react-native";
+import { Appearance, I18nManager, Platform } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useEffect } from "react";
 
@@ -41,6 +41,21 @@ if (Platform.OS !== "web") {
       Appearance.setColorScheme(stored as any);
     } else if (stored === "system") {
       Appearance.setColorScheme(null as any);
+    }
+  } catch (e) {
+    // Ignore error on startup sync
+  }
+
+  // Initialize RTL from saved locale at startup (must be synchronous)
+  try {
+    const savedLocale = SecureStore.getItem("app-locale");
+    const isRTL = savedLocale === "ar";
+    if (isRTL) {
+      I18nManager.allowRTL(true);
+      I18nManager.forceRTL(true);
+    } else {
+      I18nManager.allowRTL(false);
+      I18nManager.forceRTL(false);
     }
   } catch (e) {
     // Ignore error on startup sync

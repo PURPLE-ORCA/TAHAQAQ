@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, I18nManager } from "react-native";
 import { Card, Typography } from "heroui-native";
 import { Icon } from "@/components/ui/icon";
 import { useI18n } from "@/hooks/useI18n";
@@ -22,7 +22,7 @@ export function ReportSummary() {
             })}
           </Typography>
         </View>
-        <Icon name="chevron-forward" size={16} className="text-muted" />
+        <Icon name={I18nManager.isRTL ? "chevron-back" : "chevron-forward"} size={16} className="text-muted" />
       </View>
     </Card>
   );
