@@ -27,23 +27,23 @@ export default function ProfileScreen() {
       <Separator />
 
       <Surface className="gap-3">
-        <SectionHeader title={t('profile.account')} />
+        <SectionHeader title={t("profile.account")} />
         <SettingsRow
           icon="pencil-outline"
-          title={t('profile.editProfile')}
-          subtitle={t('profile.updateYourPersonalInfo')}
+          title={t("profile.editProfile")}
+          subtitle={t("profile.updateYourPersonalInfo")}
           onPress={() => {}}
         />
         <SettingsRow
           icon="document-text-outline"
-          title={t('profile.myReports')}
-          subtitle="8 submitted"
+          title={t("profile.myReports")}
+          subtitle={t("profile.submittedCount", { count: 8 })}
           onPress={() => {}}
         />
         <SettingsRow
           icon="notifications-outline"
-          title={t('profile.notifications')}
-          subtitle="3 new"
+          title={t("profile.notifications")}
+          subtitle={t("profile.newCount", { count: 3 })}
           onPress={() => {}}
           isLast
         />
@@ -52,18 +52,18 @@ export default function ProfileScreen() {
       <View className="py-2" />
 
       <Surface className="gap-3">
-        <SectionHeader title={t('profile.setting')} />
+        <SectionHeader title={t("profile.setting")} />
         <SettingsRow
           icon="globe-outline"
-          title={t('settings.language')}
-          subtitle={t('settings.appPreferences')}
-          onPress={() => router.push('/profile/language')}
+          title={t("settings.language")}
+          subtitle={t("settings.appPreferences")}
+          onPress={() => router.push("/profile/language")}
         />
         <SettingsRow
           icon="moon-outline"
-          title={t('settings.appearance')}
-          subtitle="Dark mode, theme"
-          onPress={() => router.push('/profile/appearance')}
+          title={t("settings.appearance")}
+          subtitle={t("profile.darkModeTheme")}
+          onPress={() => router.push("/profile/appearance")}
           isLast
         />
       </Surface>
@@ -71,40 +71,40 @@ export default function ProfileScreen() {
       <Separator />
 
       <Surface className="gap-3">
-        <SectionHeader title={t('profile.general')} />
+        <SectionHeader title={t("profile.general")} />
         <SettingsRow
           icon="help-circle-outline"
-          title={t('about.howItWorks')}
-          subtitle={t('about.learnHowItWorks')}
+          title={t("about.howItWorks")}
+          subtitle={t("about.learnHowItWorks")}
           onPress={() => howItWorksRef.current?.present()}
         />
         <SettingsRow
           icon="shield-checkmark-outline"
-          title={t('about.privacyPolicy')}
-          subtitle={t('about.yourDataIsSafe')}
+          title={t("about.privacyPolicy")}
+          subtitle={t("about.yourDataIsSafe")}
           onPress={() => privacyRef.current?.present()}
         />
         <SettingsRow
           icon="document-text-outline"
-          title={t('about.terms')}
-          subtitle={t('about.usageTerms')}
+          title={t("about.terms")}
+          subtitle={t("about.usageTerms")}
           onPress={() => termsRef.current?.present()}
         />
         <SettingsRow
           icon="chatbubble-outline"
-          title={t('about.contactUs')}
-          subtitle={t('about.getInTouch')}
+          title={t("about.contactUs")}
+          subtitle={t("about.getInTouch")}
           onPress={() => {}}
         />
         <SettingsRow
           icon="information-circle-outline"
-          title={t('about.aboutTahaqaq')}
-          subtitle="v1.0"
+          title={t("about.aboutTahaqaq")}
+          subtitle={t("profile.version")}
           onPress={() => {}}
         />
         <SettingsRow
           icon="log-out-outline"
-          title={t('about.signOut')}
+          title={t("about.signOut")}
           variant="danger"
           onPress={() => {}}
           isLast
@@ -114,7 +114,7 @@ export default function ProfileScreen() {
       <View className="py-2" />
 
       <Surface className="gap-3">
-        <SectionHeader title={t('profile.faq')} />
+        <SectionHeader title={t("profile.faq")} />
         <Accordion>
           {faqItems.map((item) => (
             <Accordion.Item key={item.value} value={item.value}>

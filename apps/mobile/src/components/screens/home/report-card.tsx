@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import { Card, Chip, Typography } from "heroui-native";
 import { Icon } from "@/components/ui/icon";
+import { useI18n } from "@/hooks/useI18n";
 
 export type ReportStatus = "verified" | "pending" | "resolved";
 
@@ -12,19 +13,10 @@ export type ReportCardProps = {
   status: ReportStatus;
 };
 
-const statusConfig: Record<
-  ReportStatus,
-  { label: string; color: "success" | "warning" | "default" }
-> = {
-  verified: { label: "verified", color: "success" },
-  pending: { label: "pending", color: "warning" },
-  resolved: { label: "resolved", color: "default" },
-};
-
-const evidenceLabels: Record<ReportCardProps["evidence"], string> = {
-  text: "text only",
-  "photo+gps": "photo + GPS",
-  "photo+gps+ai": "photo + GPS + AI",
+const statusColors: Record<ReportStatus, "success" | "warning" | "default"> = {
+  verified: "success",
+  pending: "warning",
+  resolved: "default",
 };
 
 export function ReportCard({
@@ -34,7 +26,21 @@ export function ReportCard({
   evidence,
   status,
 }: ReportCardProps) {
-  const badge = statusConfig[status];
+  const { t } = useI18n();
+
+  const statusLabel =
+    status === "verified"
+      ? t("home.statusVerified")
+      : status === "pending"
+        ? t("home.statusPending")
+        : t("home.statusResolved");
+
+  const evidenceLabel =
+    evidence === "text"
+      ? t("home.evidenceTextOnly")
+      : evidence === "photo+gps"
+        ? t("home.evidencePhotoGps")
+        : t("home.evidencePhotoGpsAi");
 
   return (
     <Card>
@@ -43,12 +49,17 @@ export function ReportCard({
         <View className="flex-row items-center justify-between">
           <View className="flex-row items-center gap-2 flex-1">
             <Icon name="business-outline" size={16} className="text-accent" />
-            <Typography type="body-sm" weight="semibold" numberOfLines={1} className="flex-1">
+            <Typography
+              type="body-sm"
+              weight="semibold"
+              numberOfLines={1}
+              className="flex-1"
+            >
               {facilityName}
             </Typography>
           </View>
-          <Chip size="sm" variant="secondary" color={badge.color}>
-            <Chip.Label>{badge.label}</Chip.Label>
+          <Chip size="sm" variant="secondary" color={statusColors[status]}>
+            <Chip.Label>{statusLabel}</Chip.Label>
           </Chip>
         </View>
 
@@ -66,7 +77,7 @@ export function ReportCard({
             ·
           </Typography>
           <Typography type="body-xs" color="muted">
-            {evidenceLabels[evidence]}
+            {evidenceLabel}
           </Typography>
         </View>
       </View>

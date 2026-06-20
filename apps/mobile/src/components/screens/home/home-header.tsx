@@ -2,11 +2,16 @@ import { View } from "react-native";
 import { router } from "expo-router";
 import { Avatar, PressableFeedback, Typography } from "heroui-native";
 import { Icon } from "@/components/ui/icon";
+import { useI18n } from "@/hooks/useI18n";
 
 export function HomeHeader() {
+  const { t } = useI18n();
+
   return (
     <View className="flex-row items-center justify-between">
-      <Typography type="h3" weight="bold">Welcome back 👋</Typography>
+      <Typography type="h3" weight="bold">
+        {t("home.welcomeBack")}
+      </Typography>
       <View className="flex-row items-center gap-3">
         <PressableFeedback className="relative size-10 items-center justify-center rounded-full">
           <Icon

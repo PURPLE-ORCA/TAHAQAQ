@@ -1,16 +1,16 @@
-import '../polyfills';
-import 'react-native-reanimated';
-import '../global.css';
+import "../polyfills";
+import "react-native-reanimated";
+import "../global.css";
 
-import Constants from 'expo-constants';
-import { ConvexAuthProvider } from '@convex-dev/auth/react';
-import { Stack } from 'expo-router';
-import { ConvexReactClient } from 'convex/react';
-import { HeroUINativeProvider } from 'heroui-native/provider';
-import * as SecureStore from 'expo-secure-store';
-import { Appearance, Platform } from 'react-native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { useEffect } from 'react';
+import Constants from "expo-constants";
+import { ConvexAuthProvider } from "@convex-dev/auth/react";
+import { Stack } from "expo-router";
+import { ConvexReactClient } from "convex/react";
+import { HeroUINativeProvider } from "heroui-native/provider";
+import * as SecureStore from "expo-secure-store";
+import { Appearance, Platform } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { useEffect } from "react";
 
 const convexUrl =
   process.env.EXPO_PUBLIC_CONVEX_URL ??
@@ -19,7 +19,7 @@ const convexUrl =
 
 if (!convexUrl) {
   throw new Error(
-    'Missing Convex address. Set EXPO_PUBLIC_CONVEX_URL in the repo root .env so apps/mobile can link it before Expo starts.',
+    "Missing Convex address. Set EXPO_PUBLIC_CONVEX_URL in the repo root .env so apps/mobile can link it before Expo starts.",
   );
 }
 
@@ -34,12 +34,12 @@ const secureStorage = {
 };
 
 // Prevent flash of wrong theme on startup by checking synchronously
-if (Platform.OS !== 'web') {
+if (Platform.OS !== "web") {
   try {
-    const stored = SecureStore.getItem('theme-preference');
-    if (stored === 'light' || stored === 'dark') {
+    const stored = SecureStore.getItem("theme-preference");
+    if (stored === "light" || stored === "dark") {
       Appearance.setColorScheme(stored as any);
-    } else if (stored === 'system') {
+    } else if (stored === "system") {
       Appearance.setColorScheme(null as any);
     }
   } catch (e) {
@@ -51,14 +51,14 @@ export default function RootLayout() {
   useEffect(() => {
     async function initTheme() {
       try {
-        const stored = await SecureStore.getItemAsync('theme-preference');
-        if (stored === 'light' || stored === 'dark') {
+        const stored = await SecureStore.getItemAsync("theme-preference");
+        if (stored === "light" || stored === "dark") {
           Appearance.setColorScheme(stored as any);
-        } else if (stored === 'system') {
+        } else if (stored === "system") {
           Appearance.setColorScheme(null as any);
         }
       } catch (e) {
-        console.warn('Failed to load theme preference on launch', e);
+        console.warn("Failed to load theme preference on launch", e);
       }
     }
     initTheme();
@@ -68,7 +68,7 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ConvexAuthProvider
         client={convex}
-        storage={Platform.OS !== 'web' ? secureStorage : undefined}
+        storage={Platform.OS !== "web" ? secureStorage : undefined}
       >
         <HeroUINativeProvider>
           <Stack screenOptions={{ headerShown: false }} />

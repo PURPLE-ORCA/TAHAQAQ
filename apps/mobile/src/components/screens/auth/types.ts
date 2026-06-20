@@ -1,1 +1,1 @@
-export type LoginStep = 'email' | 'otp';
+export type LoginStep = "email" | "otp";

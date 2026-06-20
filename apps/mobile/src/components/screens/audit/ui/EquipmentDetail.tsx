@@ -1,6 +1,6 @@
-import { View } from 'react-native';
-import { Button, Label } from 'heroui-native';
-import { EQUIPMENT_CONDITIONS, EquipmentCondition } from '../types';
+import { View } from "react-native";
+import { Button, Label } from "heroui-native";
+import { EQUIPMENT_CONDITIONS, EquipmentCondition } from "../types";
 
 interface EquipmentDetailProps {
   equipmentCondition: EquipmentCondition;
@@ -20,7 +20,7 @@ export function EquipmentDetail({
           return (
             <Button
               key={item.id}
-              variant={isSelected ? 'primary' : 'secondary'}
+              variant={isSelected ? "primary" : "secondary"}
               size="sm"
               className="rounded-2xl"
               onPress={() => setEquipmentCondition(item.id)}

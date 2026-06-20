@@ -1,9 +1,7 @@
 import { View } from "react-native";
 import { PressableFeedback, Typography } from "heroui-native";
-import {
-  ReportCard,
-  type ReportCardProps,
-} from "./report-card";
+import { ReportCard, type ReportCardProps } from "./report-card";
+import { useI18n } from "@/hooks/useI18n";
 
 const MOCK_REPORTS: ReportCardProps[] = [
   {
@@ -30,13 +28,15 @@ const MOCK_REPORTS: ReportCardProps[] = [
 ];
 
 export function RecentActivity() {
+  const { t } = useI18n();
+
   return (
     <View className="gap-3">
       <View className="flex-row items-center justify-between">
-        <Typography type="h3">Recent activity</Typography>
+        <Typography type="h3">{t("home.recentActivity")}</Typography>
         <PressableFeedback>
           <Typography type="body-xs" weight="semibold" className="text-accent">
-            See all
+            {t("home.seeAll")}
           </Typography>
         </PressableFeedback>
       </View>

@@ -1,13 +1,16 @@
-import { View } from 'react-native';
-import { Button, Label } from 'heroui-native';
-import { STAR_VALUES } from '../types';
+import { View } from "react-native";
+import { Button, Label } from "heroui-native";
+import { STAR_VALUES } from "../types";
 
 interface HygieneDetailProps {
   hygieneRating: number;
   setHygieneRating: (rating: number) => void;
 }
 
-export function HygieneDetail({ hygieneRating, setHygieneRating }: HygieneDetailProps) {
+export function HygieneDetail({
+  hygieneRating,
+  setHygieneRating,
+}: HygieneDetailProps) {
   return (
     <View className="gap-3">
       <Label>Rating</Label>
@@ -17,7 +20,7 @@ export function HygieneDetail({ hygieneRating, setHygieneRating }: HygieneDetail
           return (
             <Button
               key={value}
-              variant={isSelected ? 'primary' : 'secondary'}
+              variant={isSelected ? "primary" : "secondary"}
               size="sm"
               className="rounded-full"
               onPress={() => setHygieneRating(value)}

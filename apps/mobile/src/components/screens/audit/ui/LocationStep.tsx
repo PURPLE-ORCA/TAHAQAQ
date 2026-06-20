@@ -1,8 +1,8 @@
-import { View } from 'react-native';
-import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
-import { Button, Card, Input, Label, Surface, Typography } from 'heroui-native';
-import { Establishment } from '@/components/screens/map/types';
-import { AuditStep } from '../types';
+import { View } from "react-native";
+import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
+import { Button, Card, Input, Label, Surface, Typography } from "heroui-native";
+import { Establishment } from "@/components/screens/map/types";
+import { AuditStep } from "../types";
 
 interface LocationStepProps {
   loading: boolean;
@@ -51,7 +51,7 @@ export function LocationStep({
           <View className="flex-row flex-wrap gap-2">
             <Surface className="rounded-full px-3 py-1 bg-accent/10">
               <Typography type="body-xs" weight="semibold">
-                {loading ? 'Checking GPS…' : 'GPS suggestion'}
+                {loading ? "Checking GPS…" : "GPS suggestion"}
               </Typography>
             </Surface>
             <Surface className="rounded-full px-3 py-1 bg-background">
@@ -77,8 +77,8 @@ export function LocationStep({
 
           <Typography type="body-xs" color="muted">
             {errorMsg
-              ? 'Location permission is off, so you can confirm manually.'
-              : `Suggested from ${hasRouteEstablishment ? 'the map pin' : 'your current location'}.`}
+              ? "Location permission is off, so you can confirm manually."
+              : `Suggested from ${hasRouteEstablishment ? "the map pin" : "your current location"}.`}
           </Typography>
         </View>
       </Card>
@@ -88,12 +88,20 @@ export function LocationStep({
           <Button variant="primary" size="md" onPress={() => setStep(2)}>
             <Button.Label>Yes, that&apos;s correct</Button.Label>
           </Button>
-          <Button variant="secondary" size="md" onPress={() => setManualMode(true)}>
+          <Button
+            variant="secondary"
+            size="md"
+            onPress={() => setManualMode(true)}
+          >
             <Button.Label>No, pick another</Button.Label>
           </Button>
         </View>
       ) : (
-        <Animated.View entering={FadeIn.duration(180)} exiting={FadeOut.duration(120)} className="gap-4">
+        <Animated.View
+          entering={FadeIn.duration(180)}
+          exiting={FadeOut.duration(120)}
+          className="gap-4"
+        >
           <View className="gap-2">
             <Label>Search another establishment</Label>
             <Input
@@ -111,14 +119,18 @@ export function LocationStep({
               return (
                 <Button
                   key={item.id}
-                  variant={isSelected ? 'primary' : 'secondary'}
+                  variant={isSelected ? "primary" : "secondary"}
                   size="md"
                   className="items-start rounded-2xl"
                   onPress={() => updateSelectedEstablishment(item.id)}
                 >
                   <View className="flex-1 items-start gap-1">
                     <Button.Label>{item.name}</Button.Label>
-                    <Typography type="body-xs" className="text-left" color="muted">
+                    <Typography
+                      type="body-xs"
+                      className="text-left"
+                      color="muted"
+                    >
                       {item.category} · {item.city} · {item.address}
                     </Typography>
                   </View>
@@ -138,7 +150,7 @@ export function LocationStep({
                 updateSelectedEstablishment(suggestedEstablishment.id);
                 setDidSelectManually(false);
                 setManualMode(false);
-                setSearchQuery('');
+                setSearchQuery("");
               }}
             >
               <Button.Label>Back to suggestion</Button.Label>

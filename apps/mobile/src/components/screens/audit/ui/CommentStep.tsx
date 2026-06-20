@@ -1,6 +1,6 @@
-import { View } from 'react-native';
-import { Button, Input, Label, Surface, Typography } from 'heroui-native';
-import { COMMENT_MAX, AuditStep } from '../types';
+import { View } from "react-native";
+import { Button, Input, Label, Surface, Typography } from "heroui-native";
+import { COMMENT_MAX, AuditStep } from "../types";
 
 interface CommentStepProps {
   comment: string;
@@ -8,7 +8,11 @@ interface CommentStepProps {
   setStep: (step: AuditStep) => void;
 }
 
-export function CommentStep({ comment, setComment, setStep }: CommentStepProps) {
+export function CommentStep({
+  comment,
+  setComment,
+  setStep,
+}: CommentStepProps) {
   return (
     <Surface className="gap-4 rounded-3xl p-4">
       <View className="gap-2">

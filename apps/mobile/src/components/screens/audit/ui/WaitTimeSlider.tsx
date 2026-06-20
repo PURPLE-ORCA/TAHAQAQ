@@ -1,13 +1,16 @@
-import { View } from 'react-native';
-import { Label, Slider, Typography } from 'heroui-native';
-import { formatWaitTime } from '../lib/utils';
+import { View } from "react-native";
+import { Label, Slider, Typography } from "heroui-native";
+import { formatWaitTime } from "../lib/utils";
 
 interface WaitTimeSliderProps {
   waitMinutes: number;
   setWaitMinutes: (minutes: number) => void;
 }
 
-export function WaitTimeSlider({ waitMinutes, setWaitMinutes }: WaitTimeSliderProps) {
+export function WaitTimeSlider({
+  waitMinutes,
+  setWaitMinutes,
+}: WaitTimeSliderProps) {
   return (
     <View className="gap-2">
       <View className="flex-row items-center justify-between">

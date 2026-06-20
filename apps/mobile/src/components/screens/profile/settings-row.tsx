@@ -41,7 +41,11 @@ export function SettingsRow({
         {isDanger ? (
           <Icon name="log-out-outline" size={18} className="text-danger" />
         ) : (
-          <Icon name="chevron-forward-outline" size={18} className="text-muted" />
+          <Icon
+            name="chevron-forward-outline"
+            size={18}
+            className="text-muted"
+          />
         )}
       </View>
     </PressableFeedback>

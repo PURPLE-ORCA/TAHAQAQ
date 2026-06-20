@@ -20,8 +20,10 @@ import {
   OTP_LENGTH,
 } from "@/components/screens/auth/constants";
 import { useLogin } from "@/components/screens/auth/use-login";
+import { useI18n } from "@/hooks/useI18n";
 
 export default function LoginScreen() {
+  const { t } = useI18n();
   const {
     email,
     setEmail,
@@ -49,10 +51,9 @@ export default function LoginScreen() {
             style={{ width: "100%", height: 400 }}
           />
           <View className="gap-4">
-            <Typography type="h2">Log in with email</Typography>
+            <Typography type="h2">{t("auth.loginWithEmail")}</Typography>
             <Typography type="body-sm" className="text-muted">
-              We'll send a 6-digit code to your inbox, then you can finish sign
-              in with the OTP.
+              {t("auth.otpDescription")}
             </Typography>
           </View>
         </View>
@@ -63,19 +64,16 @@ export default function LoginScreen() {
             isDisabled={isOtpStep}
             isInvalid={Boolean(error && !isOtpStep)}
           >
-            <Label>Email</Label>
+            <Label>{t("auth.emailLabel")}</Label>
             <Input
               value={email}
               onChangeText={setEmail}
               autoCapitalize="none"
               keyboardType="email-address"
               autoComplete="email"
-              placeholder="you@example.com"
+              placeholder={t("auth.emailPlaceholder")}
             />
-            <Description>
-              Enter the email tied to your account. We'll send the login code
-              there.
-            </Description>
+            <Description>{t("auth.emailDescription")}</Description>
             <FieldError isInvalid={Boolean(error && !isOtpStep)}>
               {error && !isOtpStep ? error : ""}
             </FieldError>
@@ -84,9 +82,9 @@ export default function LoginScreen() {
           {isOtpStep && (
             <View className="gap-3">
               <View className="gap-1">
-                <Label>One-time code</Label>
+                <Label>{t("auth.oneTimeCode")}</Label>
                 <Typography type="body-xs" className="text-muted">
-                  Code sent to {normalizedEmail}
+                  {t("auth.codeSentTo", { email: normalizedEmail })}
                 </Typography>
               </View>
               <InputOTP
@@ -130,7 +128,7 @@ export default function LoginScreen() {
 
           {isOtpStep && (
             <Button variant="ghost" size="sm" onPress={changeEmail}>
-              <Button.Label>Use a different email</Button.Label>
+              <Button.Label>{t("common.useDifferentEmail")}</Button.Label>
             </Button>
           )}
         </View>

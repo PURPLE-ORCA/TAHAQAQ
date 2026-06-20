@@ -1,7 +1,7 @@
-import { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
-import { BottomSheet } from 'heroui-native';
-import type { BottomSheetRootProps as HeroBottomSheetProps } from 'heroui-native';
-import { View } from 'react-native';
+import { forwardRef, useCallback, useImperativeHandle, useState } from "react";
+import { BottomSheet } from "heroui-native";
+import type { BottomSheetRootProps as HeroBottomSheetProps } from "heroui-native";
+import { View } from "react-native";
 
 export type AppBottomSheetModalRef = {
   present: () => void;
@@ -10,7 +10,7 @@ export type AppBottomSheetModalRef = {
 
 type AppBottomSheetModalProps = Omit<
   HeroBottomSheetProps,
-  'isOpen' | 'onOpenChange' | 'children'
+  "isOpen" | "onOpenChange" | "children"
 > & {
   title?: string;
   description?: string;
@@ -24,7 +24,7 @@ export const AppBottomSheetModal = forwardRef<
   AppBottomSheetModalProps
 >(function AppBottomSheetModal(
   { title, description, children, footer, ...rest },
-  ref
+  ref,
 ) {
   const [isOpen, setIsOpen] = useState(false);
 

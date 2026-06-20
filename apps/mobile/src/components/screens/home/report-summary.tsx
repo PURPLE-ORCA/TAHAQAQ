@@ -1,18 +1,25 @@
 import { View } from "react-native";
 import { Card, Typography } from "heroui-native";
 import { Icon } from "@/components/ui/icon";
+import { useI18n } from "@/hooks/useI18n";
 
 export function ReportSummary() {
+  const { t } = useI18n();
+
   return (
     <Card variant="secondary">
       <View className="flex-row items-center gap-3">
         <Icon name="stats-chart-outline" size={20} className="text-accent" />
         <View className="flex-1">
           <Typography type="body-sm" weight="semibold">
-            Your reports
+            {t("home.yourReports")}
           </Typography>
           <Typography type="body-xs" color="muted">
-            3 submitted · 1 verified · 1 pending
+            {t("home.reportsSummary", {
+              submitted: 3,
+              verified: 1,
+              pending: 1,
+            })}
           </Typography>
         </View>
         <Icon name="chevron-forward" size={16} className="text-muted" />

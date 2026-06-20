@@ -1,6 +1,6 @@
-import { View } from 'react-native';
-import { Button, Surface, Typography } from 'heroui-native';
-import { AUDIT_CATEGORIES, AuditCategoryId, AuditStep } from '../types';
+import { View } from "react-native";
+import { Button, Surface, Typography } from "heroui-native";
+import { AUDIT_CATEGORIES, AuditCategoryId, AuditStep } from "../types";
 
 interface CategoryStepProps {
   selectedCategories: AuditCategoryId[];
@@ -22,7 +22,8 @@ export function CategoryStep({
           Step 2 · What are you auditing?
         </Typography>
         <Typography type="body-sm" color="muted">
-          Tap every category that applies. You can skip this step if you only want to submit a quick note.
+          Tap every category that applies. You can skip this step if you only
+          want to submit a quick note.
         </Typography>
       </View>
 
@@ -32,7 +33,7 @@ export function CategoryStep({
           return (
             <Button
               key={item.id}
-              variant={isSelected ? 'primary' : 'secondary'}
+              variant={isSelected ? "primary" : "secondary"}
               size="sm"
               className="rounded-full"
               onPress={() => onToggleCategory(item.id)}
@@ -49,7 +50,7 @@ export function CategoryStep({
         <Typography type="body-xs" color="muted">
           {selectedCategories.length > 0
             ? `${selectedCategories.length} selected`
-            : 'No categories selected yet'}
+            : "No categories selected yet"}
         </Typography>
       </View>
 

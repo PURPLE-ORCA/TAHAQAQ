@@ -1,12 +1,12 @@
-import { View } from 'react-native';
-import { Card, Button, Surface, Typography } from 'heroui-native';
-import { AuditCategoryId, Choice, EquipmentCondition } from '../types';
-import { categoryEmoji, categoryLabel } from '../lib/utils';
-import { HygieneDetail } from './HygieneDetail';
-import { StaffDetail } from './StaffDetail';
-import { EquipmentDetail } from './EquipmentDetail';
-import { BriberyDetail } from './BriberyDetail';
-import { WaitTimeDetail } from './WaitTimeDetail';
+import { View } from "react-native";
+import { Card, Button, Surface, Typography } from "heroui-native";
+import { AuditCategoryId, Choice, EquipmentCondition } from "../types";
+import { categoryEmoji, categoryLabel } from "../lib/utils";
+import { HygieneDetail } from "./HygieneDetail";
+import { StaffDetail } from "./StaffDetail";
+import { EquipmentDetail } from "./EquipmentDetail";
+import { BriberyDetail } from "./BriberyDetail";
+import { WaitTimeDetail } from "./WaitTimeDetail";
 
 interface CategoryDetailStepProps {
   currentCategory: AuditCategoryId;
@@ -56,7 +56,8 @@ export function CategoryDetailStep({
           Step 3 · Tell us more
         </Typography>
         <Typography type="body-sm" color="muted">
-          {categoryLabel(currentCategory)} {currentCategoryIndex + 1}/{totalCategories}
+          {categoryLabel(currentCategory)} {currentCategoryIndex + 1}/
+          {totalCategories}
         </Typography>
       </View>
 
@@ -71,10 +72,13 @@ export function CategoryDetailStep({
             </Typography>
           </View>
 
-          {currentCategory === 'hygiene' && (
-            <HygieneDetail hygieneRating={hygieneRating} setHygieneRating={setHygieneRating} />
+          {currentCategory === "hygiene" && (
+            <HygieneDetail
+              hygieneRating={hygieneRating}
+              setHygieneRating={setHygieneRating}
+            />
           )}
-          {currentCategory === 'staff' && (
+          {currentCategory === "staff" && (
             <StaffDetail
               staffPresent={staffPresent}
               setStaffPresent={setStaffPresent}
@@ -82,13 +86,13 @@ export function CategoryDetailStep({
               setWaitMinutes={setWaitMinutes}
             />
           )}
-          {currentCategory === 'equipment' && (
+          {currentCategory === "equipment" && (
             <EquipmentDetail
               equipmentCondition={equipmentCondition}
               setEquipmentCondition={setEquipmentCondition}
             />
           )}
-          {currentCategory === 'bribery' && (
+          {currentCategory === "bribery" && (
             <BriberyDetail
               briberyExperienced={briberyExperienced}
               setBriberyExperienced={setBriberyExperienced}
@@ -98,8 +102,11 @@ export function CategoryDetailStep({
               setBriberyDescription={setBriberyDescription}
             />
           )}
-          {currentCategory === 'wait-time' && (
-            <WaitTimeDetail waitMinutes={waitMinutes} setWaitMinutes={setWaitMinutes} />
+          {currentCategory === "wait-time" && (
+            <WaitTimeDetail
+              waitMinutes={waitMinutes}
+              setWaitMinutes={setWaitMinutes}
+            />
           )}
         </View>
       </Card>
@@ -107,7 +114,9 @@ export function CategoryDetailStep({
       <View className="gap-3">
         <Button variant="primary" size="md" onPress={advanceCategory}>
           <Button.Label>
-            {currentCategoryIndex + 1 < totalCategories ? 'Next category' : 'Finish details'}
+            {currentCategoryIndex + 1 < totalCategories
+              ? "Next category"
+              : "Finish details"}
           </Button.Label>
         </Button>
         <Button variant="secondary" size="md" onPress={advanceCategory}>

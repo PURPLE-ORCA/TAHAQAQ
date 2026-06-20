@@ -8,7 +8,7 @@ export type Establishment = {
     latitude: number;
     longitude: number;
   };
-  status: 'verified' | 'watch' | 'new' | 'priority';
+  status: "verified" | "watch" | "new" | "priority";
   reviews: number;
   complaints: number;
   recentSignal: string;

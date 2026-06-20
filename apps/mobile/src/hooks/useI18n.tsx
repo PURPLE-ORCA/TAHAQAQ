@@ -1,9 +1,9 @@
-import { useState, useCallback, useEffect } from 'react';
-import { I18nManager } from 'react-native';
-import * as SecureStore from 'expo-secure-store';
-import { i18n, setLocale as setI18nLocale, getCurrentLocale } from '@/locales';
+import { useState, useCallback, useEffect } from "react";
+import { I18nManager } from "react-native";
+import * as SecureStore from "expo-secure-store";
+import { i18n, setLocale as setI18nLocale, getCurrentLocale } from "@/locales";
 
-const LOCALE_KEY = 'app-locale';
+const LOCALE_KEY = "app-locale";
 
 type Listener = () => void;
 const listeners = new Set<Listener>();
@@ -17,7 +17,7 @@ export function setLocaleAppWide(newLocale: string) {
   SecureStore.setItemAsync(LOCALE_KEY, newLocale).catch(() => {});
 
   // RTL handling
-  const isRTL = newLocale === 'ar';
+  const isRTL = newLocale === "ar";
   if (isRTL) {
     I18nManager.allowRTL(true);
     I18nManager.forceRTL(true);
@@ -50,6 +50,6 @@ export function useI18n() {
     t: (key: string, options?: Record<string, unknown>) => i18n.t(key, options),
     locale,
     setLocale,
-    isRTL: locale === 'ar',
+    isRTL: locale === "ar",
   };
 }

@@ -1,14 +1,17 @@
-import { View } from 'react-native';
-import Animated, { FadeIn, LinearTransition } from 'react-native-reanimated';
-import { Button, Surface, Typography } from 'heroui-native';
-import { router } from 'expo-router';
+import { View } from "react-native";
+import Animated, { FadeIn, LinearTransition } from "react-native-reanimated";
+import { Button, Surface, Typography } from "heroui-native";
+import { router } from "expo-router";
 
 interface ThankYouStepProps {
   submissionCount: number;
   resetFlow: () => void;
 }
 
-export function ThankYouStep({ submissionCount, resetFlow }: ThankYouStepProps) {
+export function ThankYouStep({
+  submissionCount,
+  resetFlow,
+}: ThankYouStepProps) {
   return (
     <Surface className="items-center gap-4 rounded-3xl p-6">
       <Animated.View
@@ -35,13 +38,17 @@ export function ThankYouStep({ submissionCount, resetFlow }: ThankYouStepProps) 
             You&apos;ve submitted
           </Typography>
           <Typography type="h2" weight="semibold">
-            {submissionCount} audit{submissionCount === 1 ? '' : 's'}
+            {submissionCount} audit{submissionCount === 1 ? "" : "s"}
           </Typography>
         </View>
       </Surface>
 
       <View className="w-full gap-3">
-        <Button variant="primary" size="md" onPress={() => router.replace('/(tabs)/map')}>
+        <Button
+          variant="primary"
+          size="md"
+          onPress={() => router.replace("/(tabs)/map")}
+        >
           <Button.Label>Back to map</Button.Label>
         </Button>
         <Button variant="secondary" size="md" onPress={resetFlow}>
