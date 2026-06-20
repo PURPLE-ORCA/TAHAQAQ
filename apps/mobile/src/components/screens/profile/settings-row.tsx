@@ -23,7 +23,7 @@ export function SettingsRow({
           />
         </View>
 
-        <View className="flex-1 gap-0.5" style={{ writingDirection: I18nManager.isRTL ? "rtl" : "ltr" }}>
+        <View className="flex-1 gap-0.5" style={{ writingDirection: I18nManager.isRTL ? "rtl" : "ltr", textAlign: I18nManager.isRTL ? "right" : "left" } as any}>
           <Typography
             type="body"
             weight="medium"

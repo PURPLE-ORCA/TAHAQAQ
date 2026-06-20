@@ -6,7 +6,7 @@ import { SafeScreen } from "@/components/layout/SafeScreen";
 import { ProfileHeader } from "@/components/screens/profile/profile-header";
 import { SettingsRow } from "@/components/screens/profile/settings-row";
 import { SectionHeader } from "@/components/screens/profile/section-header";
-import { faqItems } from "@/components/screens/profile/lib/faq";
+import { useFaqItems } from "@/components/screens/profile/lib/faq";
 import { HowItWorksSheet } from "@/components/screens/profile/about/how-it-works-sheet";
 import { PrivacySheet } from "@/components/screens/profile/about/privacy-sheet";
 import { TermsSheet } from "@/components/screens/profile/about/terms-sheet";
@@ -16,6 +16,7 @@ import { useI18n } from "@/hooks/useI18n";
 export default function ProfileScreen() {
   const router = useRouter();
   const { t } = useI18n();
+  const faqItems = useFaqItems();
   const howItWorksRef = useRef<AppBottomSheetModalRef>(null);
   const privacyRef = useRef<AppBottomSheetModalRef>(null);
   const termsRef = useRef<AppBottomSheetModalRef>(null);

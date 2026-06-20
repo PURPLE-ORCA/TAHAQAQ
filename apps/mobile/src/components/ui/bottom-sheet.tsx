@@ -1,7 +1,7 @@
 import { forwardRef, useCallback, useImperativeHandle, useState } from "react";
 import { BottomSheet } from "heroui-native";
 import type { BottomSheetRootProps as HeroBottomSheetProps } from "heroui-native";
-import { View } from "react-native";
+import { I18nManager, View } from "react-native";
 
 export type AppBottomSheetModalRef = {
   present: () => void;
@@ -43,7 +43,7 @@ export const AppBottomSheetModal = forwardRef<
         <BottomSheet.Overlay />
         <BottomSheet.Content>
           {(title || description) && (
-            <View className="mb-6 gap-1.5">
+            <View className="mb-6 gap-1.5" style={{ writingDirection: I18nManager.isRTL ? "rtl" : "ltr" }}>
               {title && (
                 <BottomSheet.Title className="text-lg font-semibold">
                   {title}
