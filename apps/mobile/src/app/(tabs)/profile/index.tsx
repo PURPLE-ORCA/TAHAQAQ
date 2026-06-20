@@ -1,149 +1,18 @@
 import { View } from "react-native";
-import {
-  Avatar,
-  Button,
-  Typography,
-  Separator,
-  PressableFeedback,
-  Accordion,
-  Surface,
-} from "heroui-native";
-import { Icon } from "@/components/ui/icon";
+import { Accordion, Separator, Surface, Typography } from "heroui-native";
 import { SafeScreen } from "@/components/layout/SafeScreen";
-
-/* ─── Data ─── */
-
-const faqItems = [
-  {
-    value: "q1",
-    question: "How do I report an issue?",
-    answer:
-      "Navigate to the report screen from the home tab, fill in the details about the civic issue you've observed, attach photos or evidence, and submit. Your report will be sent to the relevant authorities.",
-  },
-  {
-    value: "q2",
-    question: "Are reports anonymous?",
-    answer:
-      "Yes, all reports are anonymous by default. Your identity is never shared with the public or the facility being reported. Only verified administrators can access reporter details for follow-up.",
-  },
-  {
-    value: "q3",
-    question: "How are reports verified?",
-    answer:
-      "Reports go through an automated verification process that includes photo authenticity checks, GPS location validation, and cross-referencing with existing reports. Our AI-assisted system helps ensure accuracy.",
-  },
-  {
-    value: "q4",
-    question: "Can I edit my report?",
-    answer:
-      "You can edit your report within 24 hours of submission while it's still in draft or pending status. Once verified or resolved, edits are no longer available to maintain data integrity.",
-  },
-];
-
-type SettingsRowProps = {
-  icon: string;
-  title: string;
-  subtitle?: string;
-  onPress?: () => void;
-  isLast?: boolean;
-  variant?: "default" | "danger";
-};
-
-/* ─── Settings Row ─── */
-
-function SettingsRow({
-  icon,
-  title,
-  subtitle,
-  onPress,
-  isLast,
-  variant = "default",
-}: SettingsRowProps) {
-  const isDanger = variant === "danger";
-
-  return (
-    <PressableFeedback onPress={onPress}>
-      <View
-        className={`flex-row items-center gap-4 py-3.5 ${!isLast ? "border-b border-outline-variant/30" : ""}`}
-      >
-        <View
-          className={`size-11 items-center justify-center rounded-xl ${isDanger ? "bg-danger/10" : "bg-surface-secondary"}`}
-        >
-          <Icon
-            name={icon as any}
-            size={20}
-            className={isDanger ? "text-danger" : "text-foreground"}
-          />
-        </View>
-
-        <View className="flex-1 gap-0.5">
-          <Typography
-            type="body"
-            weight="medium"
-            className={isDanger ? "text-danger" : ""}
-          >
-            {title}
-          </Typography>
-          {subtitle ? (
-            <Typography type="body-xs" color="muted">
-              {subtitle}
-            </Typography>
-          ) : null}
-        </View>
-
-        {isDanger ? (
-          <Icon name="log-out-outline" size={18} className="text-danger" />
-        ) : (
-          <Icon name="chevron-forward-outline" size={18} className="text-muted" />
-        )}
-      </View>
-    </PressableFeedback>
-  );
-}
-
-/* ─── Section Header ─── */
-
-function SectionHeader({ title }: { title: string }) {
-  return (
-    <Typography
-      type="body-xs"
-      weight="semibold"
-      color="muted"
-      className="uppercase tracking-wider"
-    >
-      {title}
-    </Typography>
-  );
-}
-
-/* ─── Profile Screen ─── */
+import { ProfileHeader } from "@/components/screens/profile/profile-header";
+import { SettingsRow } from "@/components/screens/profile/settings-row";
+import { SectionHeader } from "@/components/screens/profile/section-header";
+import { faqItems } from "@/components/screens/profile/lib/faq";
 
 export default function ProfileScreen() {
   return (
     <SafeScreen safeArea="top" scrollable contentClassName="gap-5 pb-10">
-      {/* ── Profile Header ── */}
-      <Surface className="items-center gap-3 py-4">
-        <View className="relative">
-          <Avatar size="lg" color="accent" className="size-20">
-            <Avatar.Fallback>MT</Avatar.Fallback>
-          </Avatar>
-          <View className="absolute -right-0.5 -bottom-0.5 size-7 items-center justify-center rounded-full bg-surface border-2 border-background">
-            <Icon name="camera-outline" size={14} className="text-foreground" />
-          </View>
-        </View>
-        <View className="items-center gap-0.5">
-          <Typography type="h4" weight="semibold">
-            Mohammed Tah
-          </Typography>
-          <Typography type="body-sm" color="muted">
-            mohammed@email.co
-          </Typography>
-        </View>
-      </Surface>
+      <ProfileHeader />
 
       <Separator />
 
-      {/* ── Account ── */}
       <Surface className="gap-3">
         <SectionHeader title="Account" />
         <SettingsRow
@@ -169,7 +38,6 @@ export default function ProfileScreen() {
 
       <View className="py-2" />
 
-      {/* ── Settings ── */}
       <Surface className="gap-3">
         <SectionHeader title="Setting" />
         <SettingsRow
@@ -189,7 +57,6 @@ export default function ProfileScreen() {
 
       <Separator />
 
-      {/* ── General ── */}
       <Surface className="gap-3">
         <SectionHeader title="General" />
         <SettingsRow
@@ -225,7 +92,6 @@ export default function ProfileScreen() {
 
       <View className="py-2" />
 
-      {/* ── FAQ ── */}
       <Surface className="gap-3">
         <SectionHeader title="FAQ" />
         <Accordion>
