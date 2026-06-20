@@ -5,6 +5,7 @@ import {
   Separator,
   Surface,
   Typography,
+  useThemeColor,
 } from "heroui-native";
 import { SafeScreen } from "@/components/layout/SafeScreen";
 import { Icon } from "@/components/ui/icon";
@@ -15,6 +16,7 @@ import {
 
 export default function AppearanceScreen() {
   const { theme, setTheme } = useThemePreference();
+  const backgroundColor = useThemeColor("background");
 
   const options: Array<{
     label: string;
@@ -43,7 +45,12 @@ export default function AppearanceScreen() {
   };
 
   return (
-    <SafeScreen safeArea="top" scrollable contentClassName="gap-5 pb-10">
+    <SafeScreen
+      safeArea="top"
+      scrollable
+      contentClassName="gap-5 pb-10"
+      style={{ backgroundColor }}
+    >
       {/* Header Row */}
       <View className="flex-row items-center gap-3 py-2">
         <PressableFeedback onPress={() => router.back()}>

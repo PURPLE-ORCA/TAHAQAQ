@@ -1,22 +1,26 @@
 import { Tabs } from "expo-router";
-import { useColorScheme } from "react-native";
+import { useThemeColor } from "heroui-native";
 import { Icon } from "@/components/ui/icon";
 import { useI18n } from "@/hooks/useI18n";
 
 export default function TabsLayout() {
-  const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
+  const [activeColor, inactiveColor, surfaceColor, borderColor] = useThemeColor([
+    "accent",
+    "muted",
+    "surface",
+    "border",
+  ] as const);
   const { t } = useI18n();
 
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: isDark ? "#4ade80" : "#00a040",
-        tabBarInactiveTintColor: isDark ? "#a8b8a3" : "#6d7b6b",
+        tabBarActiveTintColor: activeColor,
+        tabBarInactiveTintColor: inactiveColor,
         tabBarStyle: {
-          backgroundColor: isDark ? "#161d16" : "#ffffff",
-          borderTopColor: isDark ? "#3a4a38" : "#e5e7eb",
+          backgroundColor: surfaceColor,
+          borderTopColor: borderColor,
         },
       }}
     >

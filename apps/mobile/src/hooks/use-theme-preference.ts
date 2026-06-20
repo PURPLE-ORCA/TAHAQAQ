@@ -31,14 +31,10 @@ export function useThemePreference() {
   const resolvedScheme =
     theme === "system" ? (systemColorScheme ?? "light") : theme;
 
-  useEffect(() => {
-    Appearance.setColorScheme(
-      (theme === "system" ? null : resolvedScheme) as any,
-    );
-  }, [theme, resolvedScheme]);
-
   const setTheme = async (newTheme: ThemePreference) => {
     setThemeState(newTheme);
+    const targetScheme = newTheme === "system" ? null : newTheme;
+    Appearance.setColorScheme(targetScheme as any);
     try {
       await SecureStore.setItemAsync("theme-preference", newTheme);
     } catch (e) {
