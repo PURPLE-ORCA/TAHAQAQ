@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
-import { Alert, Platform } from "react-native";
+import { useRef, useState, useEffect } from "react";
+import { Alert } from "react-native";
 import { router } from "expo-router";
 import type { AppBottomSheetModalRef } from "@/components/ui/bottom-sheet";
 import { establishments, mapCenter } from "../lib/constants";
-import { findClosestEstablishment } from "../lib/mapUtils";
+import { getDistanceInMeters } from "../lib/mapUtils";
+import type { Establishment } from "../types";
 
 type MarkerSelection = {
   id?: string;
@@ -20,13 +21,26 @@ export function useMap() {
   const [selectedId, setSelectedId] = useState(establishments[0].id);
 
   // Track the current camera position to dynamically calculate pixel-to-meter touch target
+  const [cameraCoordinates, setCameraCoordinates] = useState(mapCenter);
+
   const cameraStateRef = useRef({
     latitude: mapCenter.latitude,
     longitude: mapCenter.longitude,
     zoom: 14,
   });
 
-  const cameraCoordinates = mapCenter;
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<Establishment[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, []);
 
   const selected =
     establishments.find((item) => item.id === selectedId) ?? establishments[0];
@@ -60,6 +74,9 @@ export function useMap() {
     if (!next) return;
 
     setSelectedId(next.id);
+    setCameraCoordinates(next.coordinates);
+    cameraStateRef.current.latitude = next.coordinates.latitude;
+    cameraStateRef.current.longitude = next.coordinates.longitude;
     setTimeout(() => {
       sheetRef.current?.present();
     }, 0);
@@ -81,6 +98,36 @@ export function useMap() {
     );
   };
 
+  const handleReview = () => {
+    router.push({
+      pathname: "/audit",
+      params: { establishmentId: selected.id },
+    });
+  };
+
+  const handleMarkerClick = (event: {
+    id?: string;
+    coordinates?: { latitude?: number; longitude?: number };
+  }) => {
+    // Find the establishment that matches the tapped marker
+    const next = establishments.find((item) => {
+      if (event.id && item.id === event.id) return true;
+      if (!event.coordinates) return false;
+      const { latitude, longitude } = event.coordinates;
+      if (latitude == null || longitude == null) return false;
+      return (
+        Math.abs(item.coordinates.latitude - latitude) < COORDINATE_EPSILON &&
+        Math.abs(item.coordinates.longitude - longitude) < COORDINATE_EPSILON
+      );
+    });
+    if (next) {
+      setSelectedId(next.id);
+      setCameraCoordinates(next.coordinates);
+      cameraStateRef.current.latitude = next.coordinates.latitude;
+      cameraStateRef.current.longitude = next.coordinates.longitude;
+    }
+  };
+
   const handleCameraMove = (event: {
     coordinates?: { latitude?: number; longitude?: number };
     zoom?: number;
@@ -95,33 +142,72 @@ export function useMap() {
     if (event.zoom != null) {
       cameraStateRef.current.zoom = event.zoom;
     }
+
+    const closest = establishments.reduce((prev, curr) => {
+      const prevDist = getDistanceInMeters(
+        cameraStateRef.current.latitude,
+        cameraStateRef.current.longitude,
+        prev.coordinates.latitude,
+        prev.coordinates.longitude,
+      );
+      const currDist = getDistanceInMeters(
+        cameraStateRef.current.latitude,
+        cameraStateRef.current.longitude,
+        curr.coordinates.latitude,
+        curr.coordinates.longitude,
+      );
+      return currDist < prevDist ? curr : prev;
+    });
+
+    if (closest.id !== selectedId) {
+      setSelectedId(closest.id);
+    }
   };
 
-  const handleMapClick = (event: {
-    coordinates?: { latitude?: number; longitude?: number };
-  }) => {
-    const { latitude, longitude } = event.coordinates ?? {};
-    if (latitude == null || longitude == null) return;
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    if (!query.trim()) {
+      setSearchResults([]);
+      setIsSearching(false);
+      return;
+    }
 
-    if (Platform.OS === "ios") {
-      // On iOS, selectionEnabled is false, so tapping a custom marker doesn't trigger onMarkerClick.
-      // We manually detect if the user clicked close enough to a marker.
-      const tappedEstablishment = findClosestEstablishment(
-        latitude,
-        longitude,
-        cameraStateRef.current.zoom,
-        establishments,
-      );
+    setIsSearching(true);
 
-      if (tappedEstablishment) {
-        openEstablishment(tappedEstablishment.id);
-      } else {
-        // Tapped empty space, dismiss bottom sheet
-        sheetRef.current?.dismiss();
-      }
-    } else {
-      // On Android, Google Maps marker click handles itself, so map click always means tapping empty space.
-      sheetRef.current?.dismiss();
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+
+    debounceTimerRef.current = setTimeout(() => {
+      const normalizedQuery = query.toLowerCase().trim();
+      const filtered = establishments.filter((est) => {
+        return (
+          est.name.toLowerCase().includes(normalizedQuery) ||
+          est.category.toLowerCase().includes(normalizedQuery) ||
+          est.city.toLowerCase().includes(normalizedQuery)
+        );
+      });
+      setSearchResults(filtered);
+    }, 300);
+  };
+
+  const selectEstablishment = (id: string) => {
+    const est = establishments.find((e) => e.id === id);
+    if (est) {
+      setSelectedId(est.id);
+      setCameraCoordinates(est.coordinates);
+      cameraStateRef.current.latitude = est.coordinates.latitude;
+      cameraStateRef.current.longitude = est.coordinates.longitude;
+      setIsSearching(false);
+    }
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    setSearchResults([]);
+    setIsSearching(false);
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
     }
   };
 
@@ -132,6 +218,18 @@ export function useMap() {
     handleAction,
     cameraCoordinates,
     handleCameraMove,
-    handleMapClick,
+    handleReview,
+    handleMarkerClick,
+    searchQuery,
+    searchResults,
+    isSearching,
+    handleSearch,
+    selectEstablishment,
+    clearSearch,
+    setIsSearching,
+    cameraCenter: {
+      latitude: cameraStateRef.current.latitude,
+      longitude: cameraStateRef.current.longitude,
+    },
   };
 }

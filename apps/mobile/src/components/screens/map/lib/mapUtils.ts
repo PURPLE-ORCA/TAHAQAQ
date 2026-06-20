@@ -1,6 +1,48 @@
 import { Establishment } from "../types";
 
 /**
+ * Converts screen tap coordinates to map coordinates (latitude, longitude)
+ * using the current camera position and zoom level.
+ *
+ * Uses Web Mercator ground resolution to convert pixel offsets into
+ * degree offsets, accounting for the latitude-dependent longitude scaling.
+ */
+export function screenToMapCoordinates(
+  tapX: number,
+  tapY: number,
+  mapWidth: number,
+  mapHeight: number,
+  centerLat: number,
+  centerLng: number,
+  zoom: number,
+): { latitude: number; longitude: number } {
+  // Web Mercator ground resolution: meters per pixel
+  const metersPerPixel =
+    (156543.03392 * Math.cos((centerLat * Math.PI) / 180)) /
+    Math.pow(2, zoom);
+
+  // Offset from center in pixels (screen Y is top-down, map Y is bottom-up)
+  const dx = tapX - mapWidth / 2;
+  const dy = mapHeight / 2 - tapY;
+
+  // Offset in meters
+  const dxMeters = dx * metersPerPixel;
+  const dyMeters = dy * metersPerPixel;
+
+  // Convert meters to degrees
+  // 1 degree latitude ≈ 111,320 meters
+  // 1 degree longitude ≈ 111,320 * cos(latitude) meters
+  const latOffset = dyMeters / 111320;
+  const lngOffset =
+    dxMeters / (111320 * Math.cos((centerLat * Math.PI) / 180));
+
+  return {
+    latitude: centerLat + latOffset,
+    longitude: centerLng + lngOffset,
+  };
+}
+
+/**
  * Calculates the distance between two geographical points using the Haversine formula.
  */
 export function getDistanceInMeters(

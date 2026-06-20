@@ -59,7 +59,10 @@
     "statusVerified": "Verified",
     "statusWatchlist": "Watchlist",
     "statusNew": "New",
-    "statusPriority": "Priority"
+    "statusPriority": "Priority",
+    "searchPlaceholder": "Search establishments...",
+    "noResults": "No establishments found",
+    "distance": "{{distance}}m away"
   },
   "onboarding": {
     "title": "Report equality issues with",

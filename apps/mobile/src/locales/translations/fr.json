@@ -59,7 +59,10 @@
     "statusVerified": "Vérifié",
     "statusWatchlist": "Surveillance",
     "statusNew": "Nouveau",
-    "statusPriority": "Priorité"
+    "statusPriority": "Priorité",
+    "searchPlaceholder": "Rechercher des établissements...",
+    "noResults": "Aucun établissement trouvé",
+    "distance": "à {{distance}}m"
   },
   "onboarding": {
     "title": "Signalez les problèmes d'égalité avec",

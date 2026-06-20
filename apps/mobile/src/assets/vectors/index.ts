@@ -1,1 +1,1 @@
-export { womenHoldingEqualityVector } from '@tahaqaq/assets/vectors';
+export { womenHoldingEqualityVector } from "@tahaqaq/assets/vectors";

@@ -59,7 +59,10 @@
     "statusVerified": "مُتحقق",
     "statusWatchlist": "قائمة المراقبة",
     "statusNew": "جديد",
-    "statusPriority": "أولوية"
+    "statusPriority": "أولوية",
+    "searchPlaceholder": "البحث عن المؤسسات...",
+    "noResults": "لم يتم العثور على مؤسسات",
+    "distance": "على بعد {{distance}}م"
   },
   "onboarding": {
     "title": "الإبلاغ عن مشاكل المساواة بـ",
