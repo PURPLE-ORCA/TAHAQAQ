@@ -44,8 +44,8 @@ export function SafeScreen({
     <View className={`flex-1 bg-background ${className}`} {...props}>
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
-        className="flex-1 px-6"
-        contentContainerClassName={`grow ${safeAreaClasses} ${contentClassName}`}
+        className="flex-1"
+        contentContainerClassName={`grow px-6 ${safeAreaClasses} ${contentClassName}`}
         keyboardShouldPersistTaps="handled"
         bottomOffset={20}
       >
