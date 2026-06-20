@@ -14,7 +14,10 @@ export function SettingsRow({
 
   return (
     <PressableFeedback onPress={onPress}>
-      <View className="flex-row items-center gap-2">
+      <View
+        className="flex-row items-center gap-2"
+        style={{ writingDirection: I18nManager.isRTL ? "rtl" : "ltr" }}
+      >
         <View className="size-11 items-center justify-center rounded-xl">
           <Icon
             name={icon as any}

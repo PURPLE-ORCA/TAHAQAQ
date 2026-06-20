@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { View } from "react-native";
+import { I18nManager, View } from "react-native";
 import { useRouter } from "expo-router";
 import { Accordion, Separator, Surface, Typography } from "heroui-native";
 import { SafeScreen } from "@/components/layout/SafeScreen";
@@ -119,7 +119,9 @@ export default function ProfileScreen() {
         <Accordion>
           {faqItems.map((item) => (
             <Accordion.Item key={item.value} value={item.value}>
-              <Accordion.Trigger>
+              <Accordion.Trigger
+                style={{ writingDirection: I18nManager.isRTL ? "rtl" : "ltr" }}
+              >
                 <Typography type="body" weight="medium" className="flex-1">
                   {item.question}
                 </Typography>

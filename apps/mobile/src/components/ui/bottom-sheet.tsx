@@ -19,6 +19,8 @@ type AppBottomSheetModalProps = Omit<
   footer?: React.ReactNode;
 };
 
+const rtlClass = I18nManager.isRTL ? "text-right" : "";
+
 export const AppBottomSheetModal = forwardRef<
   AppBottomSheetModalRef,
   AppBottomSheetModalProps
@@ -41,16 +43,20 @@ export const AppBottomSheetModal = forwardRef<
     <BottomSheet isOpen={isOpen} onOpenChange={handleOpenChange} {...rest}>
       <BottomSheet.Portal>
         <BottomSheet.Overlay />
-        <BottomSheet.Content>
+        <BottomSheet.Content
+          style={{ writingDirection: I18nManager.isRTL ? "rtl" : "ltr" }}
+        >
           {(title || description) && (
-            <View className="mb-6 gap-1.5" style={{ writingDirection: I18nManager.isRTL ? "rtl" : "ltr" }}>
+            <View className="mb-6 gap-1.5">
               {title && (
-                <BottomSheet.Title className="text-lg font-semibold">
+                <BottomSheet.Title className={`text-lg font-semibold ${rtlClass}`}>
                   {title}
                 </BottomSheet.Title>
               )}
               {description && (
-                <BottomSheet.Description>{description}</BottomSheet.Description>
+                <BottomSheet.Description className={rtlClass}>
+                  {description}
+                </BottomSheet.Description>
               )}
             </View>
           )}

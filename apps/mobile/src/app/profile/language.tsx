@@ -101,12 +101,15 @@ export default function LanguageScreen() {
               key={option.value}
               onPress={() => handleSelect(option.value)}
             >
-              <View className="flex-row items-center justify-between py-3 px-1">
+              <View
+                className="flex-row items-center justify-between py-3 px-1"
+                style={{ writingDirection: "rtl" }}
+              >
                 <View className="flex-1 gap-0.5">
-                  <Typography type="body" weight="medium">
+                  <Typography type="body" weight="medium" className="text-right">
                     {option.label}
                   </Typography>
-                  <Typography type="body-xs" color="muted">
+                  <Typography type="body-xs" color="muted" className="text-right">
                     {option.subtitle}
                   </Typography>
                 </View>
