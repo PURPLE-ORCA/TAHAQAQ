@@ -26,9 +26,8 @@ export default function AppearanceScreen() {
     },
   ];
 
-  const handleSelect = async (value: ThemePreference) => {
-    await setTheme(value);
-    router.back();
+  const handleSelect = (value: ThemePreference) => {
+    setTheme(value);
   };
 
   return (

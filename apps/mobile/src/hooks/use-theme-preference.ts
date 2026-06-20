@@ -5,7 +5,13 @@ import * as SecureStore from 'expo-secure-store';
 export type ThemePreference = 'light' | 'dark' | 'system';
 
 export function useThemePreference() {
-  const [theme, setThemeState] = useState<ThemePreference>('system');
+  const [theme, setThemeState] = useState<ThemePreference>(() => {
+    const stored = SecureStore.getItem('theme-preference');
+    if (stored === 'light' || stored === 'dark' || stored === 'system') {
+      return stored as ThemePreference;
+    }
+    return 'system';
+  });
   const systemColorScheme = useColorScheme();
 
   useEffect(() => {
