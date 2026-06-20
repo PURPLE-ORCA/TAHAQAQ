@@ -4,47 +4,49 @@ import {
   AppBottomSheetModal,
   AppBottomSheetModalRef,
 } from "@/components/ui/bottom-sheet";
+import { useI18n } from "@/hooks/useI18n";
 
 export function HowItWorksSheet({
   triggerRef,
 }: {
   triggerRef: React.RefObject<AppBottomSheetModalRef | null>;
 }) {
+  const { t } = useI18n();
+
   return (
-    <AppBottomSheetModal ref={triggerRef} title="How TAHAQAQ Works">
+    <AppBottomSheetModal ref={triggerRef} title={t("about.howItWorksTitle")}>
       <ScrollView showsVerticalScrollIndicator={false} className="max-h-96">
         <View className="gap-5 py-2">
           <View className="gap-1">
             <Typography type="body" weight="semibold">
-              1. Select a Hospital
+              {t("about.step1")}
             </Typography>
             <Typography type="body-sm" color="muted">
-              Choose a facility to audit from the map.
+              {t("about.step1Desc")}
             </Typography>
           </View>
           <View className="gap-1">
             <Typography type="body" weight="semibold">
-              2. Rate Your Experience
+              {t("about.step2")}
             </Typography>
             <Typography type="body-sm" color="muted">
-              Rate 5 categories: Cleanliness, Staff, Wait Time, Equipment,
-              Overall.
+              {t("about.step2Desc")}
             </Typography>
           </View>
           <View className="gap-1">
             <Typography type="body" weight="semibold">
-              3. AI Verifies Your Photo
+              {t("about.step3")}
             </Typography>
             <Typography type="body-sm" color="muted">
-              Our AI checks photo authenticity and auto-blurs faces.
+              {t("about.step3Desc")}
             </Typography>
           </View>
           <View className="gap-1">
             <Typography type="body" weight="semibold">
-              4. Scores Update Publicly
+              {t("about.step4")}
             </Typography>
             <Typography type="body-sm" color="muted">
-              Hospital integrity scores update in real-time.
+              {t("about.step4Desc")}
             </Typography>
           </View>
         </View>

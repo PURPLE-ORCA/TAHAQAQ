@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, I18nManager } from "react-native";
 import { router } from "expo-router";
 import {
   PressableFeedback,
@@ -58,18 +58,37 @@ export default function LanguageScreen() {
     <SafeScreen safeArea="top" scrollable contentClassName="gap-5 pb-10">
       {/* Header Row */}
       <View className="flex-row items-center gap-3 py-2">
-        <PressableFeedback onPress={() => router.back()}>
-          <View className="size-10 items-center justify-center rounded-xl bg-surface border border-border">
-            <Icon
-              name="chevron-back-outline"
-              size={20}
-              className="text-foreground"
-            />
-          </View>
-        </PressableFeedback>
-        <Typography type="h3" weight="bold">
-          {t("language.title")}
-        </Typography>
+        {I18nManager.isRTL ? (
+          <>
+            <Typography type="h3" weight="bold">
+              {t("language.title")}
+            </Typography>
+            <PressableFeedback onPress={() => router.back()}>
+              <View className="size-10 items-center justify-center rounded-xl bg-surface border border-border">
+                <Icon
+                  name="chevron-back-outline"
+                  size={20}
+                  className="text-foreground"
+                />
+              </View>
+            </PressableFeedback>
+          </>
+        ) : (
+          <>
+            <PressableFeedback onPress={() => router.back()}>
+              <View className="size-10 items-center justify-center rounded-xl bg-surface border border-border">
+                <Icon
+                  name="chevron-back-outline"
+                  size={20}
+                  className="text-foreground"
+                />
+              </View>
+            </PressableFeedback>
+            <Typography type="h3" weight="bold">
+              {t("language.title")}
+            </Typography>
+          </>
+        )}
       </View>
 
       <Separator />

@@ -4,50 +4,49 @@ import {
   AppBottomSheetModal,
   AppBottomSheetModalRef,
 } from "@/components/ui/bottom-sheet";
+import { useI18n } from "@/hooks/useI18n";
 
 export function TermsSheet({
   triggerRef,
 }: {
   triggerRef: React.RefObject<AppBottomSheetModalRef | null>;
 }) {
+  const { t } = useI18n();
+
   return (
-    <AppBottomSheetModal ref={triggerRef} title="Terms & Conditions">
+    <AppBottomSheetModal ref={triggerRef} title={t("about.termsTitle")}>
       <ScrollView showsVerticalScrollIndicator={false} className="max-h-96">
         <View className="gap-5 py-2">
           <View className="gap-1">
             <Typography type="body" weight="semibold">
-              Voluntary Submissions
+              {t("about.voluntarySubmissions")}
             </Typography>
             <Typography type="body-sm" color="muted">
-              All submissions and ratings are voluntary and represent honest
-              feedback.
+              {t("about.voluntarySubmissionsDesc")}
             </Typography>
           </View>
           <View className="gap-1">
             <Typography type="body" weight="semibold">
-              Limitation of Liability
+              {t("about.limitationLiability")}
             </Typography>
             <Typography type="body-sm" color="muted">
-              TAHAQAQ is not liable for hospital actions, conditions, or
-              responses.
+              {t("about.limitationLiabilityDesc")}
             </Typography>
           </View>
           <View className="gap-1">
             <Typography type="body" weight="semibold">
-              Abuse Policy
+              {t("about.abusePolicy")}
             </Typography>
             <Typography type="body-sm" color="muted">
-              Abusive, fraudulent, or harassing submissions will result in
-              device blocking.
+              {t("about.abusePolicyDesc")}
             </Typography>
           </View>
           <View className="gap-1">
             <Typography type="body" weight="semibold">
-              Content License
+              {t("about.contentLicense")}
             </Typography>
             <Typography type="body-sm" color="muted">
-              By uploading photos, you grant TAHAQAQ a license to verify and
-              display them.
+              {t("about.contentLicenseDesc")}
             </Typography>
           </View>
         </View>
