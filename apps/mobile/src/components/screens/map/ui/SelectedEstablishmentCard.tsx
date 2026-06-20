@@ -40,8 +40,17 @@ export function SelectedEstablishmentCard({ selected, onPress }: Props) {
             </Text>
           </View>
         </View>
-        <Button variant="primary" onPress={onPress} className="mt-3">
-          <Button.Label>{t("map.review")}</Button.Label>
+        <Button
+          variant="primary"
+          onPress={onPress}
+          className="mt-3"
+          isDisabled={selected.name === "Loading establishment..."}
+        >
+          <Button.Label>
+            {selected.name === "Loading establishment..."
+              ? "Loading..."
+              : t("map.review")}
+          </Button.Label>
         </Button>
       </Card>
     </Pressable>

@@ -10,6 +10,11 @@ export type AuditCategoryId =
 
 export type AuditParams = {
   establishmentId?: string;
+  name?: string;
+  city?: string;
+  latitude?: string;
+  longitude?: string;
+  address?: string;
 };
 
 export type EquipmentCondition = "new" | "used" | "broken" | "locked";

@@ -20,10 +20,29 @@ export function useAuditFlow() {
       : undefined;
   const { location, errorMsg, loading } = useUserLocation();
 
-  const routeEstablishment = useMemo(
-    () => establishments.find((item) => item.id === routeEstablishmentId),
-    [routeEstablishmentId],
-  );
+  const routeEstablishment = useMemo(() => {
+    if (!routeEstablishmentId) return undefined;
+    const hardcoded = establishments.find((item) => item.id === routeEstablishmentId);
+    if (hardcoded) return hardcoded;
+
+    if (routeEstablishmentId.startsWith("geocoded-")) {
+      const lat = parseFloat(params.latitude ?? "0");
+      const lon = parseFloat(params.longitude ?? "0");
+      return {
+        id: routeEstablishmentId,
+        name: params.name ?? "Establishment",
+        category: "Establishment",
+        city: params.city ?? "Morocco",
+        coordinates: { latitude: lat, longitude: lon },
+        status: "new" as const,
+        address: params.address || "Unknown Address",
+        reviews: 0,
+        complaints: 0,
+        recentSignal: "",
+      };
+    }
+    return undefined;
+  }, [routeEstablishmentId, params.name, params.city, params.latitude, params.longitude, params.address]);
 
   const suggestedEstablishment = useMemo(() => {
     if (routeEstablishment) return routeEstablishment;
@@ -58,12 +77,32 @@ export function useAuditFlow() {
     setSelectedEstablishmentId(suggestedEstablishment.id);
   }, [didSelectManually, routeEstablishment, step, suggestedEstablishment.id]);
 
-  const selectedEstablishment = useMemo(
-    () =>
+  const selectedEstablishment = useMemo(() => {
+    if (selectedEstablishmentId.startsWith("geocoded-")) {
+      if (routeEstablishment && routeEstablishment.id === selectedEstablishmentId) {
+        return routeEstablishment;
+      }
+      const parts = selectedEstablishmentId.split("-");
+      const lat = parseFloat(parts[1] || "0");
+      const lon = parseFloat(parts[2] || "0");
+      return {
+        id: selectedEstablishmentId,
+        name: params.name ?? "Establishment",
+        category: "Establishment",
+        city: params.city ?? "Morocco",
+        coordinates: { latitude: lat, longitude: lon },
+        status: "new" as const,
+        address: params.address || "Unknown Address",
+        reviews: 0,
+        complaints: 0,
+        recentSignal: "",
+      };
+    }
+    return (
       establishments.find((item) => item.id === selectedEstablishmentId) ??
-      establishments[0],
-    [selectedEstablishmentId],
-  );
+      establishments[0]
+    );
+  }, [selectedEstablishmentId, routeEstablishment, params.name, params.city, params.address]);
 
   const filteredEstablishments = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();

@@ -316,7 +316,7 @@ export const mapCamera = {
 };
 
 export const mapProperties = {
-  selectionEnabled: true,
+  selectionEnabled: false,
 };
 
 export const categoryColors: Record<string, string> = {

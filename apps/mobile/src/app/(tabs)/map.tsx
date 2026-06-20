@@ -14,6 +14,7 @@ export default function MapScreen() {
     cameraCoordinates,
     handleCameraMove,
     handleMarkerClick,
+    handleMapClick,
     searchQuery,
     searchResults,
     isSearching,
@@ -41,6 +42,7 @@ export default function MapScreen() {
             markers={markers}
             onCameraMove={handleCameraMove}
             onMarkerClick={handleMarkerClick}
+            onMapClick={handleMapClick}
           />
         ) : Platform.OS === "android" ? (
           <GoogleMaps.View
@@ -56,6 +58,7 @@ export default function MapScreen() {
             markers={markers}
             onCameraMove={handleCameraMove}
             onMarkerClick={handleMarkerClick}
+            onMapClick={handleMapClick}
           />
         ) : (
           <MapUnavailableFallback />
