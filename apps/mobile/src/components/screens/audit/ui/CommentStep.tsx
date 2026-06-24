@@ -1,5 +1,6 @@
 import { View } from "react-native";
 import { Button, Input, Label, Surface, Typography } from "heroui-native";
+import { useI18n } from "@/hooks/useI18n";
 import { COMMENT_MAX, AuditStep } from "../types";
 
 interface CommentStepProps {
@@ -13,23 +14,24 @@ export function CommentStep({
   setComment,
   setStep,
 }: CommentStepProps) {
+  const { t } = useI18n();
   return (
     <Surface className="gap-4 rounded-3xl p-4">
       <View className="gap-2">
         <Typography type="h4" weight="semibold">
-          Step 4 · Anything else?
+          {t("audit.step4Title")}
         </Typography>
         <Typography type="body-sm" color="muted">
-          This is optional — skip if you&apos;re done.
+          {t("audit.allOptional")}
         </Typography>
       </View>
 
       <View className="gap-2">
-        <Label>Comment</Label>
+        <Label>{t("audit.commentLabel")}</Label>
         <Input
           value={comment}
           onChangeText={(value) => setComment(value.slice(0, COMMENT_MAX))}
-          placeholder="Add a short note about your experience"
+          placeholder={t("audit.commentPlaceholder")}
           multiline
           numberOfLines={5}
           textAlignVertical="top"
@@ -42,10 +44,10 @@ export function CommentStep({
 
       <View className="gap-3">
         <Button variant="primary" size="md" onPress={() => setStep(5)}>
-          <Button.Label>Continue to review</Button.Label>
+          <Button.Label>{t("audit.continueToReview")}</Button.Label>
         </Button>
         <Button variant="secondary" size="md" onPress={() => setStep(5)}>
-          <Button.Label>Skip comment</Button.Label>
+          <Button.Label>{t("audit.skipComment")}</Button.Label>
         </Button>
       </View>
     </Surface>

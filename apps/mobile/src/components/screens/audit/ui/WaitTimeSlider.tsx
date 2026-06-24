@@ -1,5 +1,6 @@
 import { View } from "react-native";
 import { Label, Slider, Typography } from "heroui-native";
+import { useTranslation } from "react-i18next";
 import { formatWaitTime } from "../lib/utils";
 
 interface WaitTimeSliderProps {
@@ -11,6 +12,8 @@ export function WaitTimeSlider({
   waitMinutes,
   setWaitMinutes,
 }: WaitTimeSliderProps) {
+  const { t } = useTranslation();
+
   return (
     <View className="gap-2">
       <View className="flex-row items-center justify-between">
@@ -25,6 +28,9 @@ export function WaitTimeSlider({
         minValue={0}
         maxValue={120}
         step={5}
+        accessibilityLabel={t('audit.waitTime')}
+        accessibilityRole="adjustable"
+        accessibilityValue={{ min: 0, max: 120, now: waitMinutes }}
       >
         <Slider.Track>
           <Slider.Fill />

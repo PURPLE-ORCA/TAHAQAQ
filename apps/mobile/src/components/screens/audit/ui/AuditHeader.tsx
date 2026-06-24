@@ -11,12 +11,12 @@ export function AuditHeader({ step }: AuditHeaderProps) {
   const { t } = useI18n();
 
   const STEP_LABELS = [
-    "Location",
-    "Categories",
-    "Details",
-    "Comment",
-    "Review",
-    "Done",
+    t("audit.step1"),
+    t("audit.step2"),
+    t("audit.step3"),
+    t("audit.step4"),
+    t("audit.step5"),
+    t("audit.step6"),
   ];
   const visibleSteps = STEP_LABELS.slice(0, 5);
 
