@@ -176,3 +176,6 @@ Chips are pill-shaped. Use the **Gold (#F2C94C)** for status indicators (e.g., "
 
 ### Navigation
 The header should use the **Dark Green (#006020)** with white text links. The active state is indicated by a **Gold (#F2C94C)** 3px bottom-bar, visually connecting the navigation to the brand's premium accents.
+
+### Icons
+Use **filled** icon variants exclusively (e.g. `pencil`, `document-text`, `notifications`). Never use outline/hollow variants (`-outline` suffix). Filled icons convey stronger presence and authority, consistent with the civic trust theme. The icon library is Ionicons via HeroUI — always reference the filled name.
