@@ -1,6 +1,5 @@
 import { Platform, View } from "react-native";
 import { AppleMaps, GoogleMaps } from "expo-maps";
-import { SafeScreen } from "@/components/layout/SafeScreen";
 import { useMap } from "@/components/screens/map/hooks/useMap";
 import { MapUnavailableFallback } from "@/components/screens/map/MapUnavailableFallback";
 import { mapProperties, markers } from "@/components/screens/map/lib/constants";
@@ -28,8 +27,8 @@ export default function MapScreen() {
   } = useMap();
 
   return (
-    <SafeScreen>
-      <View className="-mx-6" style={{ flex: 1 }}>
+    <View className="flex-1 bg-background">
+      <View style={{ flex: 1 }}>
         {Platform.OS === "ios" ? (
           <AppleMaps.View
             style={{ flex: 1 }}
@@ -81,6 +80,6 @@ export default function MapScreen() {
 
         <SelectedEstablishmentCard selected={selected} onPress={handleReview} />
       </View>
-    </SafeScreen>
+    </View>
   );
 }
