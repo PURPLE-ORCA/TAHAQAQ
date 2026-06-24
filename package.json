@@ -24,5 +24,7 @@
     "typecheck:mobile": "bun run --env-file=.env --cwd apps/mobile typecheck",
     "typecheck:convex": "bun run --env-file=.env --cwd packages/convex build"
   },
-  "dependencies": {}
+  "dependencies": {
+    "expo-haptics": "~56.0.3"
+  }
 }

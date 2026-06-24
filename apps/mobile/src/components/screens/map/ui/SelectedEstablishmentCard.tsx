@@ -1,6 +1,7 @@
-import { Pressable, View } from "react-native";
+import { ActivityIndicator, Pressable, View } from "react-native";
 import { Card, Button } from "heroui-native";
 import { Text } from "@/components/ui/text";
+import { Icon } from "@/components/ui/icon";
 import type { Establishment } from "../types";
 import { statusStyles } from "../lib/constants";
 import { useI18n } from "@/hooks/useI18n";
@@ -95,6 +96,34 @@ export function SelectedEstablishmentCard({ selected, onPress }: Props) {
             <Text variant="xs" className="text-muted mt-0.5">
               {selected.city} • {selected.category}
             </Text>
+            {/* Social proof row */}
+            {!isLoading && (
+              <View className="flex-row items-center gap-3 mt-1">
+                <View className="flex-row items-center gap-1">
+                  <Icon name="chatbubble" size={12} className="text-muted" />
+                  <Text variant="xs" className="text-muted">
+                    {selected.reviews} {selected.reviews === 1 ? "review" : "reviews"}
+                  </Text>
+                </View>
+                {selected.recentSignal ? (
+                  <View className="flex-row items-center gap-1">
+                    <Icon name="alert-circle" size={12} className="text-orange-500" />
+                    <Text variant="xs" className="text-orange-500" numberOfLines={1}>
+                      {selected.recentSignal}
+                    </Text>
+                  </View>
+                ) : null}
+              </View>
+            )}
+            {/* Loading spinner */}
+            {isLoading && (
+              <View className="flex-row items-center gap-2 mt-1">
+                <ActivityIndicator size="small" className="text-muted" />
+                <Text variant="xs" className="text-muted">
+                  {selected.city}
+                </Text>
+              </View>
+            )}
           </View>
 
           {/* Large colored circle/badge for overallScore */}

@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Alert } from "react-native";
 import { router } from "expo-router";
+import * as Haptics from "expo-haptics";
 import type { AppBottomSheetModalRef } from "@/components/ui/bottom-sheet";
 import { establishments, mapCenter } from "../lib/constants";
 import { getDistanceInMeters, findClosestEstablishment } from "../lib/mapUtils";
@@ -117,6 +118,7 @@ export function useMap() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<Establishment[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [showRedOnly, setShowRedOnly] = useState(false);
   const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -232,6 +234,7 @@ export function useMap() {
     });
     if (next) {
       setSelected(next);
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
       setCameraCoordinates(next.coordinates);
       cameraStateRef.current.latitude = next.coordinates.latitude;
       cameraStateRef.current.longitude = next.coordinates.longitude;
@@ -254,6 +257,7 @@ export function useMap() {
 
     if (closest) {
       setSelected(closest);
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
       setCameraCoordinates(closest.coordinates);
       cameraStateRef.current.latitude = closest.coordinates.latitude;
       cameraStateRef.current.longitude = closest.coordinates.longitude;
@@ -374,7 +378,10 @@ export function useMap() {
           est.city.toLowerCase().includes(normalizedQuery)
         );
       });
-      setSearchResults(filtered);
+      const redFiltered = showRedOnly
+        ? filtered.filter((est) => est.overallScore != null && est.overallScore < 4)
+        : filtered;
+      setSearchResults(redFiltered);
     }, 300);
   };
 
