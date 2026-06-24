@@ -22,34 +22,139 @@ export function SelectedEstablishmentCard({ selected, onPress }: Props) {
           ? t("map.statusNew")
           : t("map.statusPriority");
 
+  const score = selected.overallScore;
+  const scoreText = score !== undefined ? score.toFixed(1) : "—";
+
+  let scoreBg = "bg-neutral-100 dark:bg-neutral-800";
+  let scoreTextColor = "text-neutral-500 dark:text-neutral-400";
+
+  if (score !== undefined) {
+    if (score >= 7) {
+      scoreBg = "bg-green-500";
+      scoreTextColor = "text-white";
+    } else if (score >= 4) {
+      scoreBg = "bg-yellow-500";
+      scoreTextColor = "text-neutral-900";
+    } else {
+      scoreBg = "bg-red-500";
+      scoreTextColor = "text-white";
+    }
+  }
+
+  const categories = [
+    {
+      key: "bribery",
+      label: t("audit.categoryBribery") || "Bribery",
+      value: selected.scoreCategories?.bribery ?? 0,
+    },
+    {
+      key: "hygiene",
+      label: t("audit.categoryHygiene") || "Hygiene",
+      value: selected.scoreCategories?.hygiene ?? 0,
+    },
+    {
+      key: "waitTime",
+      label: t("audit.categoryWaitTime") || "Wait Time",
+      value: selected.scoreCategories?.waitTime ?? 0,
+    },
+    {
+      key: "equipment",
+      label: t("audit.categoryEquipment") || "Equipment",
+      value: selected.scoreCategories?.equipment ?? 0,
+    },
+    {
+      key: "staff",
+      label: t("audit.categoryStaff") || "Staff",
+      value: selected.scoreCategories?.staff ?? 0,
+    },
+  ];
+
+  const isLoading = selected.name === "Loading establishment...";
+
   return (
     <Pressable onPress={onPress} className="absolute bottom-4 left-4 right-4">
       <Card className="rounded-2xl bg-background/90 px-4 py-3">
+        {/* Top row & overallScore */}
         <View className="flex-row items-center justify-between">
-          <View className="flex-1">
-            <Text variant="smallBold">{selected.name}</Text>
-            <Text variant="xs" className="text-muted">
+          <View className="flex-1 mr-3">
+            <View className="flex-row items-center gap-1.5 flex-wrap">
+              <Text variant="smallBold" className="text-foreground">
+                {selected.name}
+              </Text>
+              {!isLoading && (
+                <View
+                  className={`rounded-full px-2 py-0.5 ${statusStyles[selected.status]}`}
+                >
+                  <Text variant="xsBold" className={statusStyles[selected.status]}>
+                    {statusLabel}
+                  </Text>
+                </View>
+              )}
+            </View>
+            {/* Second row */}
+            <Text variant="xs" className="text-muted mt-0.5">
               {selected.city} • {selected.category}
             </Text>
           </View>
-          <View
-            className={`rounded-full px-3 py-1 ${statusStyles[selected.status]}`}
-          >
-            <Text variant="xsBold" className={statusStyles[selected.status]}>
-              {statusLabel}
-            </Text>
-          </View>
+
+          {/* Large colored circle/badge for overallScore */}
+          {!isLoading && (
+            <View
+              className={`w-12 h-12 rounded-full items-center justify-center ${scoreBg}`}
+            >
+              <Text
+                variant="smallBold"
+                className={`${scoreTextColor} text-center font-bold`}
+              >
+                {scoreText}
+              </Text>
+            </View>
+          )}
         </View>
+
+        {/* Category breakdown (mini-bars) */}
+        {!isLoading && selected.scoreCategories && (
+          <View className="flex-row flex-wrap justify-between mt-3">
+            {categories.map((cat) => {
+              let barColor = "bg-red-500";
+              if (cat.value >= 7) {
+                barColor = "bg-green-500";
+              } else if (cat.value >= 4) {
+                barColor = "bg-yellow-500";
+              }
+
+              return (
+                <View
+                  key={cat.key}
+                  className="w-[48%] flex-row items-center justify-between py-1"
+                >
+                  <Text
+                    variant="xs"
+                    className="text-foreground/75 flex-1 mr-1.5"
+                    numberOfLines={1}
+                  >
+                    {cat.label}
+                  </Text>
+                  <View className="w-14 h-1.5 bg-foreground/10 rounded-full overflow-hidden">
+                    <View
+                      className={`h-full ${barColor}`}
+                      style={{ width: `${(cat.value / 10) * 100}%` }}
+                    />
+                  </View>
+                </View>
+              );
+            })}
+          </View>
+        )}
+
         <Button
           variant="primary"
           onPress={onPress}
           className="mt-3"
-          isDisabled={selected.name === "Loading establishment..."}
+          isDisabled={isLoading}
         >
           <Button.Label>
-            {selected.name === "Loading establishment..."
-              ? "Loading..."
-              : t("map.review")}
+            {isLoading ? "Loading..." : t("map.review")}
           </Button.Label>
         </Button>
       </Card>

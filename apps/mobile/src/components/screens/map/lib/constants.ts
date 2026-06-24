@@ -12,6 +12,8 @@ export const establishments: Establishment[] = [
     reviews: 128,
     complaints: 9,
     recentSignal: "2 complaints this week",
+    overallScore: 3,
+    scoreCategories: { bribery: 2, hygiene: 3, waitTime: 1, equipment: 4, staff: 5 },
   },
   {
     id: "rabat-grand-poste",
@@ -24,6 +26,8 @@ export const establishments: Establishment[] = [
     reviews: 72,
     complaints: 1,
     recentSignal: "Efficient mail processing",
+    overallScore: 8,
+    scoreCategories: { bribery: 9, hygiene: 8, waitTime: 6, equipment: 8, staff: 9 },
   },
   {
     id: "rabat-parlement",
@@ -36,6 +40,8 @@ export const establishments: Establishment[] = [
     reviews: 154,
     complaints: 8,
     recentSignal: "High security checkpoint delays",
+    overallScore: 4,
+    scoreCategories: { bribery: 5, hygiene: 4, waitTime: 2, equipment: 5, staff: 4 },
   },
   {
     id: "hotel-balima",
@@ -48,6 +54,8 @@ export const establishments: Establishment[] = [
     reviews: 90,
     complaints: 0,
     recentSignal: "Renovated historical suites",
+    overallScore: 9,
+    scoreCategories: { bribery: 10, hygiene: 9, waitTime: 8, equipment: 9, staff: 9 },
   },
   {
     id: "mcdonalds-rabat-ville",
@@ -60,6 +68,8 @@ export const establishments: Establishment[] = [
     reviews: 210,
     complaints: 3,
     recentSignal: "Busy during lunch hours",
+    overallScore: 8,
+    scoreCategories: { bribery: 10, hygiene: 8, waitTime: 7, equipment: 9, staff: 8 },
   },
   {
     id: "le-petit-beur",
@@ -72,6 +82,8 @@ export const establishments: Establishment[] = [
     reviews: 88,
     complaints: 2,
     recentSignal: "Authentic tagine and couscous",
+    overallScore: 7,
+    scoreCategories: { bribery: 9, hygiene: 7, waitTime: 6, equipment: 7, staff: 8 },
   },
   {
     id: "boho-cafe",
@@ -84,6 +96,8 @@ export const establishments: Establishment[] = [
     reviews: 12,
     complaints: 0,
     recentSignal: "Excellent specialty coffee",
+    overallScore: 6,
+    scoreCategories: { bribery: 8, hygiene: 7, waitTime: 5, equipment: 6, staff: 6 },
   },
   {
     id: "cozy-cafe",
@@ -96,6 +110,8 @@ export const establishments: Establishment[] = [
     reviews: 43,
     complaints: 4,
     recentSignal: "WiFi instability reported",
+    overallScore: 5,
+    scoreCategories: { bribery: 7, hygiene: 5, waitTime: 4, equipment: 3, staff: 6 },
   },
   {
     id: "rabat-medina-market",
@@ -108,6 +124,8 @@ export const establishments: Establishment[] = [
     reviews: 320,
     complaints: 18,
     recentSignal: "Congested walkways, watch for pickpockets",
+    overallScore: 3,
+    scoreCategories: { bribery: 4, hygiene: 2, waitTime: 3, equipment: 2, staff: 3 },
   },
   {
     id: "clinic-des-orangers",
@@ -120,6 +138,8 @@ export const establishments: Establishment[] = [
     reviews: 55,
     complaints: 6,
     recentSignal: "Long wait times at reception",
+    overallScore: 4,
+    scoreCategories: { bribery: 6, hygiene: 5, waitTime: 3, equipment: 5, staff: 4 },
   },
   {
     id: "lycee-descartes",
@@ -132,6 +152,8 @@ export const establishments: Establishment[] = [
     reviews: 145,
     complaints: 2,
     recentSignal: "Strong academic rating",
+    overallScore: 9,
+    scoreCategories: { bribery: 10, hygiene: 9, waitTime: 8, equipment: 9, staff: 9 },
   },
   {
     id: "dar-naji",
@@ -144,6 +166,8 @@ export const establishments: Establishment[] = [
     reviews: 198,
     complaints: 5,
     recentSignal: "Popular traditional Moroccan dining",
+    overallScore: 8,
+    scoreCategories: { bribery: 9, hygiene: 8, waitTime: 7, equipment: 8, staff: 9 },
   },
   {
     id: "villa-mandarine",
@@ -156,6 +180,8 @@ export const establishments: Establishment[] = [
     reviews: 76,
     complaints: 1,
     recentSignal: "Tranquil orange grove gardens",
+    overallScore: 9,
+    scoreCategories: { bribery: 10, hygiene: 10, waitTime: 9, equipment: 9, staff: 9 },
   },
   {
     id: "mauresque-cafe",
@@ -168,6 +194,8 @@ export const establishments: Establishment[] = [
     reviews: 112,
     complaints: 1,
     recentSignal: "Stunning river views, tea and pastries",
+    overallScore: 8,
+    scoreCategories: { bribery: 9, hygiene: 8, waitTime: 7, equipment: 8, staff: 8 },
   },
   {
     id: "national-library-rabat",
@@ -180,6 +208,8 @@ export const establishments: Establishment[] = [
     reviews: 250,
     complaints: 3,
     recentSignal: "Excellent study environment and resources",
+    overallScore: 8,
+    scoreCategories: { bribery: 9, hygiene: 9, waitTime: 8, equipment: 8, staff: 8 },
   },
   {
     id: "rabat-art-museum",
@@ -192,6 +222,8 @@ export const establishments: Establishment[] = [
     reviews: 84,
     complaints: 0,
     recentSignal: "Clean facilities and rich exhibits",
+    overallScore: 9,
+    scoreCategories: { bribery: 10, hygiene: 9, waitTime: 9, equipment: 9, staff: 8 },
   },
   {
     id: "cinema-renaissance",
@@ -204,6 +236,8 @@ export const establishments: Establishment[] = [
     reviews: 49,
     complaints: 1,
     recentSignal: "Cultural hub for music and films",
+    overallScore: 7,
+    scoreCategories: { bribery: 9, hygiene: 7, waitTime: 7, equipment: 7, staff: 8 },
   },
   {
     id: "hasan-tower-plaza",
@@ -216,6 +250,8 @@ export const establishments: Establishment[] = [
     reviews: 412,
     complaints: 12,
     recentSignal: "High tourist traffic, access gates restricted",
+    overallScore: 4,
+    scoreCategories: { bribery: 5, hygiene: 4, waitTime: 3, equipment: 4, staff: 4 },
   },
   {
     id: "souk-el-sebbat",
@@ -228,6 +264,8 @@ export const establishments: Establishment[] = [
     reviews: 34,
     complaints: 2,
     recentSignal: "New pedestrian guides added",
+    overallScore: 6,
+    scoreCategories: { bribery: 7, hygiene: 5, waitTime: 6, equipment: 5, staff: 6 },
   },
   {
     id: "casablanca-tech-school",
@@ -240,6 +278,8 @@ export const establishments: Establishment[] = [
     reviews: 64,
     complaints: 2,
     recentSignal: "Top-rated by students",
+    overallScore: 9,
+    scoreCategories: { bribery: 9, hygiene: 9, waitTime: 8, equipment: 9, staff: 9 },
   },
   {
     id: "marrakesh-civic-office",
@@ -252,6 +292,8 @@ export const establishments: Establishment[] = [
     reviews: 47,
     complaints: 5,
     recentSignal: "Queue delays reported",
+    overallScore: 5,
+    scoreCategories: { bribery: 6, hygiene: 5, waitTime: 3, equipment: 5, staff: 5 },
   },
   {
     id: "tangier-community-clinic",
@@ -259,11 +301,13 @@ export const establishments: Establishment[] = [
     category: "Clinic",
     address: "Iberia Quarter, Tangier",
     city: "Tangier",
-    coordinates: { latitude: 35.7595, longitude: -5.834 },
+    coordinates: { latitude: 35.7595, longitude: -5.8340 },
     status: "new",
     reviews: 18,
     complaints: 1,
     recentSignal: "Recently added to the map",
+    overallScore: 6,
+    scoreCategories: { bribery: 7, hygiene: 6, waitTime: 5, equipment: 6, staff: 6 },
   },
   {
     id: "fez-central-library",
@@ -276,6 +320,8 @@ export const establishments: Establishment[] = [
     reviews: 92,
     complaints: 0,
     recentSignal: "Clean record for 30 days",
+    overallScore: 8,
+    scoreCategories: { bribery: 10, hygiene: 8, waitTime: 8, equipment: 8, staff: 8 },
   },
   {
     id: "agadir-coastal-market",
@@ -288,6 +334,8 @@ export const establishments: Establishment[] = [
     reviews: 35,
     complaints: 4,
     recentSignal: "Access and pricing concerns",
+    overallScore: 5,
+    scoreCategories: { bribery: 4, hygiene: 5, waitTime: 4, equipment: 5, staff: 6 },
   },
   {
     id: "universite-mohammed-v-rabat",
@@ -300,6 +348,8 @@ export const establishments: Establishment[] = [
     reviews: 245,
     complaints: 1,
     recentSignal: "Busy enrollment period",
+    overallScore: 8,
+    scoreCategories: { bribery: 9, hygiene: 8, waitTime: 6, equipment: 8, staff: 8 },
   },
   {
     id: "mosquee-hassan-ii-casablanca",
@@ -312,6 +362,8 @@ export const establishments: Establishment[] = [
     reviews: 298,
     complaints: 0,
     recentSignal: "Beautiful morning views, high visitor count",
+    overallScore: 7,
+    scoreCategories: { bribery: 8, hygiene: 7, waitTime: 6, equipment: 7, staff: 7 },
   },
   {
     id: "gare-casa-voyageurs-casablanca",
@@ -324,6 +376,8 @@ export const establishments: Establishment[] = [
     reviews: 180,
     complaints: 11,
     recentSignal: "Ticket machine queues at peak hours",
+    overallScore: 3,
+    scoreCategories: { bribery: 5, hygiene: 3, waitTime: 2, equipment: 3, staff: 4 },
   },
   {
     id: "morocco-mall-casablanca",
@@ -336,6 +390,8 @@ export const establishments: Establishment[] = [
     reviews: 220,
     complaints: 3,
     recentSignal: "Popular weekend shopping destination",
+    overallScore: 7,
+    scoreCategories: { bribery: 8, hygiene: 7, waitTime: 5, equipment: 7, staff: 7 },
   },
   {
     id: "attijariwafa-bank-casablanca",
@@ -348,6 +404,8 @@ export const establishments: Establishment[] = [
     reviews: 42,
     complaints: 7,
     recentSignal: "ATM out of service on Sunday",
+    overallScore: 4,
+    scoreCategories: { bribery: 6, hygiene: 5, waitTime: 4, equipment: 3, staff: 5 },
   },
   {
     id: "chu-ibn-rochd-casablanca",
@@ -360,6 +418,8 @@ export const establishments: Establishment[] = [
     reviews: 115,
     complaints: 14,
     recentSignal: "High ER wait times reported",
+    overallScore: 2,
+    scoreCategories: { bribery: 3, hygiene: 2, waitTime: 1, equipment: 4, staff: 3 },
   },
   {
     id: "city-club-abdelmoumen-casablanca",
@@ -372,6 +432,8 @@ export const establishments: Establishment[] = [
     reviews: 95,
     complaints: 8,
     recentSignal: "Locker room maintenance requested",
+    overallScore: 5,
+    scoreCategories: { bribery: 7, hygiene: 4, waitTime: 5, equipment: 4, staff: 5 },
   },
   {
     id: "pharmacie-centrale-casablanca",
@@ -384,6 +446,8 @@ export const establishments: Establishment[] = [
     reviews: 30,
     complaints: 1,
     recentSignal: "Well stocked with essential medicines",
+    overallScore: 6,
+    scoreCategories: { bribery: 8, hygiene: 6, waitTime: 6, equipment: 6, staff: 6 },
   },
   {
     id: "megarama-cinema-casablanca",
@@ -396,6 +460,8 @@ export const establishments: Establishment[] = [
     reviews: 145,
     complaints: 2,
     recentSignal: "New blockbuster releases drawing crowds",
+    overallScore: 7,
+    scoreCategories: { bribery: 8, hygiene: 7, waitTime: 6, equipment: 7, staff: 7 },
   },
   {
     id: "jardin-majorelle-marrakesh",
@@ -408,6 +474,8 @@ export const establishments: Establishment[] = [
     reviews: 280,
     complaints: 4,
     recentSignal: "Online booking required, long entry lines",
+    overallScore: 6,
+    scoreCategories: { bribery: 8, hygiene: 7, waitTime: 4, equipment: 7, staff: 6 },
   },
   {
     id: "cafe-des-epices-marrakesh",
@@ -420,6 +488,8 @@ export const establishments: Establishment[] = [
     reviews: 190,
     complaints: 1,
     recentSignal: "Excellent spice tea and rooftop views",
+    overallScore: 7,
+    scoreCategories: { bribery: 8, hygiene: 7, waitTime: 6, equipment: 7, staff: 7 },
   },
   {
     id: "gare-de-marrakech-marrakesh",
@@ -432,6 +502,8 @@ export const establishments: Establishment[] = [
     reviews: 150,
     complaints: 5,
     recentSignal: "Taxi queue delays outside station",
+    overallScore: 5,
+    scoreCategories: { bribery: 6, hygiene: 5, waitTime: 3, equipment: 5, staff: 5 },
   },
   {
     id: "mosquee-koutoubia-marrakesh",
@@ -444,6 +516,8 @@ export const establishments: Establishment[] = [
     reviews: 270,
     complaints: 0,
     recentSignal: "Iconic minaret landmark, clean plaza",
+    overallScore: 7,
+    scoreCategories: { bribery: 8, hygiene: 7, waitTime: 6, equipment: 7, staff: 7 },
   },
   {
     id: "la-mamounia-hotel-marrakesh",
@@ -456,6 +530,8 @@ export const establishments: Establishment[] = [
     reviews: 210,
     complaints: 1,
     recentSignal: "World-class luxury gardens",
+    overallScore: 7,
+    scoreCategories: { bribery: 8, hygiene: 7, waitTime: 6, equipment: 8, staff: 7 },
   },
   {
     id: "universite-cadi-ayyad-marrakesh",
@@ -468,6 +544,8 @@ export const establishments: Establishment[] = [
     reviews: 130,
     complaints: 9,
     recentSignal: "Student registration congestion",
+    overallScore: 4,
+    scoreCategories: { bribery: 5, hygiene: 4, waitTime: 2, equipment: 5, staff: 4 },
   },
   {
     id: "universite-al-qarawiyyin-fez",
@@ -480,6 +558,8 @@ export const establishments: Establishment[] = [
     reviews: 260,
     complaints: 0,
     recentSignal: "Historic library and courtyard",
+    overallScore: 7,
+    scoreCategories: { bribery: 8, hygiene: 7, waitTime: 6, equipment: 7, staff: 7 },
   },
   {
     id: "gare-de-fes-fes",
@@ -492,6 +572,8 @@ export const establishments: Establishment[] = [
     reviews: 88,
     complaints: 6,
     recentSignal: "Renovation works in progress",
+    overallScore: 5,
+    scoreCategories: { bribery: 6, hygiene: 5, waitTime: 4, equipment: 4, staff: 5 },
   },
   {
     id: "bab-boujloud-market-fes",
@@ -504,6 +586,8 @@ export const establishments: Establishment[] = [
     reviews: 175,
     complaints: 10,
     recentSignal: "Very crowded corridors, watch for tourists",
+    overallScore: 3,
+    scoreCategories: { bribery: 4, hygiene: 3, waitTime: 2, equipment: 3, staff: 4 },
   },
   {
     id: "gare-tanger-ville-tangier",
@@ -516,6 +600,8 @@ export const establishments: Establishment[] = [
     reviews: 165,
     complaints: 3,
     recentSignal: "High-speed Al Boraq arrivals running on time",
+    overallScore: 7,
+    scoreCategories: { bribery: 8, hygiene: 7, waitTime: 6, equipment: 7, staff: 7 },
   },
   {
     id: "cafe-hafa-tangier",
@@ -528,6 +614,8 @@ export const establishments: Establishment[] = [
     reviews: 205,
     complaints: 2,
     recentSignal: "Stunning views of the Strait of Gibraltar",
+    overallScore: 7,
+    scoreCategories: { bribery: 8, hygiene: 7, waitTime: 6, equipment: 7, staff: 7 },
   },
   {
     id: "port-tanger-ville-tangier",
@@ -540,6 +628,8 @@ export const establishments: Establishment[] = [
     reviews: 140,
     complaints: 12,
     recentSignal: "Customs check queue times increased",
+    overallScore: 3,
+    scoreCategories: { bribery: 4, hygiene: 4, waitTime: 2, equipment: 3, staff: 3 },
   },
   {
     id: "souk-el-had-market-agadir",
@@ -552,6 +642,8 @@ export const establishments: Establishment[] = [
     reviews: 290,
     complaints: 8,
     recentSignal: "Massive market layout, parking challenges",
+    overallScore: 5,
+    scoreCategories: { bribery: 6, hygiene: 5, waitTime: 4, equipment: 5, staff: 5 },
   },
   {
     id: "aeroport-al-massira-agadir",
@@ -564,6 +656,8 @@ export const establishments: Establishment[] = [
     reviews: 110,
     complaints: 4,
     recentSignal: "Smooth check-in, passenger queues normal",
+    overallScore: 6,
+    scoreCategories: { bribery: 8, hygiene: 6, waitTime: 5, equipment: 6, staff: 6 },
   },
 ];
 
@@ -626,5 +720,10 @@ export const markers = establishments.map((item) => ({
   coordinates: item.coordinates,
   showCallout: false,
   zIndex: item.status === "priority" ? 10 : 1,
-  tintColor: categoryColors[item.category] || "red",
+  tintColor:
+    item.overallScore !== undefined && item.overallScore >= 7
+      ? "#22C55E"
+      : item.overallScore !== undefined && item.overallScore >= 4
+        ? "#EAB308"
+        : "#EF4444",
 }));

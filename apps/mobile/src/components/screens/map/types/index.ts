@@ -12,4 +12,12 @@ export type Establishment = {
   reviews: number;
   complaints: number;
   recentSignal: string;
+  overallScore?: number;
+  scoreCategories?: {
+    bribery: number;
+    hygiene: number;
+    waitTime: number;
+    equipment: number;
+    staff: number;
+  };
 };

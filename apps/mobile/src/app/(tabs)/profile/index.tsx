@@ -22,10 +22,8 @@ export default function ProfileScreen() {
   const termsRef = useRef<AppBottomSheetModalRef>(null);
 
   return (
-    <SafeScreen safeArea="top" scrollable contentClassName="gap-5 pb-10">
+    <SafeScreen safeArea="top" scrollable contentClassName="gap-2 pb-10">
       <ProfileHeader />
-
-      <Separator />
 
       <Surface className="gap-3">
         <SectionHeader title={t("profile.account")} />
@@ -50,8 +48,6 @@ export default function ProfileScreen() {
         />
       </Surface>
 
-      <View className="py-2" />
-
       <Surface className="gap-3">
         <SectionHeader title={t("profile.setting")} />
         <SettingsRow
@@ -68,8 +64,6 @@ export default function ProfileScreen() {
           isLast
         />
       </Surface>
-
-      <Separator />
 
       <Surface className="gap-3">
         <SectionHeader title={t("profile.general")} />
@@ -111,8 +105,6 @@ export default function ProfileScreen() {
           isLast
         />
       </Surface>
-
-      <View className="py-2" />
 
       <Surface className="gap-3">
         <SectionHeader title={t("profile.faq")} />
