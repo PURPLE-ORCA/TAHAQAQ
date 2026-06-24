@@ -28,19 +28,19 @@ export default function ProfileScreen() {
       <Surface className="gap-3">
         <SectionHeader title={t("profile.account")} />
         <SettingsRow
-          icon="pencil-outline"
+          icon="pencil"
           title={t("profile.editProfile")}
           subtitle={t("profile.updateYourPersonalInfo")}
           onPress={() => {}}
         />
         <SettingsRow
-          icon="document-text-outline"
+          icon="document-text"
           title={t("profile.myReports")}
           subtitle={t("profile.submittedCount", { count: 8 })}
           onPress={() => {}}
         />
         <SettingsRow
-          icon="notifications-outline"
+          icon="notifications"
           title={t("profile.notifications")}
           subtitle={t("profile.newCount", { count: 3 })}
           onPress={() => {}}
@@ -51,13 +51,13 @@ export default function ProfileScreen() {
       <Surface className="gap-3">
         <SectionHeader title={t("profile.setting")} />
         <SettingsRow
-          icon="globe-outline"
+          icon="globe"
           title={t("settings.language")}
           subtitle={t("settings.appPreferences")}
           onPress={() => router.push("/profile/language")}
         />
         <SettingsRow
-          icon="moon-outline"
+          icon="moon"
           title={t("settings.appearance")}
           subtitle={t("profile.darkModeTheme")}
           onPress={() => router.push("/profile/appearance")}
@@ -68,37 +68,37 @@ export default function ProfileScreen() {
       <Surface className="gap-3">
         <SectionHeader title={t("profile.general")} />
         <SettingsRow
-          icon="help-circle-outline"
+          icon="help-circle"
           title={t("about.howItWorks")}
           subtitle={t("about.learnHowItWorks")}
           onPress={() => howItWorksRef.current?.present()}
         />
         <SettingsRow
-          icon="shield-checkmark-outline"
+          icon="shield-checkmark"
           title={t("about.privacyPolicy")}
           subtitle={t("about.yourDataIsSafe")}
           onPress={() => privacyRef.current?.present()}
         />
         <SettingsRow
-          icon="document-text-outline"
+          icon="document-text"
           title={t("about.terms")}
           subtitle={t("about.usageTerms")}
           onPress={() => termsRef.current?.present()}
         />
         <SettingsRow
-          icon="chatbubble-outline"
+          icon="chatbubble"
           title={t("about.contactUs")}
           subtitle={t("about.getInTouch")}
           onPress={() => {}}
         />
         <SettingsRow
-          icon="information-circle-outline"
+          icon="information-circle"
           title={t("about.aboutTahaqaq")}
           subtitle={t("profile.version")}
           onPress={() => {}}
         />
         <SettingsRow
-          icon="log-out-outline"
+          icon="log-out"
           title={t("about.signOut")}
           variant="danger"
           onPress={() => {}}
