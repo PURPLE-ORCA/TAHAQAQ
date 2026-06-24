@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import { Card, Button, Surface, Typography } from "heroui-native";
-import { AuditCategoryId, Choice, EquipmentCondition } from "../types";
+import { AuditCategoryId, CategoryAnswers } from "../types";
 import { categoryEmoji, categoryLabel } from "../lib/utils";
 import { HygieneDetail } from "./HygieneDetail";
 import { StaffDetail } from "./StaffDetail";
@@ -12,20 +12,12 @@ interface CategoryDetailStepProps {
   currentCategory: AuditCategoryId;
   currentCategoryIndex: number;
   totalCategories: number;
-  hygieneRating: number;
-  setHygieneRating: (val: number) => void;
-  staffPresent: Choice;
-  setStaffPresent: (val: Choice) => void;
-  waitMinutes: number;
-  setWaitMinutes: (val: number) => void;
-  equipmentCondition: EquipmentCondition;
-  setEquipmentCondition: (val: EquipmentCondition) => void;
-  briberyExperienced: Choice;
-  setBriberyExperienced: (val: Choice) => void;
-  briberyAmount: string;
-  setBriberyAmount: (val: string) => void;
-  briberyDescription: string;
-  setBriberyDescription: (val: string) => void;
+  currentAnswers: CategoryAnswers[AuditCategoryId];
+  updateAnswer: <K extends keyof CategoryAnswers[AuditCategoryId]>(
+    categoryId: AuditCategoryId,
+    field: K,
+    value: CategoryAnswers[AuditCategoryId][K],
+  ) => void;
   advanceCategory: () => void;
 }
 
@@ -33,20 +25,8 @@ export function CategoryDetailStep({
   currentCategory,
   currentCategoryIndex,
   totalCategories,
-  hygieneRating,
-  setHygieneRating,
-  staffPresent,
-  setStaffPresent,
-  waitMinutes,
-  setWaitMinutes,
-  equipmentCondition,
-  setEquipmentCondition,
-  briberyExperienced,
-  setBriberyExperienced,
-  briberyAmount,
-  setBriberyAmount,
-  briberyDescription,
-  setBriberyDescription,
+  currentAnswers,
+  updateAnswer,
   advanceCategory,
 }: CategoryDetailStepProps) {
   return (
@@ -74,38 +54,50 @@ export function CategoryDetailStep({
 
           {currentCategory === "hygiene" && (
             <HygieneDetail
-              hygieneRating={hygieneRating}
-              setHygieneRating={setHygieneRating}
+              hygieneRating={currentAnswers.hygieneRating}
+              setHygieneRating={(val) =>
+                updateAnswer(currentCategory, "hygieneRating", val)
+              }
             />
           )}
           {currentCategory === "staff" && (
             <StaffDetail
-              staffPresent={staffPresent}
-              setStaffPresent={setStaffPresent}
-              waitMinutes={waitMinutes}
-              setWaitMinutes={setWaitMinutes}
+              staffPresent={currentAnswers.staffPresent}
+              setStaffPresent={(val) =>
+                updateAnswer(currentCategory, "staffPresent", val)
+              }
             />
           )}
           {currentCategory === "equipment" && (
             <EquipmentDetail
-              equipmentCondition={equipmentCondition}
-              setEquipmentCondition={setEquipmentCondition}
+              equipmentCondition={currentAnswers.equipmentCondition}
+              setEquipmentCondition={(val) =>
+                updateAnswer(currentCategory, "equipmentCondition", val)
+              }
             />
           )}
           {currentCategory === "bribery" && (
             <BriberyDetail
-              briberyExperienced={briberyExperienced}
-              setBriberyExperienced={setBriberyExperienced}
-              briberyAmount={briberyAmount}
-              setBriberyAmount={setBriberyAmount}
-              briberyDescription={briberyDescription}
-              setBriberyDescription={setBriberyDescription}
+              briberyExperienced={currentAnswers.briberyExperienced}
+              setBriberyExperienced={(val) =>
+                updateAnswer(currentCategory, "briberyExperienced", val)
+              }
+              briberyAmount={currentAnswers.briberyAmount}
+              setBriberyAmount={(val) =>
+                updateAnswer(currentCategory, "briberyAmount", val)
+              }
+              briberyDescription={currentAnswers.briberyDescription}
+              setBriberyDescription={(val) =>
+                updateAnswer(currentCategory, "briberyDescription", val)
+              }
             />
           )}
           {currentCategory === "wait-time" && (
             <WaitTimeDetail
-              waitMinutes={waitMinutes}
-              setWaitMinutes={setWaitMinutes}
+              waitMinutes={currentAnswers.waitMinutes}
+              setWaitMinutes={(val) =>
+                updateAnswer(currentCategory, "waitMinutes", val)
+              }
             />
           )}
         </View>

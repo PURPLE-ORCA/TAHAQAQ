@@ -42,7 +42,69 @@ export const EQUIPMENT_CONDITIONS: Array<{
   { id: "locked", label: "Locked away" },
 ];
 
+export const DEFAULT_WAIT_MINUTES = 30;
+
+export type CategoryAnswers = Record<
+  AuditCategoryId,
+  {
+    hygieneRating: number;
+    staffPresent: Choice;
+    waitMinutes: number;
+    equipmentCondition: EquipmentCondition;
+    briberyExperienced: Choice;
+    briberyAmount: string;
+    briberyDescription: string;
+  }
+>;
+
+export const DEFAULT_ANSWERS: CategoryAnswers = {
+  hygiene: {
+    hygieneRating: 4,
+    staffPresent: "unknown",
+    waitMinutes: DEFAULT_WAIT_MINUTES,
+    equipmentCondition: "used",
+    briberyExperienced: "unknown",
+    briberyAmount: "",
+    briberyDescription: "",
+  },
+  staff: {
+    hygieneRating: 4,
+    staffPresent: "unknown",
+    waitMinutes: DEFAULT_WAIT_MINUTES,
+    equipmentCondition: "used",
+    briberyExperienced: "unknown",
+    briberyAmount: "",
+    briberyDescription: "",
+  },
+  equipment: {
+    hygieneRating: 4,
+    staffPresent: "unknown",
+    waitMinutes: DEFAULT_WAIT_MINUTES,
+    equipmentCondition: "used",
+    briberyExperienced: "unknown",
+    briberyAmount: "",
+    briberyDescription: "",
+  },
+  bribery: {
+    hygieneRating: 4,
+    staffPresent: "unknown",
+    waitMinutes: DEFAULT_WAIT_MINUTES,
+    equipmentCondition: "used",
+    briberyExperienced: "unknown",
+    briberyAmount: "",
+    briberyDescription: "",
+  },
+  "wait-time": {
+    hygieneRating: 4,
+    staffPresent: "unknown",
+    waitMinutes: DEFAULT_WAIT_MINUTES,
+    equipmentCondition: "used",
+    briberyExperienced: "unknown",
+    briberyAmount: "",
+    briberyDescription: "",
+  },
+};
+
 export const STAR_VALUES = [1, 2, 3, 4, 5];
 export const COMMENT_MAX = 500;
 export const BRIBERY_DESCRIPTION_MAX = 200;
-export const DEFAULT_WAIT_MINUTES = 30;

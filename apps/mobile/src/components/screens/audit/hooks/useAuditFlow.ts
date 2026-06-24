@@ -6,9 +6,8 @@ import {
   AuditStep,
   AuditCategoryId,
   AuditParams,
-  EquipmentCondition,
-  Choice,
-  DEFAULT_WAIT_MINUTES,
+  CategoryAnswers,
+  DEFAULT_ANSWERS,
 } from "../types";
 import { getNearestEstablishment, getCategorySummary } from "../lib/utils";
 
@@ -60,15 +59,7 @@ export function useAuditFlow() {
     AuditCategoryId[]
   >([]);
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
-  const [hygieneRating, setHygieneRating] = useState(4);
-  const [staffPresent, setStaffPresent] = useState<Choice>("unknown");
-  const [waitMinutes, setWaitMinutes] = useState(DEFAULT_WAIT_MINUTES);
-  const [equipmentCondition, setEquipmentCondition] =
-    useState<EquipmentCondition>("used");
-  const [briberyExperienced, setBriberyExperienced] =
-    useState<Choice>("unknown");
-  const [briberyAmount, setBriberyAmount] = useState("");
-  const [briberyDescription, setBriberyDescription] = useState("");
+  const [answers, setAnswers] = useState<CategoryAnswers>(DEFAULT_ANSWERS);
   const [comment, setComment] = useState("");
   const [submissionCount, setSubmissionCount] = useState(0);
 
@@ -117,25 +108,28 @@ export function useAuditFlow() {
 
   const currentCategory = selectedCategories[currentCategoryIndex];
 
+  const currentAnswers = currentCategory ? answers[currentCategory] : undefined;
+
+  const updateAnswer = <K extends keyof CategoryAnswers[AuditCategoryId]>(
+    categoryId: AuditCategoryId,
+    field: K,
+    value: CategoryAnswers[AuditCategoryId][K],
+  ) => {
+    setAnswers((prev) => ({
+      ...prev,
+      [categoryId]: {
+        ...prev[categoryId],
+        [field]: value,
+      },
+    }));
+  };
+
   const selectedCategorySummaries = useMemo(
     () =>
       selectedCategories.map((cat) =>
-        getCategorySummary(cat, {
-          hygieneRating,
-          staffPresent,
-          equipmentCondition,
-          briberyExperienced,
-          waitMinutes,
-        }),
+        getCategorySummary(cat, answers[cat]),
       ),
-    [
-      selectedCategories,
-      hygieneRating,
-      staffPresent,
-      equipmentCondition,
-      briberyExperienced,
-      waitMinutes,
-    ],
+    [selectedCategories, answers],
   );
 
   const resetFlow = () => {
@@ -144,13 +138,7 @@ export function useAuditFlow() {
     setSearchQuery("");
     setSelectedCategories([]);
     setCurrentCategoryIndex(0);
-    setHygieneRating(4);
-    setStaffPresent("unknown");
-    setWaitMinutes(DEFAULT_WAIT_MINUTES);
-    setEquipmentCondition("used");
-    setBriberyExperienced("unknown");
-    setBriberyAmount("");
-    setBriberyDescription("");
+    setAnswers(DEFAULT_ANSWERS);
     setComment("");
   };
 
@@ -190,20 +178,9 @@ export function useAuditFlow() {
     selectedCategories,
     currentCategoryIndex,
     setCurrentCategoryIndex,
-    hygieneRating,
-    setHygieneRating,
-    staffPresent,
-    setStaffPresent,
-    waitMinutes,
-    setWaitMinutes,
-    equipmentCondition,
-    setEquipmentCondition,
-    briberyExperienced,
-    setBriberyExperienced,
-    briberyAmount,
-    setBriberyAmount,
-    briberyDescription,
-    setBriberyDescription,
+    answers,
+    currentAnswers,
+    updateAnswer,
     comment,
     setComment,
     submissionCount,

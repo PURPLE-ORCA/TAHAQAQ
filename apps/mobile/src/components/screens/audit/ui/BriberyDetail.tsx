@@ -24,7 +24,7 @@ export function BriberyDetail({
       <View className="gap-2">
         <Label>Did you experience bribery?</Label>
         <View className="flex-row gap-2">
-          {(["yes", "no"] as const).map((value) => (
+          {(["yes", "no", "unknown"] as const).map((value) => (
             <Button
               key={value}
               variant={briberyExperienced === value ? "primary" : "secondary"}
@@ -32,7 +32,9 @@ export function BriberyDetail({
               className="flex-1 rounded-2xl"
               onPress={() => setBriberyExperienced(value)}
             >
-              <Button.Label>{value === "yes" ? "Yes" : "No"}</Button.Label>
+              <Button.Label>
+                {value === "yes" ? "Yes" : value === "no" ? "No" : "Prefer not to say"}
+              </Button.Label>
             </Button>
           ))}
         </View>

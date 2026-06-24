@@ -41,20 +41,8 @@ export default function AuditScreen() {
     setCurrentCategoryIndex,
     currentCategory,
     currentCategoryIndex,
-    hygieneRating,
-    setHygieneRating,
-    staffPresent,
-    setStaffPresent,
-    waitMinutes,
-    setWaitMinutes,
-    equipmentCondition,
-    setEquipmentCondition,
-    briberyExperienced,
-    setBriberyExperienced,
-    briberyAmount,
-    setBriberyAmount,
-    briberyDescription,
-    setBriberyDescription,
+    currentAnswers,
+    updateAnswer,
     advanceCategory,
     comment,
     setComment,
@@ -100,25 +88,13 @@ export default function AuditScreen() {
             setStep={setStep}
           />
         )}
-        {step === 3 && currentCategory && (
+        {step === 3 && currentCategory && currentAnswers && (
           <CategoryDetailStep
             currentCategory={currentCategory}
             currentCategoryIndex={currentCategoryIndex}
             totalCategories={selectedCategories.length}
-            hygieneRating={hygieneRating}
-            setHygieneRating={setHygieneRating}
-            staffPresent={staffPresent}
-            setStaffPresent={setStaffPresent}
-            waitMinutes={waitMinutes}
-            setWaitMinutes={setWaitMinutes}
-            equipmentCondition={equipmentCondition}
-            setEquipmentCondition={setEquipmentCondition}
-            briberyExperienced={briberyExperienced}
-            setBriberyExperienced={setBriberyExperienced}
-            briberyAmount={briberyAmount}
-            setBriberyAmount={setBriberyAmount}
-            briberyDescription={briberyDescription}
-            setBriberyDescription={setBriberyDescription}
+            currentAnswers={currentAnswers}
+            updateAnswer={updateAnswer}
             advanceCategory={advanceCategory}
           />
         )}

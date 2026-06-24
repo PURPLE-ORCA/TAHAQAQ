@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import Animated, { FadeIn, LinearTransition } from "react-native-reanimated";
 import { Button, Surface, Typography } from "heroui-native";
+import { Icon } from "@/components/ui/icon";
 import { router } from "expo-router";
 
 interface ThankYouStepProps {
@@ -20,7 +21,7 @@ export function ThankYouStep({
         className="items-center gap-4"
       >
         <View className="size-20 items-center justify-center rounded-full bg-accent/10">
-          <Typography type="h2">✅</Typography>
+          <Icon name="checkmark-circle" size={40} className="text-accent" />
         </View>
         <View className="items-center gap-2">
           <Typography type="h3" weight="semibold">

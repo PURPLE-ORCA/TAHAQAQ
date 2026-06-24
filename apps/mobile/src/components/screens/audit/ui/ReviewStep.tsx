@@ -87,16 +87,21 @@ export function ReviewStep({
               <Typography type="body-sm" weight="semibold">
                 3. Details
               </Typography>
-              <Button
-                variant="secondary"
-                size="sm"
-                onPress={() => {
-                  setCurrentCategoryIndex(0);
-                  setStep(3);
-                }}
-              >
-                <Button.Label>Edit</Button.Label>
-              </Button>
+              {selectedCategories.map((cat, idx) => (
+                <Button
+                  key={cat}
+                  variant="secondary"
+                  size="sm"
+                  onPress={() => {
+                    setCurrentCategoryIndex(idx);
+                    setStep(3);
+                  }}
+                >
+                  <Button.Label>
+                    Edit {categoryEmoji(cat)}
+                  </Button.Label>
+                </Button>
+              ))}
             </View>
             {selectedCategorySummaries.length > 0 ? (
               <View className="gap-1">

@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { Button, Card, Input, Label, Surface, Typography } from "heroui-native";
+import * as Location from "expo-location";
 import { Establishment } from "@/components/screens/map/types";
 import { AuditStep } from "../types";
 
@@ -35,6 +36,19 @@ export function LocationStep({
   setManualMode,
   setStep,
 }: LocationStepProps) {
+  const handleRetry = async () => {
+    try {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status === "granted") {
+        // Re-trigger location by clearing the error — the parent flow
+        // will re-request location on next render
+        window.location?.reload?.();
+      }
+    } catch {
+      // Silently fail — user can still pick manually
+    }
+  };
+
   return (
     <Surface className="gap-4 rounded-3xl p-4">
       <View className="gap-2">
@@ -80,6 +94,19 @@ export function LocationStep({
               ? "Location permission is off, so you can confirm manually."
               : `Suggested from ${hasRouteEstablishment ? "the map pin" : "your current location"}.`}
           </Typography>
+
+          {errorMsg && (
+            <View className="flex-row items-center gap-2">
+              <Button
+                variant="secondary"
+                size="sm"
+                onPress={handleRetry}
+                className="rounded-2xl"
+              >
+                <Button.Label>Try Again</Button.Label>
+              </Button>
+            </View>
+          )}
         </View>
       </Card>
 

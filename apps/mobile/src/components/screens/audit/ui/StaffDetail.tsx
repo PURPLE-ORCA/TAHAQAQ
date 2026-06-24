@@ -1,20 +1,15 @@
 import { View } from "react-native";
 import { Button, Label } from "heroui-native";
 import { Choice } from "../types";
-import { WaitTimeSlider } from "./WaitTimeSlider";
 
 interface StaffDetailProps {
   staffPresent: Choice;
   setStaffPresent: (choice: Choice) => void;
-  waitMinutes: number;
-  setWaitMinutes: (minutes: number) => void;
 }
 
 export function StaffDetail({
   staffPresent,
   setStaffPresent,
-  waitMinutes,
-  setWaitMinutes,
 }: StaffDetailProps) {
   return (
     <View className="gap-4">
@@ -34,11 +29,6 @@ export function StaffDetail({
           ))}
         </View>
       </View>
-
-      <WaitTimeSlider
-        waitMinutes={waitMinutes}
-        setWaitMinutes={setWaitMinutes}
-      />
     </View>
   );
 }

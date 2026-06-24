@@ -2,8 +2,7 @@ import { establishments } from "@/components/screens/map/lib/constants";
 import {
   AUDIT_CATEGORIES,
   AuditCategoryId,
-  Choice,
-  EquipmentCondition,
+  CategoryAnswers,
 } from "../types";
 
 function toRadians(value: number) {
@@ -61,13 +60,7 @@ export function categoryEmoji(categoryId: AuditCategoryId) {
 
 export function getCategorySummary(
   category: AuditCategoryId,
-  details: {
-    hygieneRating: number;
-    staffPresent: Choice;
-    equipmentCondition: EquipmentCondition;
-    briberyExperienced: Choice;
-    waitMinutes: number;
-  },
+  details: CategoryAnswers[AuditCategoryId],
 ) {
   const emoji = categoryEmoji(category);
   const label = categoryLabel(category);
