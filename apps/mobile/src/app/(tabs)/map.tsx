@@ -18,6 +18,8 @@ export default function MapScreen() {
     searchQuery,
     searchResults,
     isSearching,
+    showRedOnly,
+    toggleRedOnly,
     handleSearch,
     selectEstablishment,
     clearSearch,
@@ -68,6 +70,8 @@ export default function MapScreen() {
           searchQuery={searchQuery}
           searchResults={searchResults}
           isSearching={isSearching}
+          showRedOnly={showRedOnly}
+          toggleRedOnly={toggleRedOnly}
           handleSearch={handleSearch}
           selectEstablishment={selectEstablishment}
           clearSearch={clearSearch}
