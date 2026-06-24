@@ -29,7 +29,7 @@ export default function TabsLayout() {
         options={{
           title: t("tabs.home"),
           tabBarIcon: ({ color, size }) => (
-            <Icon name="home-outline" size={size} color={color} />
+            <Icon name="home" size={size} color={color} />
           ),
         }}
       />
@@ -38,7 +38,7 @@ export default function TabsLayout() {
         options={{
           title: t("tabs.map"),
           tabBarIcon: ({ color, size }) => (
-            <Icon name="map-outline" size={size} color={color} />
+            <Icon name="map" size={size} color={color} />
           ),
         }}
       />
@@ -47,7 +47,7 @@ export default function TabsLayout() {
         options={{
           title: t("tabs.profile"),
           tabBarIcon: ({ color, size }) => (
-            <Icon name="person-outline" size={size} color={color} />
+            <Icon name="person" size={size} color={color} />
           ),
         }}
       />
