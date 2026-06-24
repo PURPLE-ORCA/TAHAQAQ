@@ -11,6 +11,8 @@ type Props = {
   searchQuery: string;
   searchResults: Establishment[];
   isSearching: boolean;
+  showRedOnly: boolean;
+  toggleRedOnly: () => void;
   handleSearch: (query: string) => void;
   selectEstablishment: (id: string) => void;
   clearSearch: () => void;
@@ -22,6 +24,8 @@ export function EstablishmentSearch({
   searchQuery,
   searchResults,
   isSearching,
+  showRedOnly,
+  toggleRedOnly,
   handleSearch,
   selectEstablishment,
   clearSearch,
@@ -74,18 +78,43 @@ export function EstablishmentSearch({
         )}
       </Card>
 
+      {/* Urgent Only Filter */}
+      {isSearching && searchQuery.trim().length > 0 && (
+        <View className="flex-row">
+          <Pressable
+            onPress={toggleRedOnly}
+            className={`flex-row items-center rounded-full px-3 py-1.5 gap-1.5 ${
+              showRedOnly
+                ? "bg-red-500"
+                : "bg-background/80 border border-border/30"
+            }`}
+          >
+            <Text
+              variant="xsBold"
+              className={showRedOnly ? "text-white" : "text-muted"}
+            >
+              🔴 Urgent only
+            </Text>
+          </Pressable>
+        </View>
+      )}
+
       {/* Results Dropdown */}
       {isSearching && searchQuery.trim().length > 0 && (
         <Card className="bg-background/95 border border-border/30 rounded-2xl overflow-hidden shadow-2xl max-h-[300px]">
           <ScrollView keyboardShouldPersistTaps="handled">
             {searchResults.length === 0 ? (
-              <View className="py-4 px-4 items-center justify-center">
-                <Text variant="small" className="text-muted">
-                  {t("map.noResults")}
+              <View className="py-6 px-4 items-center justify-center">
+                <Icon name="search-outline" size={24} className="text-muted mb-2" />
+                <Text variant="small" className="text-muted text-center">
+                  No establishments match "{searchQuery}"
+                </Text>
+                <Text variant="xs" className="text-muted/60 text-center mt-1">
+                  Try searching by name, category, or city
                 </Text>
               </View>
             ) : (
-              searchResults.slice(0, 5).map((est) => {
+              searchResults.slice(0, 8).map((est) => {
                 const distanceStr = formatDistance(est);
                 return (
                   <Pressable
@@ -110,6 +139,19 @@ export function EstablishmentSearch({
                           {distanceStr}
                         </Text>
                       ) : null}
+                      {est.overallScore !== undefined && (
+                        <View className={`rounded-full w-8 h-8 items-center justify-center ${
+                          est.overallScore >= 7 ? "bg-green-500" :
+                          est.overallScore >= 4 ? "bg-yellow-500" : "bg-red-500"
+                        }`}>
+                          <Text variant="xsBold" className={
+                            est.overallScore >= 4 && est.overallScore < 7
+                              ? "text-neutral-900" : "text-white"
+                          }>
+                            {est.overallScore.toFixed(1)}
+                          </Text>
+                        </View>
+                      )}
                       <View className={`rounded-full px-2 py-0.5 ${statusStyles[est.status]}`}>
                         <Text variant="xsBold" className={statusStyles[est.status]} style={{ fontSize: 9 }}>
                           {est.status.toUpperCase()}

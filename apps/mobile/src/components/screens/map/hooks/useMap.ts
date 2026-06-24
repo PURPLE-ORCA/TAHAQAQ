@@ -396,10 +396,32 @@ export function useMap() {
     }
   };
 
+  const toggleRedOnly = () => {
+    setShowRedOnly((prev) => {
+      const next = !prev;
+      if (searchQuery.trim()) {
+        const normalizedQuery = searchQuery.toLowerCase().trim();
+        const filtered = establishments.filter((est) => {
+          return (
+            est.name.toLowerCase().includes(normalizedQuery) ||
+            est.category.toLowerCase().includes(normalizedQuery) ||
+            est.city.toLowerCase().includes(normalizedQuery)
+          );
+        });
+        const redFiltered = next
+          ? filtered.filter((est) => est.overallScore != null && est.overallScore < 4)
+          : filtered;
+        setSearchResults(redFiltered);
+      }
+      return next;
+    });
+  };
+
   const clearSearch = () => {
     setSearchQuery("");
     setSearchResults([]);
     setIsSearching(false);
+    setShowRedOnly(false);
     if (debounceTimerRef.current) {
       clearTimeout(debounceTimerRef.current);
     }
@@ -418,6 +440,8 @@ export function useMap() {
     searchQuery,
     searchResults,
     isSearching,
+    showRedOnly,
+    toggleRedOnly,
     handleSearch,
     selectEstablishment,
     clearSearch,

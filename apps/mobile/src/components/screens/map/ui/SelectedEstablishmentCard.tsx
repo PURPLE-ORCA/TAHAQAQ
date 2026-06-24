@@ -32,13 +32,13 @@ export function SelectedEstablishmentCard({ selected, onPress }: Props) {
   if (score !== undefined) {
     if (score >= 7) {
       scoreBg = "bg-green-500";
-      scoreTextColor = "text-white";
+      scoreTextColor = "text-neutral-900";
     } else if (score >= 4) {
       scoreBg = "bg-yellow-500";
       scoreTextColor = "text-neutral-900";
     } else {
       scoreBg = "bg-red-500";
-      scoreTextColor = "text-white";
+      scoreTextColor = "text-neutral-900";
     }
   }
 

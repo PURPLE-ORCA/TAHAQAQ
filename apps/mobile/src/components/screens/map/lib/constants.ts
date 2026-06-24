@@ -1226,6 +1226,12 @@ export const markers = establishments.map((item) => ({
   coordinates: item.coordinates,
   showCallout: false,
   zIndex: item.status === "priority" ? 10 : 1,
+  title: item.overallScore !== undefined
+    ? `Score: ${item.overallScore.toFixed(1)}`
+    : undefined,
+  monogram: item.overallScore !== undefined
+    ? item.overallScore.toFixed(1)
+    : undefined,
   tintColor:
     item.overallScore !== undefined && item.overallScore >= 7
       ? "#22C55E"
