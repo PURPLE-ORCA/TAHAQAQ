@@ -12,6 +12,7 @@ import {
 } from "heroui-native";
 import { Icon } from "@/components/ui/icon";
 import { View } from "react-native";
+import { router } from "expo-router";
 
 import { SafeScreen } from "@/components/layout/SafeScreen";
 import { identifyingWomanVector } from "@tahaqaq/assets/vectors";
@@ -84,7 +85,7 @@ export default function LoginScreen() {
             <Button
               variant="outline"
               size="md"
-              onPress={() => console.log("Anonymous login")}
+              onPress={() => router.replace("/")}
             >
               <Icon name="person-outline" size={18} />
               <Button.Label>{t("auth.continueAnonymously")}</Button.Label>
