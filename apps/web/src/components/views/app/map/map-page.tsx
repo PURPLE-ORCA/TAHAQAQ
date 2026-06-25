@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useRef } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import type MapLibreGL from "maplibre-gl";
 import {
   Map,
@@ -38,6 +38,7 @@ import {
   Search,
   MapPin,
   AlertTriangle,
+  Flame,
   Star,
   FileText,
   Camera,
@@ -446,6 +447,7 @@ export function MapPage() {
     establishmentId: string;
     establishmentName: string;
   } | null>(null);
+  const [mapMode, setMapMode] = useState<"markers" | "heatmap">("markers");
   const mapRef = useRef<MapLibreGL.Map | null>(null);
 
   const handleReviewClick = (establishmentId: string) => {
@@ -490,6 +492,215 @@ export function MapPage() {
     [selectedId]
   );
 
+  /* ---- Heatmap data ---- */
+  const HEATMAP_SOURCE_ID = "establishments-heatmap";
+  const HEATMAP_LAYER_ID = "establishments-heat";
+
+  const heatmapGeoJSON = useMemo(
+    () => ({
+      type: "FeatureCollection" as const,
+      features: filteredEstablishments.map((est) => ({
+        type: "Feature" as const,
+        geometry: {
+          type: "Point" as const,
+          coordinates: [est.coordinates.longitude, est.coordinates.latitude],
+        },
+        properties: { score: est.overallScore },
+      })),
+    }),
+    [filteredEstablishments]
+  );
+
+  /* ---- Add / remove heatmap layer on mode change ---- */
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !map.isStyleLoaded()) return;
+
+    if (mapMode === "heatmap") {
+      if (!map.getSource(HEATMAP_SOURCE_ID)) {
+        map.addSource(HEATMAP_SOURCE_ID, {
+          type: "geojson",
+          data: heatmapGeoJSON,
+        });
+      }
+      if (!map.getLayer(HEATMAP_LAYER_ID)) {
+        map.addLayer({
+          id: HEATMAP_LAYER_ID,
+          type: "heatmap",
+          source: HEATMAP_SOURCE_ID,
+          maxzoom: 15,
+          paint: {
+            "heatmap-weight": [
+              "interpolate",
+              ["linear"],
+              ["get", "score"],
+              0,
+              1.0,
+              10,
+              0.1,
+            ],
+            "heatmap-intensity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              0,
+              0.5,
+              9,
+              1.5,
+              15,
+              3,
+            ],
+            "heatmap-color": [
+              "interpolate",
+              ["linear"],
+              ["heatmap-density"],
+              0,
+              "rgba(0,0,0,0)",
+              0.15,
+              "rgba(242,201,76,0.4)",
+              0.35,
+              "rgba(242,201,76,0.8)",
+              0.6,
+              "rgba(186,26,26,0.8)",
+              1.0,
+              "rgba(186,26,26,1.0)",
+            ],
+            "heatmap-radius": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              0,
+              2,
+              9,
+              25,
+              15,
+              45,
+            ],
+            "heatmap-opacity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              7,
+              0.75,
+              15,
+              0.45,
+            ],
+          },
+        });
+      }
+    } else {
+      if (map.getLayer(HEATMAP_LAYER_ID)) {
+        map.removeLayer(HEATMAP_LAYER_ID);
+      }
+      if (map.getSource(HEATMAP_SOURCE_ID)) {
+        map.removeSource(HEATMAP_SOURCE_ID);
+      }
+    }
+  }, [mapMode, heatmapGeoJSON]);
+
+  /* ---- Sync source data when filters change while in heatmap mode ---- */
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || mapMode !== "heatmap") return;
+    const source = map.getSource(
+      HEATMAP_SOURCE_ID
+    ) as MapLibreGL.GeoJSONSource;
+    if (source) source.setData(heatmapGeoJSON);
+  }, [heatmapGeoJSON, mapMode]);
+
+  /* ---- Re-add heatmap after initial load or theme-triggered style reload ---- */
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || mapMode !== "heatmap") return;
+
+    const addHeatmapLayer = () => {
+      if (!map.isStyleLoaded()) return;
+      if (map.getLayer(HEATMAP_LAYER_ID)) return;
+      if (!map.getSource(HEATMAP_SOURCE_ID)) {
+        map.addSource(HEATMAP_SOURCE_ID, {
+          type: "geojson",
+          data: heatmapGeoJSON,
+        });
+      }
+      map.addLayer({
+        id: HEATMAP_LAYER_ID,
+        type: "heatmap",
+        source: HEATMAP_SOURCE_ID,
+        maxzoom: 15,
+        paint: {
+          "heatmap-weight": [
+            "interpolate",
+            ["linear"],
+            ["get", "score"],
+            0,
+            1.0,
+            10,
+            0.1,
+          ],
+          "heatmap-intensity": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            0,
+            0.5,
+            9,
+            1.5,
+            15,
+            3,
+          ],
+          "heatmap-color": [
+            "interpolate",
+            ["linear"],
+            ["heatmap-density"],
+            0,
+            "rgba(0,0,0,0)",
+            0.15,
+            "rgba(242,201,76,0.4)",
+            0.35,
+            "rgba(242,201,76,0.8)",
+            0.6,
+            "rgba(186,26,26,0.8)",
+            1.0,
+            "rgba(186,26,26,1.0)",
+          ],
+          "heatmap-radius": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            0,
+            2,
+            9,
+            25,
+            15,
+            45,
+          ],
+          "heatmap-opacity": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            7,
+            0.75,
+            15,
+            0.45,
+          ],
+        },
+      });
+    };
+
+    // Initial load: if map is already loaded, add immediately; otherwise wait
+    if (map.isStyleLoaded()) {
+      addHeatmapLayer();
+    } else {
+      map.on("load", addHeatmapLayer);
+    }
+    // Theme change: styledata fires when style reloads
+    map.on("styledata", addHeatmapLayer);
+    return () => {
+      map.off("load", addHeatmapLayer);
+      map.off("styledata", addHeatmapLayer);
+    };
+  }, [mapMode, heatmapGeoJSON]);
+
   return (
     <div className="flex h-svh max-h-svh flex-col overflow-hidden">
       {/* Stats bar */}
@@ -507,8 +718,9 @@ export function MapPage() {
             zoom={13}
             className="h-full w-full"
           >
-            {/* Markers */}
-            {filteredEstablishments.map((est) => {
+            {/* Markers — hidden in heatmap mode */}
+            {mapMode === "markers" &&
+              filteredEstablishments.map((est) => {
               const colors = scoreColor(est.overallScore);
               const isSelected = selectedId === est.id;
               return (
@@ -571,6 +783,36 @@ export function MapPage() {
               <span className="text-[10px] font-semibold uppercase tracking-wider text-[#006020] dark:text-[#a1f6a4]">
                 Rabat · Live Map
               </span>
+            </div>
+          </div>
+
+          {/* Heatmap / Markers toggle */}
+          <div className="absolute left-4 top-12 z-10 overflow-hidden rounded-lg bg-white/90 shadow-sm backdrop-blur-sm dark:bg-card/90">
+            <div className="flex">
+              <button
+                onClick={() => setMapMode("markers")}
+                className={cn(
+                  "flex items-center gap-1 px-3 py-1.5 text-[11px] font-medium transition-colors",
+                  mapMode === "markers"
+                    ? "bg-[#006020] text-white"
+                    : "text-muted-foreground hover:bg-muted/50"
+                )}
+              >
+                <MapPin className="size-3" />
+                Markers
+              </button>
+              <button
+                onClick={() => setMapMode("heatmap")}
+                className={cn(
+                  "flex items-center gap-1 px-3 py-1.5 text-[11px] font-medium transition-colors",
+                  mapMode === "heatmap"
+                    ? "bg-[#ba1a1a] text-white"
+                    : "text-muted-foreground hover:bg-muted/50"
+                )}
+              >
+                <Flame className="size-3" />
+                Heatmap
+              </button>
             </div>
           </div>
 
