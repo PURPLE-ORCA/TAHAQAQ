@@ -352,9 +352,9 @@ export function MapPage() {
   );
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-svh max-h-svh flex-col overflow-hidden">
       {/* Stats bar */}
-      <div className="border-b border-border/40 bg-white px-6 py-3 dark:bg-card/60">
+      <div className="flex-shrink-0 border-b border-border/40 bg-white px-6 py-3 dark:bg-card/60">
         <MapStatsBar items={filteredEstablishments} />
       </div>
 
