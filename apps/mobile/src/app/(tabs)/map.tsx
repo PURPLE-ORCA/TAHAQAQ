@@ -1,6 +1,5 @@
 import { Platform, View } from "react-native";
 import { AppleMaps, GoogleMaps } from "expo-maps";
-import { SafeScreen } from "@/components/layout/SafeScreen";
 import { useMap } from "@/components/screens/map/hooks/useMap";
 import { MapUnavailableFallback } from "@/components/screens/map/MapUnavailableFallback";
 import { mapProperties, markers } from "@/components/screens/map/lib/constants";
@@ -66,27 +65,18 @@ export default function MapScreen() {
           <MapUnavailableFallback />
         )}
 
-        <SafeScreen
-          safeArea="top"
-          className="absolute inset-0 bg-transparent"
-          contentClassName="bg-transparent"
-          contentHorizontalPadding={false}
-          contentPointerEvents="box-none"
-          pointerEvents="box-none"
-        >
-          <EstablishmentSearch
-            searchQuery={searchQuery}
-            searchResults={searchResults}
-            isSearching={isSearching}
-            showRedOnly={showRedOnly}
-            toggleRedOnly={toggleRedOnly}
-            handleSearch={handleSearch}
-            selectEstablishment={selectEstablishment}
-            clearSearch={clearSearch}
-            setIsSearching={setIsSearching}
-            cameraCenter={cameraCenter}
-          />
-        </SafeScreen>
+        <EstablishmentSearch
+          searchQuery={searchQuery}
+          searchResults={searchResults}
+          isSearching={isSearching}
+          showRedOnly={showRedOnly}
+          toggleRedOnly={toggleRedOnly}
+          handleSearch={handleSearch}
+          selectEstablishment={selectEstablishment}
+          clearSearch={clearSearch}
+          setIsSearching={setIsSearching}
+          cameraCenter={cameraCenter}
+        />
 
         <SelectedEstablishmentCard selected={selected} onPress={handleReview} />
       </View>

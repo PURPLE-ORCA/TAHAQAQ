@@ -1,4 +1,5 @@
 import { View, TextInput, Pressable, ScrollView, Keyboard } from "react-native";
+import { initialWindowMetrics } from "react-native-safe-area-context";
 import { Card } from "heroui-native";
 import { Text } from "@/components/ui/text";
 import { Icon } from "@/components/ui/icon";
@@ -33,6 +34,7 @@ export function EstablishmentSearch({
   cameraCenter,
 }: Props) {
   const { t } = useI18n();
+  const topOffset = (initialWindowMetrics?.insets.top ?? 0) + 16;
 
   const formatDistance = (est: Establishment) => {
     if (!cameraCenter) return "";
@@ -46,7 +48,10 @@ export function EstablishmentSearch({
   };
 
   return (
-    <View className="absolute top-4 left-6 right-6 z-50 gap-2">
+    <View
+      className="absolute left-6 right-6 z-50 gap-2"
+      style={{ top: topOffset }}
+    >
       {/* Click outside backdrop to dismiss results */}
       {isSearching && (
         <Pressable
@@ -107,7 +112,7 @@ export function EstablishmentSearch({
               <View className="py-6 px-4 items-center justify-center">
                 <Icon name="search-outline" size={24} className="text-muted mb-2" />
                 <Text variant="small" className="text-muted text-center">
-                  No establishments match "{searchQuery}"
+                  {`No establishments match '${searchQuery}'`}
                 </Text>
                 <Text variant="xs" className="text-muted/60 text-center mt-1">
                   Try searching by name, category, or city
