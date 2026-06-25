@@ -3,6 +3,7 @@ import {
   Button,
   Description,
   FieldError,
+  Icon,
   Input,
   InputOTP,
   Label,
@@ -78,6 +79,17 @@ export default function LoginScreen() {
               {error && !isOtpStep ? error : ""}
             </FieldError>
           </TextField>
+
+          {!isOtpStep && (
+            <Button
+              variant="outline"
+              size="md"
+              onPress={() => console.log("Anonymous login")}
+            >
+              <Icon name="person-outline" size={18} />
+              <Button.Label>{t("auth.continueAnonymously")}</Button.Label>
+            </Button>
+          )}
 
           {isOtpStep && (
             <View className="gap-3">

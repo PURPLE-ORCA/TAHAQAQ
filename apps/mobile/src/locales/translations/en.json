@@ -87,6 +87,7 @@
     "tooManyAttempts": "Too many attempts. Wait, then try again.",
     "invalidEmail": "Enter a valid email address.",
     "authFailed": "Auth failed. Try again.",
+    "continueAnonymously": "Continue Anonymously",
     "unknownError": "Unknown auth error"
   },
   "profile": {

@@ -87,6 +87,7 @@
     "tooManyAttempts": "Trop de tentatives. Attendez, puis réessayez.",
     "invalidEmail": "Entrez une adresse email valide.",
     "authFailed": "Échec de l'authentification. Réessayez.",
+    "continueAnonymously": "Continuer anonymement",
     "unknownError": "Erreur d'authentification inconnue"
   },
   "profile": {
