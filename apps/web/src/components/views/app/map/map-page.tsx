@@ -12,6 +12,12 @@ import {
 import { Text } from "@/components/ui/text";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import {
   establishments,
@@ -34,7 +40,6 @@ import {
   AlertTriangle,
   Star,
   FileText,
-  X,
   Camera,
 } from "lucide-react";
 
@@ -88,49 +93,36 @@ function StatusPill({ status }: { status: EstablishmentStatus }) {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Reports modal                                                              */
+/*  Reports sheet (right side panel)                                           */
 /* -------------------------------------------------------------------------- */
 
-function ReportsModal({
+function ReportsSheet({
+  open,
+  onOpenChange,
   establishmentName,
   reports,
-  onClose,
 }: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
   establishmentName: string;
   reports: Report[];
-  onClose: () => void;
 }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      {/* Modal */}
-      <div className="relative z-10 mx-4 flex max-h-[80vh] w-full max-w-lg flex-col rounded-2xl border border-border/50 bg-white shadow-2xl dark:bg-card/95">
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent side="right" className="w-[420px] sm:max-w-[420px] p-0">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-border/40 px-5 py-4">
+        <SheetHeader className="border-b border-border/40 px-5 py-4">
           <div className="flex items-center gap-2">
             <FileText className="size-4 text-[#006020]" />
-            <Text as="h2" variant="h5">
-              Reports
-            </Text>
+            <SheetTitle>Reports</SheetTitle>
             <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
               {reports.length}
             </span>
           </div>
-          <Button variant="ghost" size="sm" className="size-8 p-0" onClick={onClose}>
-            <X className="size-4" />
-          </Button>
-        </div>
-
-        {/* Establishment name */}
-        <div className="border-b border-border/20 px-5 py-2">
           <Text variant="small" className="font-medium text-[#006020]">
             {establishmentName}
           </Text>
-        </div>
+        </SheetHeader>
 
         {/* Reports list */}
         <div className="flex-1 overflow-y-auto px-5 py-4">
@@ -202,8 +194,8 @@ function ReportsModal({
             </div>
           )}
         </div>
-      </div>
-    </div>
+      </SheetContent>
+    </Sheet>
   );
 }
 
@@ -625,14 +617,15 @@ export function MapPage() {
         </div>
       </div>
 
-      {/* Reports modal */}
-      {reportsModal && (
-        <ReportsModal
-          establishmentName={reportsModal.establishmentName}
-          reports={getReportsByEstablishment(reportsModal.establishmentId)}
-          onClose={() => setReportsModal(null)}
-        />
-      )}
+      {/* Reports sheet */}
+      <ReportsSheet
+        open={reportsModal !== null}
+        onOpenChange={(open) => {
+          if (!open) setReportsModal(null);
+        }}
+        establishmentName={reportsModal?.establishmentName ?? ""}
+        reports={reportsModal ? getReportsByEstablishment(reportsModal.establishmentId) : []}
+      />
     </div>
   );
 }
