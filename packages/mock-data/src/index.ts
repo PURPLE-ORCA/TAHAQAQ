@@ -8,6 +8,8 @@
 //   - apps/mobile/src/components/screens/home/seed-posts.ts
 // =============================================================================
 
+import { extraEstablishments } from "./establishments-extra";
+
 // ─────────────────────────────────────────────────────────────────────────────
 // RE-EXPORTS
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1407,6 +1409,7 @@ export const establishments: Establishment[] = [
     overallScore: 4,
     scoreCategories: { bribery: 4, hygiene: 3, waitTime: 4, equipment: 3, staff: 4 },
   },
+  ...extraEstablishments,
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
