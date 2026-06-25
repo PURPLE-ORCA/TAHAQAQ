@@ -2,9 +2,8 @@
 
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail, SidebarSeparator } from "@/components/ui/sidebar";
 import { Logo } from "@/components/ui/logo";
-import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
-import { LayoutDashboardIcon, SettingsIcon, UsersIcon, FolderIcon, MailIcon, BarChart3Icon, HelpCircleIcon } from "lucide-react";
+import { LayoutDashboardIcon, Map, SettingsIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -13,6 +12,11 @@ const navigation = [
     title: "Dashboard",
     href: "/dashboard",
     icon: LayoutDashboardIcon,
+  },
+  {
+    title: "Map",
+    href: "/map",
+    icon: Map,
   },
 ];
 
