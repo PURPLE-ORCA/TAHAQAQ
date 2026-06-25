@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
+import type MapLibreGL from "maplibre-gl";
 import {
   Map,
   MapMarker,
@@ -172,12 +173,14 @@ function ReviewsPanel({
   onSearchChange,
   selectedStatus,
   onStatusChange,
+  onReviewClick,
 }: {
   reviews: typeof latestReviews;
   searchQuery: string;
   onSearchChange: (q: string) => void;
   selectedStatus: EstablishmentStatus | "all";
   onStatusChange: (s: EstablishmentStatus | "all") => void;
+  onReviewClick: (establishmentId: string) => void;
 }) {
   return (
     <div className="flex h-full flex-col">
@@ -226,7 +229,16 @@ function ReviewsPanel({
               return (
                 <div
                   key={rev.id}
-                  className="rounded-xl border border-border/40 bg-white p-3.5 shadow-sm transition-all hover:shadow-md dark:bg-card/60"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => onReviewClick(rev.establishmentId)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      onReviewClick(rev.establishmentId);
+                    }
+                  }}
+                  className="w-full text-left rounded-xl border border-border/40 bg-white p-3.5 shadow-sm transition-all hover:shadow-md hover:border-border/80 hover:bg-muted/10 dark:bg-card/60 dark:hover:bg-card/80 cursor-pointer block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#006020]/40"
                 >
                   <div className="flex items-start justify-between gap-2.5">
                     <div className="min-w-0 flex-1">
@@ -295,9 +307,23 @@ export function MapPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<EstablishmentStatus | "all">("all");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const mapRef = useRef<MapLibreGL.Map | null>(null);
+
+  const handleReviewClick = (establishmentId: string) => {
+    const est = establishments.find((e) => e.id === establishmentId);
+    if (est) {
+      setSelectedId(est.id);
+      mapRef.current?.flyTo({
+        center: [est.coordinates.longitude, est.coordinates.latitude],
+        zoom: 15,
+        essential: true,
+      });
+    }
+  };
 
   const filteredEstablishments = useMemo(() => {
     return establishments.filter((est) => {
+      if (est.id === selectedId) return true;
       const matchesSearch =
         !searchQuery ||
         est.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -306,7 +332,7 @@ export function MapPage() {
       const matchesStatus = selectedStatus === "all" || est.status === selectedStatus;
       return matchesSearch && matchesStatus;
     });
-  }, [searchQuery, selectedStatus]);
+  }, [searchQuery, selectedStatus, selectedId]);
 
   const filteredReviews = useMemo(() => {
     return latestReviews.filter((rev) => {
@@ -337,6 +363,7 @@ export function MapPage() {
         {/* Map area */}
         <div className="relative flex-1 min-w-0">
           <Map
+            ref={mapRef}
             center={[mapCenter.longitude, mapCenter.latitude]}
             zoom={13}
             className="h-full w-full"
@@ -445,6 +472,7 @@ export function MapPage() {
             onSearchChange={setSearchQuery}
             selectedStatus={selectedStatus}
             onStatusChange={setSelectedStatus}
+            onReviewClick={handleReviewClick}
           />
         </div>
       </div>
