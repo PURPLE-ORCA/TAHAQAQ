@@ -3,7 +3,6 @@ import {
   Button,
   Description,
   FieldError,
-  Icon,
   Input,
   InputOTP,
   Label,
@@ -11,6 +10,7 @@ import {
   TextField,
   Typography,
 } from "heroui-native";
+import { Icon } from "@/components/ui/icon";
 import { View } from "react-native";
 
 import { SafeScreen } from "@/components/layout/SafeScreen";
