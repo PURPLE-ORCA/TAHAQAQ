@@ -23,10 +23,19 @@ import {
   type MapEstablishment,
 } from "@/components/data/map";
 import {
+  getReportsByEstablishment,
+  REPORT_CATEGORY_CONFIG,
+  type Report,
+  type ReportCategory,
+} from "@tahaqaq/mock-data";
+import {
   Search,
   MapPin,
   AlertTriangle,
   Star,
+  FileText,
+  X,
+  Camera,
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
@@ -75,6 +84,126 @@ function StatusPill({ status }: { status: EstablishmentStatus }) {
     >
       {status}
     </span>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Reports modal                                                              */
+/* -------------------------------------------------------------------------- */
+
+function ReportsModal({
+  establishmentName,
+  reports,
+  onClose,
+}: {
+  establishmentName: string;
+  reports: Report[];
+  onClose: () => void;
+}) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+        onClick={onClose}
+      />
+      {/* Modal */}
+      <div className="relative z-10 mx-4 flex max-h-[80vh] w-full max-w-lg flex-col rounded-2xl border border-border/50 bg-white shadow-2xl dark:bg-card/95">
+        {/* Header */}
+        <div className="flex items-center justify-between border-b border-border/40 px-5 py-4">
+          <div className="flex items-center gap-2">
+            <FileText className="size-4 text-[#006020]" />
+            <Text as="h2" variant="h5">
+              Reports
+            </Text>
+            <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+              {reports.length}
+            </span>
+          </div>
+          <Button variant="ghost" size="sm" className="size-8 p-0" onClick={onClose}>
+            <X className="size-4" />
+          </Button>
+        </div>
+
+        {/* Establishment name */}
+        <div className="border-b border-border/20 px-5 py-2">
+          <Text variant="small" className="font-medium text-[#006020]">
+            {establishmentName}
+          </Text>
+        </div>
+
+        {/* Reports list */}
+        <div className="flex-1 overflow-y-auto px-5 py-4">
+          {reports.length === 0 ? (
+            <div className="flex flex-col items-center py-12 text-center">
+              <FileText className="mb-2 size-8 text-muted-foreground/50" />
+              <Text variant="muted">No reports filed for this establishment</Text>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {reports.map((report) => (
+                <div
+                  key={report.id}
+                  className="rounded-xl border border-border/40 bg-muted/30 p-4"
+                >
+                  {/* Report header */}
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <Text variant="small" className="font-medium">
+                        {report.author}
+                      </Text>
+                      {report.hasPhotos && (
+                        <span className="flex items-center gap-0.5 text-[10px] text-muted-foreground">
+                          <Camera className="size-3" />
+                          photo
+                        </span>
+                      )}
+                    </div>
+                    <Text variant="muted" className="text-[11px]">
+                      {report.timeAgo}
+                    </Text>
+                  </div>
+
+                  {/* Story */}
+                  <Text variant="p" className="mt-2 text-sm leading-relaxed text-foreground/80">
+                    {report.story}
+                  </Text>
+
+                  {/* Categories */}
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {report.categories.map((cat) => {
+                      const config = REPORT_CATEGORY_CONFIG[cat];
+                      return (
+                        <span
+                          key={cat}
+                          className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium"
+                          style={{
+                            backgroundColor: `${config.color}15`,
+                            color: config.color,
+                          }}
+                        >
+                          {config.label}
+                        </span>
+                      );
+                    })}
+                  </div>
+
+                  {/* Footer */}
+                  <div className="mt-2.5 flex items-center gap-3 text-[11px] text-muted-foreground">
+                    <span>{report.auditCount} audits</span>
+                    <span>·</span>
+                    <span className="flex items-center gap-0.5">
+                      <Star className="size-3 fill-[#F2C94C] text-[#F2C94C]" />
+                      {report.avgRating}/5
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -174,6 +303,7 @@ function ReviewsPanel({
   selectedStatus,
   onStatusChange,
   onReviewClick,
+  onReportsClick,
 }: {
   reviews: typeof latestReviews;
   searchQuery: string;
@@ -181,6 +311,7 @@ function ReviewsPanel({
   selectedStatus: EstablishmentStatus | "all";
   onStatusChange: (s: EstablishmentStatus | "all") => void;
   onReviewClick: (establishmentId: string) => void;
+  onReportsClick: (establishmentId: string, establishmentName: string) => void;
 }) {
   return (
     <div className="flex h-full flex-col">
@@ -257,6 +388,18 @@ function ReviewsPanel({
                   <Text variant="p" className="mt-2 text-sm leading-relaxed text-foreground/80">
                     {rev.snippet}
                   </Text>
+                  <div className="mt-2.5 flex justify-end">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onReportsClick(rev.establishmentId, rev.establishmentName);
+                      }}
+                      className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-muted/50 px-2.5 py-1 text-[10px] font-medium text-muted-foreground transition-colors hover:bg-[#006020]/10 hover:text-[#006020] hover:border-[#006020]/30"
+                    >
+                      <FileText className="size-3" />
+                      Reports
+                    </button>
+                  </div>
                 </div>
               );
             })
@@ -307,6 +450,10 @@ export function MapPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<EstablishmentStatus | "all">("all");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [reportsModal, setReportsModal] = useState<{
+    establishmentId: string;
+    establishmentName: string;
+  } | null>(null);
   const mapRef = useRef<MapLibreGL.Map | null>(null);
 
   const handleReviewClick = (establishmentId: string) => {
@@ -473,9 +620,19 @@ export function MapPage() {
             selectedStatus={selectedStatus}
             onStatusChange={setSelectedStatus}
             onReviewClick={handleReviewClick}
+            onReportsClick={(id, name) => setReportsModal({ establishmentId: id, establishmentName: name })}
           />
         </div>
       </div>
+
+      {/* Reports modal */}
+      {reportsModal && (
+        <ReportsModal
+          establishmentName={reportsModal.establishmentName}
+          reports={getReportsByEstablishment(reportsModal.establishmentId)}
+          onClose={() => setReportsModal(null)}
+        />
+      )}
     </div>
   );
 }
