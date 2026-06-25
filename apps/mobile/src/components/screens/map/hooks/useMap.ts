@@ -1,11 +1,22 @@
 import { useRef, useState, useEffect } from "react";
 import { Alert } from "react-native";
 import { router } from "expo-router";
-import * as Haptics from "expo-haptics";
 import type { AppBottomSheetModalRef } from "@/components/ui/bottom-sheet";
 import { establishments, mapCenter } from "../lib/constants";
 import { getDistanceInMeters, findClosestEstablishment } from "../lib/mapUtils";
 import type { Establishment } from "../types";
+
+// Safe haptics wrapper — avoids crash when native module is missing
+let hapticsAvailable = true;
+const hapticLight = async () => {
+  if (!hapticsAvailable) return;
+  try {
+    const Haptics = await import("expo-haptics");
+    await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+  } catch {
+    hapticsAvailable = false;
+  }
+};
 
 type MarkerSelection = {
   id?: string;
@@ -234,7 +245,7 @@ export function useMap() {
     });
     if (next) {
       setSelected(next);
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      hapticLight();
       setCameraCoordinates(next.coordinates);
       cameraStateRef.current.latitude = next.coordinates.latitude;
       cameraStateRef.current.longitude = next.coordinates.longitude;
@@ -257,7 +268,7 @@ export function useMap() {
 
     if (closest) {
       setSelected(closest);
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      hapticLight();
       setCameraCoordinates(closest.coordinates);
       cameraStateRef.current.latitude = closest.coordinates.latitude;
       cameraStateRef.current.longitude = closest.coordinates.longitude;
