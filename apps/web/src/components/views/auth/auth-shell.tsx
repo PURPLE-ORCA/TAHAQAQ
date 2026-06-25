@@ -19,9 +19,9 @@ export function AuthShell({ children }: { children: ReactNode }) {
   
   return (
     <TypingImpulseContext.Provider value={typingImpulseRef}>
-      <div className="flex min-h-svh w-full gap-6">
+      <div className="flex min-h-svh w-full gap-6 bg-[#f4fcef]">
         {/* Left side - Particle Field */}
-        <div className="relative hidden w-1/2 overflow-hidden bg-background lg:block">
+        <div className="relative hidden w-1/2 overflow-hidden bg-[#f4fcef] lg:block border-r border-[#006020]/10">
           <ParticleField
             src="/orca-logs.png"
             sampleStep={3}
@@ -31,7 +31,7 @@ export function AuthShell({ children }: { children: ReactNode }) {
             align="center"
             typingImpulseRef={typingImpulseRef}
             adaptToTheme={false}
-            color="oklch(0.496 0.265 301.924 / 0.92)"
+            color="#00A040"
             className="absolute inset-0"
           />
           
@@ -41,32 +41,32 @@ export function AuthShell({ children }: { children: ReactNode }) {
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "radial-gradient(900px 600px at 50% 50%, transparent 45%, color-mix(in srgb, var(--background) 88%, transparent) 92%)",
+                "radial-gradient(900px 600px at 50% 50%, transparent 45%, color-mix(in srgb, #f4fcef 88%, transparent) 92%)",
             }}
           />
           
           {/* Content overlay */}
           <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-12">
             <div className="pointer-events-auto flex items-center gap-2">
-              <span className="inline-block h-2 w-2 rounded-full bg-foreground" />
-              <Text className="font-mono tracking-[0.2em]" variant="small">
-                Purple Orca
+              <span className="inline-block h-2 w-2 rounded-full bg-[#00A040]" />
+              <Text className="font-mono tracking-[0.2em] text-[#006020] font-semibold" variant="small">
+                TAHAQAQ
               </Text>
             </div>
 
             <div className="max-w-md space-y-4">
-              <Text className="font-mono uppercase tracking-[0.3em]" variant="xs">
-                Sign-in design
+              <Text className="font-mono uppercase tracking-[0.3em] text-[#00A040] font-semibold" variant="xs">
+                Royaume du Maroc
               </Text>
-              <Text as="h2" variant="h3">
-                Split layout with a particle field on the left and a single centered form on the right.
+              <Text as="h2" variant="h3" className="text-[#006020] font-bold">
+                Portail national sécurisé de vérification et d{"'"}authentification des documents officiels.
               </Text>
             </div>
           </div>
         </div>
 
         {/* Right side - Form */}
-        <div className="flex w-full items-center justify-center bg-background p-6 lg:w-1/2">
+        <div className="flex w-full items-center justify-center bg-[#f4fcef] p-6 lg:w-1/2">
           {children}
         </div>
       </div>

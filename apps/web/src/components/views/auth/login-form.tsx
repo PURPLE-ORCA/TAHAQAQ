@@ -65,18 +65,20 @@ function getRawErrorMessage(error: unknown): string {
 
 export function LoginForm() {
   return (
-    <div className="w-full max-w-lg">
-      <Text as="p" variant="muted">
-        Welcome back
-      </Text>
-      
-      <Text as="h1" className="mt-2" variant="h3">
-        Enter your App
-      </Text>
-      
-      <Text className="mt-2" variant="muted">
-        Sign in to continue.
-      </Text>
+    <div className="w-full max-w-md bg-white p-8 rounded-2xl border border-[#006020]/10 shadow-[0_10px_30px_-10px_rgba(0,96,32,0.08)]">
+      <div className="flex flex-col items-center text-center mb-6">
+        <Text as="p" className="text-[#00A040] font-semibold text-sm tracking-wider uppercase">
+          TAHAQAQ • PORTAIL CITOYEN
+        </Text>
+        
+        <Text as="h1" className="mt-2 text-[#006020] font-bold text-2xl" variant="h3">
+          Authentification
+        </Text>
+        
+        <Text className="mt-2 text-[#3e4a3d] text-sm" variant="muted">
+          Connectez-vous pour accéder à vos services de vérification civique.
+        </Text>
+      </div>
 
       <MagicLinkForm />
       <OrSeparator />
@@ -88,11 +90,11 @@ export function LoginForm() {
 function OrSeparator() {
   return (
     <div className="my-6 flex items-center gap-3">
-      <Separator className="flex-1" />
-      <Text as="span" variant="xs">
-        or
+      <Separator className="flex-1 bg-[#006020]/10" />
+      <Text as="span" variant="xs" className="text-[#3e4a3d]">
+        ou
       </Text>
-      <Separator className="flex-1" />
+      <Separator className="flex-1 bg-[#006020]/10" />
     </div>
   );
 }
@@ -114,7 +116,7 @@ function MagicLinkForm() {
     const normalizedEmail = email.trim().toLowerCase();
 
     if (!EMAIL_REGEX.test(normalizedEmail)) {
-      setError("Enter a valid email address.");
+      setError("Entrez une adresse e-mail valide.");
       return;
     }
 
@@ -163,21 +165,21 @@ function MagicLinkForm() {
 
   if (sentTo) {
     return (
-      <div className="mt-8 space-y-6">
-        <div className="border border-border/70 bg-background/40 px-3 py-2">
-          <Text variant="small">
-            Code sent to <span className="text-foreground">{sentTo}</span>. Enter the code below.
+      <div className="mt-6 space-y-6">
+        <div className="border border-[#006020]/15 bg-[#f4fcef] px-3 py-2 rounded-[0.5rem] text-[#006020]">
+          <Text variant="small" className="text-[#006020]">
+            Code envoyé à <span className="font-semibold text-[#006020]">{sentTo}</span>. Saisissez-le ci-dessous.
           </Text>
         </div>
 
         {error ? (
-          <Text className="text-destructive" variant="small">
+          <Text className="text-[#ba1a1a] text-sm" variant="small">
             {error}
           </Text>
         ) : null}
 
         <form onSubmit={onOtpSubmit} className="space-y-4">
-          <div className="space-y-2 place-self-center">
+          <div className="space-y-2 flex flex-col items-center">
             <OTPField 
               aria-label="One-time password" 
               length={OTP_LENGTH}
@@ -188,6 +190,7 @@ function MagicLinkForm() {
                 <OTPFieldInput
                   key={slotKey}
                   aria-label={`Character ${index + 1} of ${OTP_LENGTH}`}
+                  className="bg-white border-[#006020]/20 focus-visible:ring-[#00A040] focus-visible:border-[#00A040] rounded-[0.5rem]"
                 />
               ))}
             </OTPField>
@@ -196,10 +199,10 @@ function MagicLinkForm() {
           <Button 
             type="submit" 
             size="lg" 
-            className="w-full" 
+            className="w-full bg-[#00A040] hover:bg-[#006020] text-white rounded-[0.5rem] h-11 border-none shadow-sm transition-colors" 
             disabled={otpValue.length !== OTP_LENGTH || otpPending}
           >
-            {otpPending ? "Verifying..." : "Verify code"}
+            {otpPending ? "Vérification..." : "Vérifier le code"}
           </Button>
         </form>
 
@@ -212,8 +215,9 @@ function MagicLinkForm() {
               setOtpValue("");
               setError(null);
             }}
+            className="text-[#006020] hover:text-[#00A040] hover:bg-transparent"
           >
-            Use a different email
+            Utiliser un autre e-mail
           </Button>
         </div>
       </div>
@@ -226,32 +230,33 @@ function MagicLinkForm() {
         ref={formRef}
         onSubmit={onSubmit}
         onKeyDown={(e) => bumpParticleTypingImpulse(typingImpulse, e)}
-        className="mt-8 flex flex-col gap-4"
+        className="mt-6 flex flex-col gap-4"
       >
         <div className="flex flex-col gap-1.5">
-          <Label htmlFor="magic-link-email">Email</Label>
+          <Label htmlFor="magic-link-email" className="text-[#006020] font-medium">Adresse e-mail</Label>
           <Input
             id="magic-link-email"
             type="email"
             required
-            placeholder="you@example.com"
+            placeholder="citoyen@adresse.ma"
             autoComplete="email"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
               setError(null);
             }}
+            className="bg-white border-[#006020]/20 focus-visible:ring-[#00A040] focus-visible:border-[#00A040] rounded-[0.5rem] h-11"
           />
         </div>
 
         {error ? (
-          <Text className="text-destructive" variant="small">
+          <Text className="text-[#ba1a1a] text-sm" variant="small">
             {error}
           </Text>
         ) : null}
 
-        <Button type="submit" size="lg" className="mt-2" disabled={pending}>
-          {pending ? "Sending..." : "Send sign-in code"}
+        <Button type="submit" size="lg" className="mt-2 bg-[#00A040] hover:bg-[#006020] text-white border-none shadow-sm rounded-[0.5rem] h-11 transition-colors" disabled={pending}>
+          {pending ? "Envoi..." : "Recevoir mon code d'accès"}
         </Button>
       </form>
     </>
@@ -261,13 +266,13 @@ function MagicLinkForm() {
 function OAuthButtons() {
   return (
     <div className="flex flex-col gap-2">
-      <Button variant="outline" size="lg" type="button">
+      <Button variant="outline" size="lg" type="button" className="border border-[#006020]/20 bg-white hover:bg-[#006020]/5 text-[#006020] rounded-[0.5rem] h-11 transition-colors">
         <GoogleIcon />
-        Continue with Google
+        Se connecter avec Google
       </Button>
-      <Button variant="outline" size="lg" type="button">
+      <Button variant="outline" size="lg" type="button" className="border border-[#006020]/20 bg-white hover:bg-[#006020]/5 text-[#006020] rounded-[0.5rem] h-11 transition-colors">
         <AppleIcon />
-        Continue with Apple
+        Se connecter avec Apple
       </Button>
     </div>
   );

@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,9 +24,15 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@tahaqaq/assets": ["../../packages/assets/src/index.ts"],
-      "@tahaqaq/assets/*": ["../../packages/assets/src/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@tahaqaq/assets": [
+        "../../packages/assets/src/index.ts"
+      ],
+      "@tahaqaq/assets/*": [
+        "../../packages/assets/src/*"
+      ]
     }
   },
   "include": [
@@ -30,7 +40,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    ".next/dev/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

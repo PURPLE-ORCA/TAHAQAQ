@@ -8,15 +8,15 @@ import { MobileNav } from "@/components/layout/mobile-nav";
 export const navLinks = [
 	{
 		label: "Features",
-		href: "#",
+		href: "#features",
 	},
 	{
-		label: "Pricing",
-		href: "#",
+		label: "Services",
+		href: "#services",
 	},
 	{
 		label: "About",
-		href: "#",
+		href: "#about",
 	},
 ];
 
@@ -25,39 +25,45 @@ export function Header() {
 
 	return (
 		<header
-			className={cn("sticky top-0 z-50 w-full border-transparent border-b", {
-				"border-border bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/50":
-					scrolled,
+			className={cn("sticky top-0 z-50 w-full border-b border-transparent transition-colors", {
+				"border-[#006020]/20 bg-[#006020]/95 backdrop-blur-sm text-white": scrolled,
+				"bg-[#006020] text-white": !scrolled,
 			})}
 		>
 			<nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4">
 				<a
-					className="rounded-md p-2 hover:bg-muted dark:hover:bg-muted/50"
-					href="#"
+					className="rounded-md p-2 hover:bg-white/10 flex items-center gap-2 transition-colors"
+					href="/"
 				>
-					<Logo className="h-4" />
+					<Logo className="h-5 fill-current text-[#F2C94C]" />
+					<span className="font-bold text-white tracking-wide">TAHAQAQ</span>
 				</a>
 				<div className="hidden items-center gap-2 md:flex">
-					{navLinks.map((link) => (
-						<Button asChild key={link.label} size="sm" variant="ghost">
-							<a href={link.href}>{link.label}</a>
-						</Button>
-					))}
-					<Button asChild size="sm" variant="outline">
-						<a
-							href="https://github.com/yourusername/yourrepo"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="flex items-center gap-1.5"
-						>
-							<svg viewBox="0 0 24 24" className="size-4" fill="currentColor">
-								<path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z" />
-							</svg>
-							99k+
-						</a>
+					{navLinks.map((link) => {
+						const isActive = link.label === "Features";
+						return (
+							<Button 
+								asChild 
+								key={link.label} 
+								size="sm" 
+								variant="ghost" 
+								className="relative text-white/85 hover:bg-white/10 hover:text-white h-9 px-3 rounded-[0.5rem] group"
+							>
+								<a href={link.href} className="flex items-center">
+									<span>{link.label}</span>
+									<span className={cn(
+										"absolute bottom-0 left-2 right-2 h-[3px] bg-[#F2C94C] transition-transform origin-bottom rounded-t-full",
+										isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+									)} />
+								</a>
+							</Button>
+						);
+					})}
+					<Button asChild size="sm" variant="ghost" className="text-white/85 hover:bg-white/10 hover:text-white rounded-[0.5rem]">
+						<a href="/auth">Sign In</a>
 					</Button>
-					<Button asChild size="sm">
-						<a href="/auth">Get Started</a>
+					<Button asChild size="sm" className="bg-[#00A040] hover:bg-[#006020] text-white border-none shadow-sm rounded-[0.5rem] transition-colors">
+						<a href="/auth">Citizen Portal</a>
 					</Button>
 				</div>
 				<MobileNav />

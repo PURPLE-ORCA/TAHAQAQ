@@ -10,6 +10,8 @@ export type SafeScreenProps = PropsWithChildren<
     safeArea?: SafeArea;
     className?: string;
     contentClassName?: string;
+    contentHorizontalPadding?: boolean;
+    contentPointerEvents?: ViewProps["pointerEvents"];
   }
 >;
 
@@ -26,14 +28,20 @@ export function SafeScreen({
   safeArea = "top",
   className = "",
   contentClassName = "",
+  contentHorizontalPadding = true,
+  contentPointerEvents = "auto",
   ...props
 }: SafeScreenProps) {
   const safeAreaClasses = safeStyles[safeArea];
+  const contentPadding = contentHorizontalPadding ? "px-6" : "";
 
   if (!scrollable) {
     return (
       <View className={`flex-1 bg-background ${className}`} {...props}>
-        <View className={`flex-1 px-6 ${safeAreaClasses} ${contentClassName}`}>
+        <View
+          pointerEvents={contentPointerEvents}
+          className={`flex-1 ${contentPadding} ${safeAreaClasses} ${contentClassName}`}
+        >
           {children}
         </View>
       </View>
@@ -45,7 +53,7 @@ export function SafeScreen({
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
         className="flex-1"
-        contentContainerClassName={`grow px-6 ${safeAreaClasses} ${contentClassName}`}
+        contentContainerClassName={`grow ${contentPadding} ${safeAreaClasses} ${contentClassName}`}
         keyboardShouldPersistTaps="handled"
         bottomOffset={20}
       >

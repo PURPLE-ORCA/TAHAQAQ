@@ -1,0 +1,92 @@
+[
+  {
+    "code": "hosp-ibn-sina-rabat",
+    "name": "Hôpital Ibn Sina",
+    "type": "hospital",
+    "city": "Rabat",
+    "latitude": 33.9822,
+    "longitude": -6.8436,
+    "categoryBreakdown": {
+      "cleanliness": 4.2,
+      "waitingTime": 2.8,
+      "staffFriendliness": 3.5,
+      "equipmentQuality": 4.0,
+      "accessibility": 4.5
+    },
+    "auditCount": 124,
+    "score": 3.8,
+    "trend": "up"
+  },
+  {
+    "code": "hosp-moulay-youssef-casablanca",
+    "name": "Hôpital Moulay Youssef",
+    "type": "hospital",
+    "city": "Casablanca",
+    "latitude": 33.6012,
+    "longitude": -7.6324,
+    "categoryBreakdown": {
+      "cleanliness": 3.5,
+      "waitingTime": 2.1,
+      "staffFriendliness": 3.2,
+      "equipmentQuality": 3.6,
+      "accessibility": 4.0
+    },
+    "auditCount": 98,
+    "score": 3.28,
+    "trend": "down"
+  },
+  {
+    "code": "hosp-chu-mohammed-vi-marrakech",
+    "name": "CHU Mohammed VI",
+    "type": "hospital",
+    "city": "Marrakech",
+    "latitude": 31.6295,
+    "longitude": -7.9811,
+    "categoryBreakdown": {
+      "cleanliness": 4.5,
+      "waitingTime": 3.2,
+      "staffFriendliness": 4.0,
+      "equipmentQuality": 4.6,
+      "accessibility": 4.2
+    },
+    "auditCount": 156,
+    "score": 4.1,
+    "trend": "up"
+  },
+  {
+    "code": "hosp-chu-hassan-ii-fez",
+    "name": "CHU Hassan II",
+    "type": "hospital",
+    "city": "Fez",
+    "latitude": 34.0372,
+    "longitude": -4.9998,
+    "categoryBreakdown": {
+      "cleanliness": 4.4,
+      "waitingTime": 3.0,
+      "staffFriendliness": 3.8,
+      "equipmentQuality": 4.3,
+      "accessibility": 4.1
+    },
+    "auditCount": 112,
+    "score": 3.92,
+    "trend": "stable"
+  },
+  {
+    "code": "hosp-mohammed-v-tangier",
+    "name": "Hôpital Mohammed V",
+    "type": "hospital",
+    "city": "Tangier",
+    "latitude": 35.7595,
+    "longitude": -5.834,
+    "categoryBreakdown": {
+      "cleanliness": 3.8,
+      "waitingTime": 2.5,
+      "staffFriendliness": 3.4,
+      "equipmentQuality": 3.7,
+      "accessibility": 3.9
+    },
+    "auditCount": 84,
+    "score": 3.46,
+    "trend": "stable"
+  }
+]

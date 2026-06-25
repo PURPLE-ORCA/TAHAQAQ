@@ -50,7 +50,7 @@ export function LocationStep({
   };
 
   return (
-    <Surface className="gap-4 rounded-3xl p-4">
+    <Surface className="gap-4 p-4">
       <View className="gap-2">
         <Typography type="h4" weight="semibold">
           Step 1 · Where are you?
@@ -60,7 +60,7 @@ export function LocationStep({
         </Typography>
       </View>
 
-      <Card className="rounded-3xl border border-border bg-background p-4">
+      <Card className="p-4">
         <View className="gap-3">
           <View className="flex-row flex-wrap gap-2">
             <Surface className="rounded-full px-3 py-1 bg-accent/10">
