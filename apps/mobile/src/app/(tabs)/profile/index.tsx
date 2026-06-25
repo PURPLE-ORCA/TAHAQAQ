@@ -11,11 +11,13 @@ import { HowItWorksSheet } from "@/components/screens/profile/about/how-it-works
 import { PrivacySheet } from "@/components/screens/profile/about/privacy-sheet";
 import { TermsSheet } from "@/components/screens/profile/about/terms-sheet";
 import { AppBottomSheetModalRef } from "@/components/ui/bottom-sheet";
+import { useAuthActions } from "@convex-dev/auth/react";
 import { useI18n } from "@/hooks/useI18n";
 
 export default function ProfileScreen() {
   const router = useRouter();
   const { t } = useI18n();
+  const { signOut } = useAuthActions();
   const faqItems = useFaqItems();
   const howItWorksRef = useRef<AppBottomSheetModalRef>(null);
   const privacyRef = useRef<AppBottomSheetModalRef>(null);
@@ -101,7 +103,10 @@ export default function ProfileScreen() {
           icon="log-out"
           title={t("about.signOut")}
           variant="danger"
-          onPress={() => {}}
+          onPress={async () => {
+            await signOut();
+            router.replace("/onboarding");
+          }}
           isLast
         />
       </Surface>
