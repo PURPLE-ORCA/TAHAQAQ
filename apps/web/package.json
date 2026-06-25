@@ -4,6 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "predev": "ln -sf ../../.env .env.local",
+    "prebuild": "ln -sf ../../.env .env.local",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
