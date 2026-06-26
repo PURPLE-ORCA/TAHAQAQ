@@ -4,4 +4,3 @@ export const womenHoldingEqualityVector = require('./women-holding-equality-vect
 export const identifyingWomanVector = require('./identifying-woman.png');
 export const manDraftingReviewVector = require('./man-drafting-review.png');
 export const profilePicture = require('./manthining.png');
-export const mascotExplaining = require('../mascot/mascotExplaining.png');
