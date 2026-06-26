@@ -1,6 +1,6 @@
 import { Shield } from "lucide-react";
 import { Text } from "@/components/ui/text";
-import mascotExplaining from "@tahaqaq/assets/src/mascot/mascotExplaining.png";
+import { mascotExplaining } from "@tahaqaq/assets";
 
 interface DashboardHeaderProps {
   date: string;
