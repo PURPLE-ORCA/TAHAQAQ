@@ -1,6 +1,10 @@
 import { Header } from "@/components/layout/header";
 import { HeroSection } from "@/components/views/app/landing/hero";
-import { LogosSection } from "@/components/views/app/landing/logos-section";
+import { ProofStrip } from "@/components/views/app/landing/proof-strip";
+import { ProductSurfacesSection } from "@/components/views/app/landing/product-surfaces";
+import { AuditFlowSection } from "@/components/views/app/landing/audit-flow";
+import { LogoCloud } from "@/components/views/app/landing/logo-cloud";
+import { TrustSection } from "@/components/views/app/landing/trust-section";
 
 export default function Page() {
   return (
@@ -8,7 +12,11 @@ export default function Page() {
       <Header />
       <main>
         <HeroSection />
-        <LogosSection />
+        <ProofStrip />
+        <ProductSurfacesSection />
+        <AuditFlowSection />
+        <LogoCloud />
+        <TrustSection />
       </main>
     </div>
   )
