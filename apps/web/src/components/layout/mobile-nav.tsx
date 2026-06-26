@@ -48,14 +48,7 @@ export function MobileNav() {
 								</Button>
 							))}
 						</div>
-						<div className="mt-12 flex flex-col gap-2">
-							<Button asChild className="w-full" variant="outline" onClick={() => setOpen(false)}>
-								<a href="/auth">Sign In</a>
-							</Button>
-							<Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground border-none" onClick={() => setOpen(false)}>
-								<a href="/auth">Citizen Portal</a>
-							</Button>
-						</div>
+
 					</div>
 				</Portal>
 			)}

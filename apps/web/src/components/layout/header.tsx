@@ -58,16 +58,9 @@ export function Header() {
 							</Button>
 						);
 					})}
-					<Button asChild size="sm" variant="ghost" className="text-secondary-foreground/85 hover:bg-secondary-foreground/10 hover:text-secondary-foreground rounded-[0.5rem]">
-						<a href="/auth">Sign In</a>
-					</Button>
-					<Button asChild size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground border-none shadow-sm rounded-[0.5rem] transition-colors">
-						<a href="/auth">Citizen Portal</a>
-					</Button>
 				</div>
 				<MobileNav />
 			</nav>
 		</header>
 	);
 }
-
