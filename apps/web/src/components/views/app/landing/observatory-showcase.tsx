@@ -43,9 +43,6 @@ export function ObservatoryShowcaseSection() {
 				{/* Right side — Copy */}
 				<div className="lg:col-span-5 flex flex-col justify-center space-y-6">
 					<div className="space-y-3">
-						<Text variant="xs" className="text-primary font-bold tracking-widest uppercase">
-							THE OBSERVATORY
-						</Text>
 						<Text as="h2" variant="h2" className="font-semibold text-foreground leading-tight">
 							See Every Establishment. In Real Time.
 						</Text>

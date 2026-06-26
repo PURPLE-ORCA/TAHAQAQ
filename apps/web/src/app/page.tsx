@@ -15,12 +15,12 @@ export default function Page() {
       <main>
         <HeroSection />
         <PunchlineDiagnosis />
-        <PunchlineNormalization />
-        <PunchlineEvidence />
         <MobileShowcaseSection />
         <BridgeSection />
         <ObservatoryShowcaseSection />
         <AuditFlowSection />
+        <PunchlineNormalization />
+        <PunchlineEvidence />
       </main>
     </div>
   )
