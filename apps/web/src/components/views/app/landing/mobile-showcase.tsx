@@ -1,6 +1,5 @@
 import { Text } from "@/components/ui/text";
 import { Clock, MapPin, MousePointerClick } from "lucide-react";
-import Iphone15Pro from "@/components/ui/iphone15-pro";
 
 export function MobileShowcaseSection() {
 	return (
@@ -60,12 +59,15 @@ export function MobileShowcaseSection() {
 					</div>
 				</div>
 
-				{/* Right side — Phone Mockup */}
+				{/* Right side — Video */}
 				<div className="lg:col-span-7 flex justify-center items-center w-full">
-					<Iphone15Pro
-						width={300}
-						height={670}
-						videoSrc="https://ik.imagekit.io/purp1e770rca77/TAHAQAQ/mobileShowcase.mp4"
+					<video
+						src="https://ik.imagekit.io/purp1e770rca77/TAHAQAQ/mobileShowcase.mp4"
+						autoPlay
+						loop
+						muted
+						playsInline
+						className="w-[300px] h-[670px] object-cover rounded-[3rem]"
 					/>
 				</div>
 			</div>
