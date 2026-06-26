@@ -15,7 +15,8 @@ import {
 	Trash2, 
 	Zap, 
 	Droplet, 
-	Shield
+	Shield,
+	Circle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -268,73 +269,75 @@ export function AuditFlowSection() {
 						))}
 					</div>
 				);
-			case 3:
+			case 3: {
+				const dashboardCities = [
+					{ name: "Casablanca", status: "green", metric: "4,521 audits" },
+					{ name: "Rabat", status: "green", metric: "3,847 audits" },
+					{ name: "Marrakech", status: "yellow", metric: "1,923 audits" },
+					{ name: "Fes", status: "green", metric: "2,156 audits" },
+					{ name: "Tangier", status: "red", metric: "892 audits" },
+					{ name: "Agadir", status: "green", metric: "1,508 audits" },
+				];
+
 				return (
 					<div className="w-full max-w-[340px] aspect-[10/11] p-6 bg-slate-950/40 rounded-3xl border border-slate-800 backdrop-blur-xs flex flex-col items-center justify-center relative overflow-hidden">
-						{/* Grid Lines in background */}
-						<svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20" xmlns="http://www.w3.org/2000/svg">
-							<line x1="0" y1="50" x2="340" y2="50" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-							<line x1="0" y1="100" x2="340" y2="100" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-							<line x1="0" y1="150" x2="340" y2="150" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-							<line x1="0" y1="200" x2="340" y2="200" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-							<line x1="0" y1="250" x2="340" y2="250" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-							<line x1="0" y1="300" x2="340" y2="300" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-							<line x1="50" y1="0" x2="50" y2="374" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-							<line x1="100" y1="0" x2="100" y2="374" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-							<line x1="150" y1="0" x2="150" y2="374" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-							<line x1="200" y1="0" x2="200" y2="374" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-							<line x1="250" y1="0" x2="250" y2="374" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-							<line x1="300" y1="0" x2="300" y2="374" stroke="currentColor" strokeDasharray="2 4" className="text-slate-500" />
-						</svg>
-
-						{/* Morocco SVG Shape */}
-						<svg 
-							viewBox="0 0 200 220" 
-							className="w-full h-full max-h-[260px] text-primary/40 drop-shadow-[0_0_15px_rgba(var(--primary),0.1)]"
-							fill="none" 
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							{/* Connection lines */}
-							<path 
-								d="M 135,10 L 115,42 L 145,45 M 115,42 L 98,80 L 80,95 L 40,145 L 15,185" 
-								fill="none" 
-								stroke="rgba(16, 185, 129, 0.4)" 
-								strokeWidth="1" 
-								strokeDasharray="3 3" 
-							/>
-
-							{/* Map Outline */}
-							<path 
-								d="M 135,10 L 145,12 L 160,15 L 175,20 L 180,25 L 175,45 L 180,50 L 160,80 L 140,90 L 110,110 L 80,145 L 50,145 L 50,210 L 5,210 L 15,185 L 40,145 L 50,130 L 80,95 L 90,75 L 110,50 L 120,35 Z" 
-								fill="rgba(30, 41, 59, 0.4)" 
-								stroke="currentColor" 
-								strokeWidth="1.5" 
-								className="text-slate-700/80"
-							/>
-
-							{/* City Dots */}
-							<circle cx="135" cy="10" r="2.5" fill="#10b981" /> {/* Tanger */}
-							<circle cx="145" cy="45" r="2.5" fill="#10b981" /> {/* Fes */}
-							<circle cx="98" cy="80" r="2.5" fill="#10b981" /> {/* Marrakesh */}
-							<circle cx="80" cy="95" r="2.5" fill="#10b981" /> {/* Agadir */}
-							<circle cx="40" cy="145" r="2.5" fill="#10b981" /> {/* Laayoune */}
-							<circle cx="15" cy="185" r="2.5" fill="#10b981" /> {/* Dakhla */}
-
-							{/* Active/Pulsing Center (Rabat/Casablanca) */}
-							<circle cx="115" cy="42" r="8" fill="rgba(16, 185, 129, 0.4)" className="animate-ping" />
-							<circle cx="115" cy="42" r="3.5" fill="#10b981" />
-						</svg>
-
-						{/* Footer HUD */}
-						<div className="absolute bottom-3 left-3 right-3 bg-slate-900/95 border border-emerald-500/30 rounded-xl p-2 flex items-center justify-between text-[9px] font-mono text-emerald-400 backdrop-blur-md">
-							<div className="flex items-center gap-1.5">
-								<span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-								<span>LIVE SYNC: NATIONWIDE</span>
+						<div className="w-full h-full flex flex-col justify-between">
+							{/* Header Bar */}
+							<div className="flex items-center justify-between border-b border-slate-800 pb-3">
+								<div className="flex items-center gap-1.5">
+									<Shield className="w-3.5 h-3.5 text-emerald-400" />
+									<span className="font-mono text-[10px] font-bold text-emerald-400 tracking-wider">
+										NATIONAL MONITORING CENTER
+									</span>
+								</div>
+								<div className="flex items-center gap-1.5">
+									<span className="relative flex h-1.5 w-1.5">
+										<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+										<span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+									</span>
+									<span className="bg-emerald-950/60 text-emerald-400 text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border border-emerald-500/20">
+										LIVE
+									</span>
+								</div>
 							</div>
-							<span>LAG: ~84ms</span>
+
+							{/* Cities List */}
+							<div className="flex-1 flex flex-col justify-center py-3 space-y-2.5">
+								{dashboardCities.map((city, idx) => {
+									let dotColor = "text-emerald-500 fill-emerald-500";
+									if (city.status === "yellow") {
+										dotColor = "text-amber-500 fill-amber-500";
+									} else if (city.status === "red") {
+										dotColor = "text-rose-500 fill-rose-500";
+									}
+
+									return (
+										<div key={idx} className="flex items-center justify-between border-b border-slate-900/40 pb-2 last:border-0 last:pb-0">
+											<div className="flex items-center gap-2">
+												<Circle className={cn("w-1.5 h-1.5", dotColor)} />
+												<span className="text-xs font-mono text-foreground font-medium">
+													{city.name}
+												</span>
+											</div>
+											<span className="text-[10px] font-mono text-slate-400/80">
+												{city.metric}
+											</span>
+										</div>
+									);
+								})}
+							</div>
+
+							{/* Footer */}
+							<div className="border-t border-slate-800 pt-3 flex items-center justify-center gap-1.5">
+								<Activity className="w-3 h-3 text-emerald-500/60 animate-pulse" />
+								<span className="text-[9px] font-mono text-emerald-500/60">
+									12,847 active audits nationwide
+								</span>
+							</div>
 						</div>
 					</div>
 				);
+			}
 			default:
 				return null;
 		}
