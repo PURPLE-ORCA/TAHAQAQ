@@ -34,6 +34,16 @@
     --color-secondary: var(--secondary);
     --color-primary-foreground: var(--primary-foreground);
     --color-primary: var(--primary);
+    --color-on-surface: var(--on-surface);
+    --color-on-surface-variant: var(--on-surface-variant);
+    --color-primary-container: var(--primary-container);
+    --color-error: var(--error);
+    --color-error-container: var(--error-container);
+    --color-on-error: var(--on-error);
+    --color-outline-variant: var(--outline-variant);
+    --color-surface-container-low: var(--surface-container-low);
+    --color-surface-container: var(--surface-container);
+    --color-secondary-container: var(--secondary-container);
     --color-popover-foreground: var(--popover-foreground);
     --color-popover: var(--popover);
     --color-card-foreground: var(--card-foreground);
@@ -84,6 +94,18 @@
     --sidebar-accent-foreground: #161d16;
     --sidebar-border: #bdcab9;
     --sidebar-ring: #00a040;
+
+    /* Custom Design Tokens */
+    --on-surface: #161d16;
+    --on-surface-variant: #3e4a3d;
+    --primary-container: #008735;
+    --error: #ba1a1a;
+    --error-container: #ffdad6;
+    --on-error: #fff;
+    --outline-variant: #bdcab9;
+    --surface-container-low: #eef6ea;
+    --surface-container: #e9f0e4;
+    --secondary-container: #9ff3a1;
 }
 
 .dark {
@@ -120,6 +142,18 @@
     --sidebar-accent-foreground: #ebf3e7;
     --sidebar-border: rgb(255 255 255 / 12%);
     --sidebar-ring: #5edf76;
+
+    /* Custom Design Tokens (same defaults or dark mode equivalents, but we will override them locally if needed) */
+    --on-surface: #161d16;
+    --on-surface-variant: #5c635c;
+    --primary-container: #008735;
+    --error: #ba1a1a;
+    --error-container: #ffdad6;
+    --on-error: #fff;
+    --outline-variant: #bdcab9;
+    --surface-container-low: #f4fcef;
+    --surface-container: #eef6ea;
+    --secondary-container: #dde5d9;
 }
 
 @layer base {
@@ -135,4 +169,12 @@
   html {
     @apply font-sans;
     }
+}
+
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
