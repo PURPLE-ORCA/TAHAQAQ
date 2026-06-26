@@ -124,8 +124,8 @@ export function AuditFlowSection() {
 		switch (idx) {
 			case 0:
 				return (
-					<div className="relative w-[520px] h-[1060px] mx-auto flex items-center justify-center">
-						<Iphone15Pro width={520} height={1060} src="/auditDone.png" />
+					<div className="relative w-[390px] h-[795px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={390} height={795} src="/auditDone.png" />
 						
 						{/* Screen Overlay Container */}
 						<div 
@@ -137,7 +137,7 @@ export function AuditFlowSection() {
 								<span>TAHAQAQ Mobile</span>
 								<span className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded-lg">
 									<span className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
-									REC
+									rec
 								</span>
 							</div>
 
@@ -153,7 +153,7 @@ export function AuditFlowSection() {
 										<div className="w-18 h-18 rounded-full bg-white" />
 									</div>
 									<span className="text-[20px] text-white/90 font-mono mt-3 drop-shadow-md bg-black/50 px-3 py-1 rounded-lg">
-										SNAP PHOTO
+										{`snap photo`}
 									</span>
 								</div>
 								
@@ -167,18 +167,18 @@ export function AuditFlowSection() {
 				);
 			case 1:
 				return (
-					<div className="relative w-[520px] h-[1060px] mx-auto flex items-center justify-center">
-						<Iphone15Pro width={520} height={1060} src="/mobileHomePage.png" className="opacity-80" />
+					<div className="relative w-[390px] h-[795px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={390} height={795} src="/mobileHomePage.png" className="opacity-80" />
 						
 						{/* Green verification overlay centered over the phone */}
 						<div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-20">
 							<div className="bg-emerald-950/95 border border-emerald-500/40 rounded-3xl p-8 flex flex-col items-center shadow-2xl backdrop-blur-md max-w-[400px] text-center">
 								<CheckCircle2 className="w-20 h-20 text-emerald-400 animate-pulse mb-4" />
 								<span className="text-xl font-mono font-bold text-emerald-400 tracking-wider">
-									EVIDENCE VERIFIED
+									{`evidence verified`}
 								</span>
 								<span className="text-[18px] font-mono text-emerald-400/80 mt-2">
-									INTEGRITY: 99.8% PASS
+									{`integrity: 99.8% pass`}
 								</span>
 							</div>
 						</div>
@@ -213,8 +213,8 @@ export function AuditFlowSection() {
 				);
 			case 2:
 				return (
-					<div className="relative w-[520px] h-[1060px] mx-auto flex items-center justify-center">
-						<Iphone15Pro width={520} height={1060} src="/mobileHomePage.png" />
+					<div className="relative w-[390px] h-[795px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={390} height={795} src="/mobileHomePage.png" />
 						
 						{/* Screen Overlay Container */}
 						<div 
@@ -237,10 +237,10 @@ export function AuditFlowSection() {
 							{/* Header */}
 							<div className="pt-12 pb-4 border-b border-outline-variant/30 flex flex-col items-center">
 								<span className="text-[20px] font-mono font-bold tracking-widest text-primary">
-									CITIZEN FEED
+									{`citizen feed`}
 								</span>
 								<span className="text-[16px] font-mono text-on-surface-variant">
-									REAL-TIME UPDATES
+									{`real-time updates`}
 								</span>
 							</div>
 
@@ -281,8 +281,8 @@ export function AuditFlowSection() {
 				);
 			case 3:
 				return (
-					<div className="relative w-[520px] h-[1060px] mx-auto flex items-center justify-center">
-						<Iphone15Pro width={520} height={1060} src="/mobileHomePage.png" />
+					<div className="relative w-[390px] h-[795px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={390} height={795} src="/mobileHomePage.png" />
 						
 						{/* Screen Overlay Container */}
 						<div 
@@ -308,7 +308,7 @@ export function AuditFlowSection() {
 							{/* Top Header */}
 							<div className="pt-12 pb-4 border-b border-outline-variant/30 flex flex-col items-center">
 								<span className="text-[16px] font-mono text-on-surface-variant">
-									NATIONAL ALERTS
+									{`national alerts`}
 								</span>
 							</div>
 
@@ -317,7 +317,7 @@ export function AuditFlowSection() {
 								<div className="bg-error-container/30 border border-error/20 rounded-2xl p-6 flex flex-col gap-4 shadow-2xl">
 									<div className="bg-error/10 border border-error/30 rounded-lg px-4 py-2 text-center flex items-center justify-center gap-3 animate-pulse">
 										<span className="text-error text-[20px] font-bold font-mono">
-											{"⚠ INTEGRITY WATCH"}
+											{`integrity watch`}
 										</span>
 									</div>
 
@@ -339,7 +339,7 @@ export function AuditFlowSection() {
 
 							{/* VIEW DETAILS Button */}
 							<button className="w-full bg-error hover:bg-error/90 text-on-error text-[20px] font-mono font-bold py-4 rounded-2xl transition-colors border border-error/30 shadow-lg mb-4">
-								VIEW DETAILS
+								{`view details`}
 							</button>
 						</div>
 					</div>
@@ -353,9 +353,6 @@ export function AuditFlowSection() {
 		<section id="audit-flow" className="mx-auto w-full max-w-7xl px-4 py-24 border-t border-border/20 scroll-mt-14 overflow-visible">
 			{/* Mobile Only Header */}
 			<div className="max-w-xl mb-12 md:hidden">
-				<Text variant="xs" className="text-primary font-bold tracking-widest uppercase">
-					VERIFICATION METHODOLOGY
-				</Text>
 				<Text as="h2" variant="h2" className="text-2xl font-extrabold text-foreground tracking-tight mt-1">
 					The Evidence Lifecycle
 				</Text>
