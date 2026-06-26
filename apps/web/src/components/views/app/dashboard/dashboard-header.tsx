@@ -1,5 +1,6 @@
 import { Shield } from "lucide-react";
 import { Text } from "@/components/ui/text";
+import { mascotExplaining } from "@tahaqaq/assets";
 
 interface DashboardHeaderProps {
   date: string;
@@ -36,19 +37,12 @@ export function DashboardHeader({ date, title, description }: DashboardHeaderPro
         </div>
 
         <div className="flex shrink-0 items-center gap-4 rounded-2xl border border-white/10 bg-white/10 p-4 shadow-inner backdrop-blur-md max-md:max-w-xs">
-          <div className="rounded-xl bg-[#F2C94C] p-2.5 text-[#006020] shadow-[0_4px_12px_rgba(242,201,76,0.2)]">
-            <Shield className="size-6 fill-current" />
-          </div>
-          <div>
-            <div className="flex items-baseline gap-1">
-              <span className="font-mono text-xl font-bold tracking-tight">Active</span>
-              <span className="text-xs text-white/70">Level II Ops</span>
-            </div>
-            <p className="mt-0.5 font-mono text-[10px] uppercase tracking-wider text-white/60">
-              Morocco Civic Node
-            </p>
-          </div>
-        </div>
+          <img
+            src={mascotExplaining}
+            alt="TAHAQAQ mascot"
+            className="size-28 object-contain drop-shadow-lg md:size-32"
+          />
+</div>
       </div>
     </div>
   );
