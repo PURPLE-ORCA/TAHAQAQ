@@ -35,7 +35,7 @@ export function DashboardHeader({ date, title, description }: DashboardHeaderPro
           </div>
         </div>
 
-        <div className="flex shrink-0 items-center gap-4 rounded-2xl border border-white/10 bg-white/10 p-4 shadow-inner backdrop-blur-md max-md:max-w-xs">
+        <div className="flex shrink-0 items-center">
           <img
             src="/mascotExplaining.png"
             alt="TAHAQAQ mascot"
