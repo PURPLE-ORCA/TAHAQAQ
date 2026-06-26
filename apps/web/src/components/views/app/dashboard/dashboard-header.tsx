@@ -1,6 +1,5 @@
 import { Shield } from "lucide-react";
 import { Text } from "@/components/ui/text";
-import { mascotExplaining } from "@tahaqaq/assets";
 
 interface DashboardHeaderProps {
   date: string;
@@ -38,7 +37,7 @@ export function DashboardHeader({ date, title, description }: DashboardHeaderPro
 
         <div className="flex shrink-0 items-center gap-4 rounded-2xl border border-white/10 bg-white/10 p-4 shadow-inner backdrop-blur-md max-md:max-w-xs">
           <img
-            src={mascotExplaining}
+            src="/mascotExplaining.png"
             alt="TAHAQAQ mascot"
             className="size-28 object-contain drop-shadow-lg md:size-32"
           />
