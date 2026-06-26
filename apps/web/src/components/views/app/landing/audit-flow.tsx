@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import { Text } from "@/components/ui/text";
 import { 
 	CheckCircle2, 
@@ -11,14 +10,12 @@ import {
 	Users, 
 	Activity, 
 	GraduationCap, 
-	FileText, 
 	Trash2, 
 	Zap, 
-	Droplet, 
-	Shield,
-	Circle
+	Droplet
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Iphone15Pro from "@/components/ui/iphone15-pro";
 
 // --- FadeInCard Component ---
 interface FadeInCardProps {
@@ -123,52 +120,39 @@ export function AuditFlowSection() {
 		}
 	};
 
-	const reportCards = [
-		{ icon: <Activity className="w-4 h-4 text-rose-400" />, title: "Health", val: "45m wait", bg: "bg-rose-950/20 border-rose-500/20" },
-		{ icon: <GraduationCap className="w-4 h-4 text-blue-400" />, title: "School", val: "Delivered", bg: "bg-blue-950/20 border-blue-500/20" },
-		{ icon: <FileText className="w-4 h-4 text-amber-400" />, title: "Receipt", val: "Audited", bg: "bg-amber-950/20 border-amber-500/20" },
-		{ icon: <MapPin className="w-4 h-4 text-red-400" />, title: "Transit", val: "On Time", bg: "bg-red-950/20 border-red-500/20" },
-		{ icon: <Trash2 className="w-4 h-4 text-emerald-400" />, title: "Waste", val: "Cleared", bg: "bg-emerald-950/20 border-emerald-500/20" },
-		{ icon: <Zap className="w-4 h-4 text-yellow-400" />, title: "Power", val: "Stable", bg: "bg-yellow-950/20 border-yellow-500/20" },
-		{ icon: <Users className="w-4 h-4 text-indigo-400" />, title: "Admin", val: "Normal", bg: "bg-indigo-950/20 border-indigo-500/20" },
-		{ icon: <Droplet className="w-4 h-4 text-sky-400" />, title: "Water", val: "Fixed", bg: "bg-sky-950/20 border-sky-500/20" },
-		{ icon: <Shield className="w-4 h-4 text-green-400" />, title: "Safety", val: "Secure", bg: "bg-green-950/20 border-green-500/20" },
-	];
-
 	const renderVisualCard = (idx: number) => {
 		switch (idx) {
 			case 0:
 				return (
-					<div className="relative mx-auto w-[260px] aspect-[9/18.5] rounded-[2.5rem] border-[6px] border-slate-800 bg-slate-950 shadow-2xl overflow-hidden flex flex-col">
-						{/* Notch */}
-						<div className="absolute top-2 left-1/2 -translate-x-1/2 w-28 h-5 bg-slate-950 rounded-full z-30 flex items-center justify-center">
-							<div className="w-2.5 h-2.5 rounded-full bg-slate-800/80 mr-4" />
-							<div className="w-1.5 h-1.5 rounded-full bg-blue-900/60" />
-						</div>
+					<div className="relative w-[260px] h-[530px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={260} height={530} src="/mobileHomePage.png" />
+						
+						{/* Screen Overlay Container */}
+						<div 
+							className="absolute pointer-events-none overflow-hidden rounded-[32px] flex flex-col justify-between p-4"
+							style={{ left: "4.9%", right: "5.1%", top: "2.2%", bottom: "2.2%" }}
+						>
+							{/* Top Header/REC Badge */}
+							<div className="flex justify-between items-center text-[10px] font-mono text-white/80 drop-shadow-sm select-none z-10 w-full pt-6">
+								<span>TAHAQAQ Mobile</span>
+								<span className="flex items-center gap-1 bg-black/40 px-1.5 py-0.5 rounded">
+									<span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+									REC
+								</span>
+							</div>
 
-						{/* Screen Content */}
-						<div className="relative w-full h-full flex-1 overflow-hidden">
-							<Image 
-								src="/mobileHomePage.png" 
-								className="w-full h-full object-cover select-none pointer-events-none" 
-								alt="Tahaqaq mobile app home screen" 
-								width={260}
-								height={534}
-								priority
-							/>
-							
-							{/* Camera Viewfinder Overlay */}
-							<div className="absolute inset-4 border border-white/20 pointer-events-none rounded-xl flex flex-col justify-between p-2">
+							{/* Camera Viewfinder Box */}
+							<div className="border border-white/20 rounded-xl flex-1 my-4 flex flex-col justify-between p-2">
 								<div className="flex justify-between">
 									<div className="w-4 h-4 border-t-2 border-l-2 border-white/60" />
 									<div className="w-4 h-4 border-t-2 border-r-2 border-white/60" />
 								</div>
 								
-								<div className="self-center mb-2 flex flex-col items-center">
+								<div className="self-center flex flex-col items-center">
 									<div className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white/10 backdrop-blur-xs">
 										<div className="w-9 h-9 rounded-full bg-white" />
 									</div>
-									<span className="text-[10px] text-white/90 font-mono mt-1 drop-shadow-md bg-black/40 px-1.5 py-0.5 rounded">
+									<span className="text-[10px] text-white/90 font-mono mt-1.5 drop-shadow-md bg-black/50 px-1.5 py-0.5 rounded">
 										SNAP PHOTO
 									</span>
 								</div>
@@ -178,166 +162,159 @@ export function AuditFlowSection() {
 									<div className="w-4 h-4 border-b-2 border-r-2 border-white/60" />
 								</div>
 							</div>
-
-							<div className="absolute top-8 left-4 right-4 flex justify-between items-center text-[10px] font-mono text-white/80 drop-shadow-sm select-none pointer-events-none z-10">
-								<span>TAHAQAQ Mobile</span>
-								<span className="flex items-center gap-1">
-									<span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-									REC
-								</span>
-							</div>
 						</div>
 					</div>
 				);
 			case 1:
 				return (
-					<div className="relative w-full max-w-[340px] h-[400px] flex items-center justify-center">
-						{/* Main Phone Mockup */}
-						<div className="relative w-[220px] aspect-[9/18.5] rounded-[2.5rem] border-[6px] border-slate-800 bg-slate-950 shadow-2xl overflow-hidden opacity-85 blur-[0.5px]">
-							<div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-4 bg-slate-950 rounded-full z-30" />
-							<div className="relative w-full h-full animate-pulse">
-								<Image 
-									src="/mobileHomePage.png" 
-									className="w-full h-full object-cover select-none pointer-events-none" 
-									alt="Tahaqaq mobile app verification" 
-									width={220}
-									height={452}
-								/>
-								<div className="absolute inset-0 bg-slate-950/40" />
-							</div>
-						</div>
-
-						{/* Verification Overlay & Floating Badges */}
-						<div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-							<div className="bg-emerald-950/90 border border-emerald-500/40 rounded-2xl p-4 flex flex-col items-center shadow-2xl backdrop-blur-md z-20 mb-4">
-								<CheckCircle2 className="w-12 h-12 text-emerald-400 animate-pulse" />
-								<span className="text-xs font-mono font-bold text-emerald-400 mt-2 tracking-widest">
+					<div className="relative w-[260px] h-[530px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={260} height={530} src="/mobileHomePage.png" className="opacity-80" />
+						
+						{/* Green verification overlay centered over the phone */}
+						<div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-20">
+							<div className="bg-emerald-950/95 border border-emerald-500/40 rounded-2xl p-4 flex flex-col items-center shadow-2xl backdrop-blur-md max-w-[200px] text-center">
+								<CheckCircle2 className="w-10 h-10 text-emerald-400 animate-pulse mb-2" />
+								<span className="text-xs font-mono font-bold text-emerald-400 tracking-wider">
 									EVIDENCE VERIFIED
 								</span>
-								<span className="text-[9px] font-mono text-emerald-500/80">
+								<span className="text-[9px] font-mono text-emerald-400/80 mt-1">
 									INTEGRITY: 99.8% PASS
 								</span>
 							</div>
+						</div>
 
-							{/* Badges */}
-							<div className="absolute top-6 left-2 bg-slate-900/90 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono py-1 px-2.5 rounded-full shadow-lg backdrop-blur-md flex items-center gap-1.5 z-10">
-								<MapPin className="w-3 h-3" />
+						{/* Floating Badges */}
+						<div className="absolute inset-0 pointer-events-none z-30">
+							{/* GPS Badge */}
+							<div className="absolute top-12 -left-10 bg-slate-900/95 border border-emerald-500/30 text-emerald-400 text-[9px] font-mono py-1 px-2 rounded-full shadow-lg backdrop-blur-xs flex items-center gap-1 whitespace-nowrap">
+								<MapPin className="w-3 h-3 flex-shrink-0" />
 								<span>GPS: 33.5731° N, 7.5898° W</span>
 							</div>
 
-							<div className="absolute bottom-12 right-2 bg-slate-900/90 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono py-1 px-2.5 rounded-full shadow-lg backdrop-blur-md flex items-center gap-1.5 z-10">
-								<Clock className="w-3 h-3" />
-								<span>TIME: 14:32:05 UTC</span>
-							</div>
-
-							<div className="absolute top-[45%] right-0 bg-slate-900/90 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono py-1 px-2.5 rounded-full shadow-lg backdrop-blur-md flex items-center gap-1.5 z-10">
-								<ShieldCheck className="w-3 h-3" />
+							{/* Metadata Badge */}
+							<div className="absolute top-1/3 -right-12 bg-slate-900/95 border border-emerald-500/30 text-emerald-400 text-[9px] font-mono py-1 px-2 rounded-full shadow-lg backdrop-blur-xs flex items-center gap-1 whitespace-nowrap">
+								<ShieldCheck className="w-3 h-3 flex-shrink-0" />
 								<span>METADATA: UNMODIFIED</span>
 							</div>
 
-							<div className="absolute bottom-28 left-0 bg-slate-900/90 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono py-1 px-2.5 rounded-full shadow-lg backdrop-blur-md flex items-center gap-1.5 z-10">
-								<Users className="w-3 h-3" />
+							{/* Peer Review Badge */}
+							<div className="absolute bottom-[35%] -left-8 bg-slate-900/95 border border-emerald-500/30 text-emerald-400 text-[9px] font-mono py-1 px-2 rounded-full shadow-lg backdrop-blur-xs flex items-center gap-1 whitespace-nowrap">
+								<Users className="w-3 h-3 flex-shrink-0" />
 								<span>PEER: 12/12 APPROVED</span>
+							</div>
+
+							{/* Timestamp Badge */}
+							<div className="absolute bottom-16 -right-8 bg-slate-900/95 border border-emerald-500/30 text-emerald-400 text-[9px] font-mono py-1 px-2 rounded-full shadow-lg backdrop-blur-xs flex items-center gap-1 whitespace-nowrap">
+								<Clock className="w-3 h-3 flex-shrink-0" />
+								<span>TIME: 14:32:05 UTC</span>
 							</div>
 						</div>
 					</div>
 				);
 			case 2:
 				return (
-					<div className="grid grid-cols-3 gap-3 w-full max-w-[340px] aspect-square p-4 bg-slate-900 rounded-3xl border border-slate-700/50">
-						{reportCards.map((card, i) => (
-							<div 
-								key={i} 
-								className={cn(
-									"border rounded-xl p-2 flex flex-col justify-between hover:scale-105 transition-all duration-300",
-									card.bg
-								)}
-							>
-								<div className="flex justify-between items-center w-full">
-									{card.icon}
-									<span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 animate-pulse" />
-								</div>
-								<div className="space-y-0.5 mt-2">
-									<div className="text-[9px] font-mono text-muted-foreground uppercase leading-none">
-										{card.title}
-									</div>
-									<div className="text-[10px] font-bold text-foreground truncate font-mono">
-										{card.val}
-									</div>
-								</div>
-							</div>
-						))}
-					</div>
-				);
-			case 3: {
-				const dashboardCities = [
-					{ name: "Casablanca", status: "green", metric: "4,521 audits" },
-					{ name: "Rabat", status: "green", metric: "3,847 audits" },
-					{ name: "Marrakech", status: "yellow", metric: "1,923 audits" },
-					{ name: "Fes", status: "green", metric: "2,156 audits" },
-					{ name: "Tangier", status: "red", metric: "892 audits" },
-					{ name: "Agadir", status: "green", metric: "1,508 audits" },
-				];
-
-				return (
-					<div className="w-full max-w-[340px] aspect-[10/11] p-6 bg-slate-900 rounded-3xl border border-slate-700/50 flex flex-col items-center justify-center relative overflow-hidden">
-						<div className="w-full h-full flex flex-col justify-between">
-							{/* Header Bar */}
-							<div className="flex items-center justify-between border-b border-slate-800 pb-3">
-								<div className="flex items-center gap-1.5">
-									<Shield className="w-3.5 h-3.5 text-emerald-400" />
-									<span className="font-mono text-[10px] font-bold text-emerald-400 tracking-wider">
-										NATIONAL MONITORING CENTER
-									</span>
-								</div>
-								<div className="flex items-center gap-1.5">
-									<span className="relative flex h-1.5 w-1.5">
-										<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-										<span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
-									</span>
-									<span className="bg-emerald-950/60 text-emerald-400 text-[9px] font-mono font-bold px-1.5 py-0.5 rounded border border-emerald-500/20">
-										LIVE
-									</span>
-								</div>
+					<div className="relative w-[260px] h-[530px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={260} height={530} src="/mobileHomePage.png" />
+						
+						{/* Screen Overlay Container */}
+						<div 
+							className="absolute overflow-hidden rounded-[32px] bg-slate-950/85 backdrop-blur-xs flex flex-col justify-between p-3 text-white border border-white/10"
+							style={{ left: "4.9%", right: "5.1%", top: "2.2%", bottom: "2.2%" }}
+						>
+							{/* Header */}
+							<div className="pt-6 pb-2 border-b border-white/10 flex flex-col items-center">
+								<span className="text-[10px] font-mono font-bold tracking-widest text-emerald-400">
+									CITIZEN FEED
+								</span>
+								<span className="text-[8px] font-mono text-slate-400">
+									REAL-TIME UPDATES
+								</span>
 							</div>
 
-							{/* Cities List */}
-							<div className="flex-1 flex flex-col justify-center py-3 space-y-2.5">
-								{dashboardCities.map((city, idx) => {
-									let dotColor = "text-emerald-500 fill-emerald-500";
-									if (city.status === "yellow") {
-										dotColor = "text-amber-500 fill-amber-500";
-									} else if (city.status === "red") {
-										dotColor = "text-rose-500 fill-rose-500";
-									}
-
-									return (
-										<div key={idx} className="flex items-center justify-between border-b border-slate-900/40 pb-2 last:border-0 last:pb-0">
-											<div className="flex items-center gap-2">
-												<Circle className={cn("w-1.5 h-1.5", dotColor)} />
-												<span className="text-xs font-mono text-foreground font-medium">
-													{city.name}
-												</span>
+							{/* Feed List */}
+							<div className="flex-1 my-3 flex flex-col gap-1.5 overflow-hidden justify-center">
+								{[
+									{ icon: <Activity className="w-3 h-3 text-rose-400" />, city: "Casablanca", status: "Verified", color: "text-emerald-400" },
+									{ icon: <GraduationCap className="w-3 h-3 text-blue-400" />, city: "Rabat", status: "Verified", color: "text-emerald-400" },
+									{ icon: <Droplet className="w-3 h-3 text-sky-400" />, city: "Marrakech", status: "Verified", color: "text-emerald-400" },
+									{ icon: <Trash2 className="w-3 h-3 text-emerald-400" />, city: "Fes", status: "Verified", color: "text-emerald-400" },
+									{ icon: <Zap className="w-3 h-3 text-yellow-400" />, city: "Tangier", status: "Flagged", color: "text-amber-400" },
+								].map((item, idx) => (
+									<div key={idx} className="bg-slate-900/60 border border-white/5 rounded-lg p-2 flex items-center justify-between">
+										<div className="flex items-center gap-2">
+											<div className="bg-white/5 p-1 rounded">
+												{item.icon}
 											</div>
-											<span className="text-[10px] font-mono text-slate-400/80">
-												{city.metric}
+											<span className="text-[10px] font-mono font-medium truncate max-w-[80px]">
+												{item.city}
 											</span>
 										</div>
-									);
-								})}
+										<span className={cn("text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-white/5 border border-white/5", item.color)}>
+											{item.status}
+										</span>
+									</div>
+								))}
 							</div>
 
-							{/* Footer */}
-							<div className="border-t border-slate-800 pt-3 flex items-center justify-center gap-1.5">
-								<Activity className="w-3 h-3 text-emerald-500/60 animate-pulse" />
-								<span className="text-[9px] font-mono text-emerald-500/60">
-									12,847 active audits nationwide
+							{/* Bottom Notification Bar */}
+							<div className="bg-emerald-950/90 border border-emerald-500/30 rounded-xl p-2 flex items-center gap-2 mb-1 shadow-lg">
+								<CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+								<span className="text-[9px] font-mono text-emerald-300 leading-tight">
+									Your report joined 12,847 active audits
 								</span>
 							</div>
 						</div>
 					</div>
 				);
-			}
+			case 3:
+				return (
+					<div className="relative w-[260px] h-[530px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={260} height={530} src="/mobileHomePage.png" />
+						
+						{/* Screen Overlay Container */}
+						<div 
+							className="absolute overflow-hidden rounded-[32px] bg-slate-950/80 backdrop-blur-xs flex flex-col justify-between p-3 text-white border border-white/10"
+							style={{ left: "4.9%", right: "5.1%", top: "2.2%", bottom: "2.2%" }}
+						>
+							{/* Top Header */}
+							<div className="pt-6 pb-2 border-b border-white/10 flex flex-col items-center">
+								<span className="text-[8px] font-mono text-slate-400">
+									NATIONAL ALERTS
+								</span>
+							</div>
+
+							{/* Alert Banner / Box */}
+							<div className="flex-1 my-4 flex flex-col justify-center gap-3">
+								<div className="bg-red-950/90 border border-red-500/40 rounded-xl p-3 flex flex-col gap-2 shadow-2xl">
+									<div className="bg-red-500/20 border border-red-500/30 rounded px-2 py-1 text-center flex items-center justify-center gap-1.5 animate-pulse">
+										<span className="text-red-400 text-[10px] font-bold font-mono">
+											{"⚠ INTEGRITY WATCH"}
+										</span>
+									</div>
+
+									<div className="space-y-1.5">
+										<div className="text-[10px] font-bold font-mono text-red-200 leading-tight">
+											{"Tangier school district — Rating dropped 12% this week"}
+										</div>
+										<div className="text-[9px] font-mono text-red-300/80 flex items-center gap-1">
+											<span className="w-1 h-1 rounded-full bg-red-400" />
+											{"347 citizens affected"}
+										</div>
+										<div className="text-[9px] font-mono text-red-300/80 flex items-center gap-1">
+											<span className="w-1 h-1 rounded-full bg-red-400 animate-pulse" />
+											{"Auto-flagged for review"}
+										</div>
+									</div>
+								</div>
+							</div>
+
+							{/* VIEW DETAILS Button */}
+							<button className="w-full bg-red-600 hover:bg-red-700 text-white text-[10px] font-mono font-bold py-2 rounded-xl transition-colors border border-red-500/30 shadow-lg mb-2">
+								VIEW DETAILS
+							</button>
+						</div>
+					</div>
+				);
 			default:
 				return null;
 		}
