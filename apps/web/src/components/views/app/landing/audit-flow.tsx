@@ -244,12 +244,12 @@ export function AuditFlowSection() {
 				);
 			case 2:
 				return (
-					<div className="grid grid-cols-3 gap-3 w-full max-w-[340px] aspect-square p-4 bg-slate-950/40 rounded-3xl border border-slate-800 backdrop-blur-xs">
+					<div className="grid grid-cols-3 gap-3 w-full max-w-[340px] aspect-square p-4 bg-slate-900 rounded-3xl border border-slate-700/50">
 						{reportCards.map((card, i) => (
 							<div 
 								key={i} 
 								className={cn(
-									"border rounded-xl p-2 flex flex-col justify-between backdrop-blur-md hover:scale-105 transition-all duration-300",
+									"border rounded-xl p-2 flex flex-col justify-between hover:scale-105 transition-all duration-300",
 									card.bg
 								)}
 							>
@@ -280,7 +280,7 @@ export function AuditFlowSection() {
 				];
 
 				return (
-					<div className="w-full max-w-[340px] aspect-[10/11] p-6 bg-slate-950/40 rounded-3xl border border-slate-800 backdrop-blur-xs flex flex-col items-center justify-center relative overflow-hidden">
+					<div className="w-full max-w-[340px] aspect-[10/11] p-6 bg-slate-900 rounded-3xl border border-slate-700/50 flex flex-col items-center justify-center relative overflow-hidden">
 						<div className="w-full h-full flex flex-col justify-between">
 							{/* Header Bar */}
 							<div className="flex items-center justify-between border-b border-slate-800 pb-3">
