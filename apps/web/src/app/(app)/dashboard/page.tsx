@@ -8,6 +8,8 @@ import { DashboardInsights } from "@/components/views/app/dashboard/dashboard-in
 import { DashboardShortcuts } from "@/components/views/app/dashboard/dashboard-shortcuts";
 import { DashboardVerificationChart } from "@/components/views/app/dashboard/dashboard-verification-chart";
 import { DashboardPerformanceChart } from "@/components/views/app/dashboard/dashboard-performance-chart";
+import { DashboardRiskAlerts } from "@/components/views/app/dashboard/dashboard-risk-alerts";
+import { DashboardPatterns } from "@/components/views/app/dashboard/dashboard-patterns";
 
 export default function DashboardPage() {
   return (
@@ -25,11 +27,15 @@ export default function DashboardPage() {
           <DashboardVerificationChart />
           <DashboardActivityFeed />
         </div>
-
         <div className="space-y-5">
           <DashboardPerformanceChart />
           <DashboardInsights />
         </div>
+      </div>
+
+      <div className="grid gap-5 xl:grid-cols-[minmax(0,1.35fr)_minmax(340px,0.95fr)]">
+        <DashboardRiskAlerts />
+        <DashboardPatterns />
       </div>
     </AppShell>
   );
