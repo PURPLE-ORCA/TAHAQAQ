@@ -1,21 +1,10 @@
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server"
-import { Inter, Geist_Mono } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/layout/theme-provider"
 import { ConvexClientProvider } from "@/components/providers/convex-client-provider"
 import { ToastProvider } from "@/components/ui/toast"
 import { cn } from "@/lib/utils";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
-
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
 
 export const metadata = {
   title: "TAHAQAQ | Portail de Vérification Civique du Maroc",
@@ -32,8 +21,8 @@ export default function RootLayout({
       <html
         lang="fr"
         suppressHydrationWarning
-        className={cn("antialiased", fontMono.variable, inter.variable)}
-        >
+        className={cn("antialiased")}
+      >
         <body>
           <ConvexClientProvider>
             <ThemeProvider>

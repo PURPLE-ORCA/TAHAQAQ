@@ -29,6 +29,22 @@ export type DashboardActivity = {
   status: "success" | "pending" | "info" | "warning";
 };
 
+export type DashboardScheduleItem = {
+  time: string;
+  title: string;
+  subtitle: string;
+  color: string;
+};
+
+export type DashboardTask = {
+  id: string;
+  title: string;
+  project: string;
+  priority: "high" | "medium" | "low";
+  due: string;
+  done: boolean;
+};
+
 export type EstablishmentStatus = "verified" | "watch" | "new" | "priority";
 
 export type Establishment = {

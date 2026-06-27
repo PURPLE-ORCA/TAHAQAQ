@@ -3,6 +3,8 @@ import {
   DashboardMetric,
   DashboardInsight,
   DashboardActivity,
+  DashboardScheduleItem,
+  DashboardTask,
 } from "./types";
 
 export const dashboardDate = "Saturday, Apr 26";
@@ -126,6 +128,60 @@ export const dashboardActivities: DashboardActivity[] = [
     event: "Automated cleanup: cleared 1,200 cache items",
     actor: "Cron Worker",
     status: "success",
+  },
+];
+
+export const dashboardSchedule: DashboardScheduleItem[] = [
+  {
+    time: "10:30",
+    title: "Review backlog",
+    subtitle: "12 documents pending approval",
+    color: "bg-[#00A040]",
+  },
+  {
+    time: "12:00",
+    title: "Field audit",
+    subtitle: "Casablanca transport desk",
+    color: "bg-[#F2C94C]",
+  },
+  {
+    time: "14:15",
+    title: "Sync meeting",
+    subtitle: "Operations and compliance",
+    color: "bg-[#006020]",
+  },
+  {
+    time: "16:00",
+    title: "Key rotation",
+    subtitle: "Admin signatures refresh",
+    color: "bg-[#E0C080]",
+  },
+];
+
+export const dashboardTasks: DashboardTask[] = [
+  {
+    id: "task-1",
+    title: "Review pending identity verifications",
+    project: "Operations",
+    priority: "high",
+    due: "Today",
+    done: false,
+  },
+  {
+    id: "task-2",
+    title: "Refresh audit export job",
+    project: "Reporting",
+    priority: "medium",
+    due: "Tomorrow",
+    done: true,
+  },
+  {
+    id: "task-3",
+    title: "Validate new operator onboarding",
+    project: "Security",
+    priority: "low",
+    due: "Fri",
+    done: false,
   },
 ];
 

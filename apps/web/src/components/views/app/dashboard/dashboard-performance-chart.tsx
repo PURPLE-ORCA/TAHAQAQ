@@ -17,7 +17,7 @@ export function DashboardPerformanceChart() {
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Tooltip
-              formatter={(value: number) => [`${value}%`, "Share"]}
+              formatter={(value) => [`${value}%`, "Share"]}
               contentStyle={{
                 backgroundColor: "#ffffff",
                 border: "1px solid rgba(0, 0, 0, 0.08)",
