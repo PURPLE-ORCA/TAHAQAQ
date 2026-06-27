@@ -10,16 +10,16 @@ import { MobileNav } from "@/components/layout/mobile-nav";
 
 export const navLinks = [
 	{
-		label: "Audit Flow",
+		label: "mobile app",
+		href: "#mobile-showcase",
+	},
+	{
+		label: "observatory",
+		href: "#observatory-showcase",
+	},
+	{
+		label: "audit flow",
 		href: "#audit-flow",
-	},
-	{
-		label: "Observatory",
-		href: "#observatory",
-	},
-	{
-		label: "Civic Trust",
-		href: "#trust",
 	},
 ];
 
