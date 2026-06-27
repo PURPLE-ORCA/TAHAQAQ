@@ -124,8 +124,8 @@ export function AuditFlowSection() {
 		switch (idx) {
 			case 0:
 				return (
-					<div className="relative w-[390px] h-[795px] mx-auto flex items-center justify-center">
-						<Iphone15Pro width={390} height={795} src="/auditDone.png" />
+					<div className="relative w-[300px] h-[670px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={300} height={670} src="/auditDone.png" />
 						
 						{/* Screen Overlay Container */}
 						<div 
@@ -167,8 +167,8 @@ export function AuditFlowSection() {
 				);
 			case 1:
 				return (
-					<div className="relative w-[390px] h-[795px] mx-auto flex items-center justify-center">
-						<Iphone15Pro width={390} height={795} src="/mobileHomePage.png" className="opacity-80" />
+					<div className="relative w-[300px] h-[670px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={300} height={670} src="/mobileHomePage.png" className="opacity-80" />
 						
 						{/* Green verification overlay centered over the phone */}
 						<div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-20">
@@ -213,8 +213,8 @@ export function AuditFlowSection() {
 				);
 			case 2:
 				return (
-					<div className="relative w-[390px] h-[795px] mx-auto flex items-center justify-center">
-						<Iphone15Pro width={390} height={795} src="/mobileHomePage.png" />
+					<div className="relative w-[300px] h-[670px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={300} height={670} src="/mobileHomePage.png" />
 						
 						{/* Screen Overlay Container */}
 						<div 
@@ -281,8 +281,8 @@ export function AuditFlowSection() {
 				);
 			case 3:
 				return (
-					<div className="relative w-[390px] h-[795px] mx-auto flex items-center justify-center">
-						<Iphone15Pro width={390} height={795} src="/mobileHomePage.png" />
+					<div className="relative w-[300px] h-[670px] mx-auto flex items-center justify-center">
+						<Iphone15Pro width={300} height={670} src="/mobileHomePage.png" />
 						
 						{/* Screen Overlay Container */}
 						<div 
