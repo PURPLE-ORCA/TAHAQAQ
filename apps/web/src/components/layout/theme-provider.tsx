@@ -1,21 +1,27 @@
 "use client"
 
 import * as React from "react"
+import { usePathname } from "next/navigation"
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes"
 
 function ThemeProvider({
   children,
+  forcedTheme,
   ...props
 }: React.ComponentProps<typeof NextThemesProvider>) {
+  const pathname = usePathname()
+  const effectiveForcedTheme = forcedTheme ?? (pathname === "/" ? "light" : undefined)
+
   return (
     <NextThemesProvider
       attribute="class"
       defaultTheme="system"
       enableSystem
       disableTransitionOnChange
+      forcedTheme={effectiveForcedTheme}
       {...props}
     >
-      <ThemeHotkey />
+      {effectiveForcedTheme ? null : <ThemeHotkey />}
       {children}
     </NextThemesProvider>
   )
