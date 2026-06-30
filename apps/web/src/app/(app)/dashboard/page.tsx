@@ -15,6 +15,7 @@ import { DashboardPerformanceChart } from "@/components/views/app/dashboard/dash
 import { DashboardGroupedSignals } from "@/components/views/app/dashboard/dashboard-grouped-signals";
 import { DashboardHotspots } from "@/components/views/app/dashboard/dashboard-hotspots";
 import { DashboardFilterBar } from "@/components/views/app/dashboard/dashboard-filter-bar";
+import { DashboardMonthlyReport } from "@/components/views/app/dashboard/dashboard-monthly-report";
 
 import {
   analystSubmissions,
@@ -66,6 +67,9 @@ export default function DashboardPage() {
         <DashboardGroupedSignals submissions={filteredSubmissions} />
         <DashboardHotspots submissions={filteredSubmissions} />
       </div>
+
+      {/* Monthly report — generated from current filtered submissions and grouped signals */}
+      <DashboardMonthlyReport submissions={filteredSubmissions} filters={filters} />
     </AppShell>
   );
 }
