@@ -44,10 +44,10 @@ export function ObservatoryShowcaseSection() {
 				<div className="lg:col-span-5 flex flex-col justify-center space-y-6">
 					<div className="space-y-3">
 						<Text as="h2" variant="h2" className="font-semibold text-foreground leading-tight">
-							See Every Establishment. In Real Time.
+							One queue. Clearer priorities.
 						</Text>
 						<Text variant="muted" className="text-base leading-relaxed">
-							The INPPLC monitors 420+ public service establishments across 14 regions. Alerts, audit scores, and compliance status — all on one live map.
+							Teams see submissions by establishment, category, and location in one workspace, then verify, route, and follow the cases that need action.
 						</Text>
 					</div>
 
@@ -58,11 +58,11 @@ export function ObservatoryShowcaseSection() {
 							<div className="flex items-center gap-1.5 text-primary">
 								<MapPin className="size-4 shrink-0" />
 								<Text as="span" className="font-semibold text-sm sm:text-base text-foreground tracking-tight leading-none">
-									420+
+									live
 								</Text>
 							</div>
 							<Text variant="muted" className="text-[10px] sm:text-xs font-medium leading-none">
-								Establishments
+								queue
 							</Text>
 						</div>
 
@@ -71,11 +71,11 @@ export function ObservatoryShowcaseSection() {
 							<div className="flex items-center gap-1.5 text-primary">
 								<Shield className="size-4 shrink-0" />
 								<Text as="span" className="font-semibold text-sm sm:text-base text-foreground tracking-tight leading-none">
-									87.4%
+									verified
 								</Text>
 							</div>
 							<Text variant="muted" className="text-[10px] sm:text-xs font-medium leading-none">
-								Verification
+								cases
 							</Text>
 						</div>
 
@@ -84,11 +84,11 @@ export function ObservatoryShowcaseSection() {
 							<div className="flex items-center gap-1.5 text-primary">
 								<AlertTriangle className="size-4 shrink-0" />
 								<Text as="span" className="font-semibold text-sm sm:text-base text-foreground tracking-tight leading-none">
-									Real-time
+									monthly
 								</Text>
 							</div>
 							<Text variant="muted" className="text-[10px] sm:text-xs font-medium leading-none">
-								Alerts
+								reports
 							</Text>
 						</div>
 					</div>

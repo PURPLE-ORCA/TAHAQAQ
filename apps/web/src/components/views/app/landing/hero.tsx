@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Text } from "@/components/ui/text";
-import Iphone15Pro from "@/components/ui/iphone15-pro";
+import mascotStanding from "@tahaqaq/assets/mascot/mascotstanding.png";
 
 export function HeroSection() {
 	return (
@@ -28,7 +28,7 @@ export function HeroSection() {
 						)}
 						variant="h1"
 					>
-						Garantir la Confiance et l{"'"}Intégrité des Services Publics
+						File once. Route right.
 					</Text>
 
 					<Text
@@ -37,11 +37,11 @@ export function HeroSection() {
 						)}
 						variant="lead"
 					>
-						TAHAQAQ permet aux citoyens et aux administrations de vérifier l{"'"}authenticité des documents officiels et des démarches administratives au Royaume du Maroc en toute simplicité.
+						TAHAQAQ is where citizens fill a review or report once, then the case is verified, delegated, and routed to the right public-service institution.
 					</Text>
 				</div>
 
-				{/* Right — iPhone frames */}
+				{/* Right — mascot */}
 				<div className="fade-in slide-in-from-bottom-5 animate-in fill-mode-backwards delay-300 duration-1000 ease-out relative flex flex-1 items-center justify-center">
 					{/* Background glow */}
 					<div
@@ -53,21 +53,13 @@ export function HeroSection() {
 						)}
 					/>
 
-					{/* Phone 1 — back */}
-					<div className="relative -me-8 -rotate-3 scale-90 opacity-80 sm:scale-95">
-						<Iphone15Pro
-							width={220}
-							height={450}
-							src="/mobileMap.png"
-						/>
-					</div>
-
-					{/* Phone 2 — front */}
-					<div className="relative z-10 rotate-2">
-						<Iphone15Pro
-							width={240}
-							height={490}
-							src="/mobileHomePage.png"
+					<div className="relative z-10 flex w-full max-w-[480px] items-center justify-center">
+						<img
+							alt="paperwork golem presenting a verified public-service report"
+							className="h-auto w-full max-w-[460px] object-contain drop-shadow-[0_24px_60px_rgba(0,96,32,0.18)]"
+							height={512}
+							src={mascotStanding.src}
+							width={512}
 						/>
 					</div>
 				</div>

@@ -1,18 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { LogoIcon } from "@/components/ui/logo";
 import Link from "next/link";
+import tahaqouqLogo from "@tahaqaq/assets/logo/tahqouq.png";
 
 import { useScroll } from "@/hooks/use-scroll";
 import { Button } from "@/components/ui/button";
-import { MobileNav } from "@/components/layout/mobile-nav";
 
 export const navLinks = [
-	{
-		label: "mobile app",
-		href: "#mobile-showcase",
-	},
 	{
 		label: "observatory",
 		href: "#observatory-showcase",
@@ -35,11 +30,17 @@ export function Header() {
 		>
 			<nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4">
 				<Link
-					className="rounded-md p-2 hover:bg-secondary-foreground/10 flex items-center gap-2 transition-colors"
+					className="flex items-center gap-2 rounded-md p-2 transition-colors hover:bg-secondary-foreground/10"
 					href="/"
 				>
-					<LogoIcon className="h-5 w-5 text-tertiary" />
-					<span className="font-bold text-secondary-foreground tracking-wide">TAHAQAQ</span>
+					<img
+						alt="tahaqaq logo"
+						className="size-8 object-contain"
+						height={32}
+						src={tahaqouqLogo.src}
+						width={32}
+					/>
+					<span className="font-bold tracking-wide text-secondary-foreground">tahaqaq</span>
 				</Link>
 				<div className="hidden items-center gap-2 md:flex">
 					{navLinks.map((link) => {
@@ -59,7 +60,6 @@ export function Header() {
 						);
 					})}
 				</div>
-				<MobileNav />
 			</nav>
 		</header>
 	);
