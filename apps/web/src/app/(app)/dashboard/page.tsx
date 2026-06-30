@@ -12,8 +12,8 @@ import { DashboardSubmissionQueue } from "@/components/views/app/dashboard/dashb
 import { DashboardShortcuts } from "@/components/views/app/dashboard/dashboard-shortcuts";
 import { DashboardVerificationChart } from "@/components/views/app/dashboard/dashboard-verification-chart";
 import { DashboardPerformanceChart } from "@/components/views/app/dashboard/dashboard-performance-chart";
-import { DashboardRiskAlerts } from "@/components/views/app/dashboard/dashboard-risk-alerts";
-import { DashboardPatterns } from "@/components/views/app/dashboard/dashboard-patterns";
+import { DashboardGroupedSignals } from "@/components/views/app/dashboard/dashboard-grouped-signals";
+import { DashboardHotspots } from "@/components/views/app/dashboard/dashboard-hotspots";
 import { DashboardFilterBar } from "@/components/views/app/dashboard/dashboard-filter-bar";
 
 import {
@@ -43,6 +43,7 @@ export default function DashboardPage() {
 
       <DashboardFilterBar filters={filters} onChange={setFilters} />
 
+      {/* Raw submission queue — unprocessed citizen reports */}
       <DashboardSubmissionQueue submissions={filteredSubmissions} />
 
       <DashboardShortcuts items={dashboardShortcuts} />
@@ -60,9 +61,10 @@ export default function DashboardPage() {
         </div>
       </div>
 
+      {/* Grouped signals + hotspot detection — derived from filtered submissions */}
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1.35fr)_minmax(340px,0.95fr)]">
-        <DashboardRiskAlerts />
-        <DashboardPatterns />
+        <DashboardGroupedSignals submissions={filteredSubmissions} />
+        <DashboardHotspots submissions={filteredSubmissions} />
       </div>
     </AppShell>
   );
