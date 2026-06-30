@@ -10,7 +10,7 @@ export function DashboardSchedule() {
       title="Schedule"
       hasGoldAccent
       trailing={
-        <Text as="span" variant="xs" className="font-mono uppercase tracking-[0.25em]">
+        <Text as="span" className="font-mono text-[11px] tracking-[0.12em]">
           4 events
         </Text>
       }

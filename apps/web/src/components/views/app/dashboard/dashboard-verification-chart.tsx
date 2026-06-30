@@ -15,7 +15,7 @@ const verificationData = [
 
 export function DashboardVerificationChart() {
   return (
-    <DashboardCard title="Verification Activity" hasGoldAccent>
+    <DashboardCard title="Submission volume" hasGoldAccent>
       <div className="h-[240px] w-full text-card-foreground">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
@@ -52,7 +52,7 @@ export function DashboardVerificationChart() {
             />
             <Bar
               dataKey="count"
-              name="Verifications"
+              name="Submissions"
               fill="#006020"
               radius={[4, 4, 0, 0]}
               background={{ fill: "#eef6ea", radius: 4 }}

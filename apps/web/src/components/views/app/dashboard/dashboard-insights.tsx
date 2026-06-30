@@ -28,10 +28,10 @@ function InsightIcon({ type }: { type: DashboardInsight["type"] }) {
 export function DashboardInsights() {
   return (
     <DashboardCard
-      title="Operational insights"
+      title="Operational notes"
       hasGoldAccent
       trailing={
-        <Text as="span" variant="xs" className="font-mono uppercase tracking-[0.25em]">
+        <Text as="span" className="font-mono text-[11px] tracking-[0.12em]">
           3 signals
         </Text>
       }
@@ -48,7 +48,7 @@ export function DashboardInsights() {
                   <Text as="span" variant="small" className="font-semibold text-foreground">
                     {insight.title}
                   </Text>
-                  <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                  <span className="shrink-0 font-mono text-[10px] tracking-[0.12em] text-muted-foreground">
                     {insight.time}
                   </span>
                 </div>

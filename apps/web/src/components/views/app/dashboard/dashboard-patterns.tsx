@@ -8,11 +8,11 @@ import { DashboardCard } from "./dashboard-card";
 import { cn } from "@/lib/utils";
 
 const CATEGORY_LABELS: Record<string, string> = {
-  hygiene: "Hygiene",
-  staff: "Staff",
-  equipment: "Equipment",
-  bribery: "Bribery",
-  wait_time: "Wait Time",
+  hygiene: "hygiene",
+  staff: "staff",
+  equipment: "equipment",
+  bribery: "bribery",
+  wait_time: "wait time",
 };
 
 export function DashboardPatterns() {
@@ -147,12 +147,11 @@ export function DashboardPatterns() {
 
   return (
     <DashboardCard
-      title="Pattern Detection"
+      title="Pattern detection"
       trailing={
         <Text
           as="span"
-          variant="xs"
-          className="font-mono text-[#006020] dark:text-[#a1f6a4] tracking-wider font-semibold"
+          className="font-mono text-[11px] text-[#006020] dark:text-[#a1f6a4] tracking-[0.12em] font-semibold"
         >
           {totalPatterns} {totalPatterns === 1 ? "pattern" : "patterns"} found
         </Text>
@@ -163,8 +162,8 @@ export function DashboardPatterns() {
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Repeat className="size-4 text-[#006020] dark:text-[#a1f6a4]" />
-            <Text as="span" variant="small" className="font-semibold text-foreground/90 uppercase tracking-wider">
-              Repeat Offenders
+            <Text as="span" variant="small" className="font-semibold text-foreground/90 tracking-[0.08em]">
+              Repeat offenders
             </Text>
           </div>
           <div className="flex flex-col gap-2">
@@ -210,8 +209,8 @@ export function DashboardPatterns() {
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Layers className="size-4 text-[#006020] dark:text-[#a1f6a4]" />
-            <Text as="span" variant="small" className="font-semibold text-foreground/90 uppercase tracking-wider">
-              Category Clusters
+            <Text as="span" variant="small" className="font-semibold text-foreground/90 tracking-[0.08em]">
+              Category clusters
             </Text>
           </div>
           <div className="flex flex-col gap-2">
@@ -232,9 +231,9 @@ export function DashboardPatterns() {
                       <Text as="span" variant="small" className="font-semibold text-foreground dark:text-white block">
                         {item.establishmentName}
                       </Text>
-                      <span className="inline-flex items-center gap-1 mt-1 rounded bg-[#eef6ea] dark:bg-[#2b322a] px-1.5 py-0.5 text-[10px] font-mono font-medium text-[#006020] dark:text-[#a1f6a4]">
-                        {item.categoryLabel}
-                      </span>
+              <span className="inline-flex items-center gap-1 mt-1 rounded bg-[#eef6ea] dark:bg-[#2b322a] px-1.5 py-0.5 text-[10px] font-mono font-medium text-[#006020] dark:text-[#a1f6a4]">
+                {item.categoryLabel}
+              </span>
                     </div>
                     <div className="flex flex-col items-end gap-1.5 shrink-0">
                       <SeverityBadge severity={item.severity} />
@@ -255,8 +254,8 @@ export function DashboardPatterns() {
         <div>
           <div className="flex items-center gap-2 mb-3">
             <MapPin className="size-4 text-[#006020] dark:text-[#a1f6a4]" />
-            <Text as="span" variant="small" className="font-semibold text-foreground/90 uppercase tracking-wider">
-              Geographic Hotspots
+            <Text as="span" variant="small" className="font-semibold text-foreground/90 tracking-[0.08em]">
+              Geographic hotspots
             </Text>
           </div>
           <div className="flex flex-col gap-2">
@@ -278,7 +277,7 @@ export function DashboardPatterns() {
                         {item.cityName}
                       </Text>
                       <Text as="p" variant="muted" className="mt-1 text-xs">
-                        Top risk: <span className="font-medium text-foreground/80 dark:text-white/80">{item.topEstablishment}</span>
+                      top risk: <span className="font-medium text-foreground/80 dark:text-white/80">{item.topEstablishment}</span>
                       </Text>
                     </div>
                     <div className="flex flex-col items-end gap-1.5 shrink-0">
@@ -308,7 +307,7 @@ function SeverityBadge({ severity }: { severity: "high" | "medium" | "low" }) {
   return (
     <span
       className={cn(
-        "rounded-full px-2 py-0.5 text-[9px] font-bold font-mono uppercase tracking-wider border",
+        "rounded-full px-2 py-0.5 text-[9px] font-bold font-mono tracking-[0.08em] border",
         styles[severity]
       )}
     >

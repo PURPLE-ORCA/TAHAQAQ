@@ -5,6 +5,7 @@ import { DashboardActivityFeed } from "@/components/views/app/dashboard/dashboar
 import { DashboardFacts } from "@/components/views/app/dashboard/dashboard-facts";
 import { DashboardHeader } from "@/components/views/app/dashboard/dashboard-header";
 import { DashboardInsights } from "@/components/views/app/dashboard/dashboard-insights";
+import { DashboardSubmissionQueue } from "@/components/views/app/dashboard/dashboard-submission-queue";
 import { DashboardShortcuts } from "@/components/views/app/dashboard/dashboard-shortcuts";
 import { DashboardVerificationChart } from "@/components/views/app/dashboard/dashboard-verification-chart";
 import { DashboardPerformanceChart } from "@/components/views/app/dashboard/dashboard-performance-chart";
@@ -17,6 +18,8 @@ export default function DashboardPage() {
       <AppContentHeader title="Dashboard" />
 
       <DashboardHeader date={dashboardDate} title={dashboardGreeting.title} description={dashboardGreeting.description} />
+
+      <DashboardSubmissionQueue />
 
       <DashboardShortcuts items={dashboardShortcuts} />
 

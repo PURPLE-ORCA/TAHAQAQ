@@ -4,20 +4,20 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recha
 import { DashboardCard } from "./dashboard-card";
 
 const performanceData = [
-  { name: "Pending Queue", value: 24, color: "#F2C94C" },
-  { name: "Avg Verify Time", value: 18, color: "#006020" },
-  { name: "Resolution Rate", value: 43, color: "#00A040" },
-  { name: "System Status", value: 15, color: "#E0C080" },
+  { name: "new", value: 3, color: "#F2C94C" },
+  { name: "reviewed", value: 2, color: "#006020" },
+  { name: "grouped", value: 2, color: "#00A040" },
+  { name: "exported", value: 1, color: "#E0C080" },
 ];
 
 export function DashboardPerformanceChart() {
   return (
-    <DashboardCard title="System Performance" hasGoldAccent>
+    <DashboardCard title="Queue mix" hasGoldAccent>
       <div className="h-[240px] w-full text-card-foreground">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Tooltip
-              formatter={(value) => [`${value}%`, "Share"]}
+              formatter={(value) => [`${value}%`, "share"]}
               contentStyle={{
                 backgroundColor: "#ffffff",
                 border: "1px solid rgba(0, 0, 0, 0.08)",

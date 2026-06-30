@@ -44,8 +44,8 @@ export function DashboardShortcuts({ items }: DashboardShortcutsProps) {
               </div>
             </div>
 
-            <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#006020]/70">
-              Open
+            <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.14em] text-[#006020]/70">
+              open
               <ArrowRightIcon className="size-3 transition-transform group-hover:translate-x-0.5" />
             </span>
           </button>

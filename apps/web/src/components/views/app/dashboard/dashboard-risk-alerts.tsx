@@ -77,10 +77,10 @@ export function DashboardRiskAlerts() {
 
   return (
     <DashboardCard
-      title="Risk Alerts"
+      title="Risk alerts"
       hasGoldAccent
       trailing={
-        <Text as="span" variant="xs" className="font-mono text-muted-foreground font-semibold">
+        <Text as="span" className="font-mono text-[11px] text-muted-foreground font-semibold">
           {trailingText}
         </Text>
       }
@@ -118,9 +118,9 @@ export function DashboardRiskAlerts() {
                       : "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
                   }`}
                 >
-                  {est.level === "red" && "🔴 Critical"}
-                  {est.level === "amber" && "🟡 Watch"}
-                  {est.level === "green" && "🟢 Stable"}
+                  {est.level === "red" && "🔴 critical"}
+                  {est.level === "amber" && "🟡 watch"}
+                  {est.level === "green" && "🟢 stable"}
                 </span>
 
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/70 dark:bg-black/25 text-muted-foreground border border-border/30">
@@ -136,7 +136,7 @@ export function DashboardRiskAlerts() {
                       : "bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-950/20 dark:text-rose-400 dark:border-rose-900/30"
                   }`}
                 >
-                  Score: {est.overallScore.toFixed(1)}/10
+                  score: {est.overallScore.toFixed(1)}/10
                 </span>
               </div>
 

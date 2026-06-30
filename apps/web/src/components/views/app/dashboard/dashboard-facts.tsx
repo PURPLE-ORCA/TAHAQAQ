@@ -51,7 +51,7 @@ export function DashboardFacts() {
           className="rounded-2xl border border-border/50 bg-white p-5 shadow-[0_8px_30px_rgba(0,96,32,0.02)] dark:bg-card/40 hover:border-[#006020]/25 transition-all"
         >
           <div className="flex items-center justify-between gap-4">
-            <Text as="span" variant="xs" className="font-mono text-muted-foreground font-semibold tracking-wider text-[11px]">
+            <Text as="span" className="font-mono text-muted-foreground font-semibold tracking-wider text-[11px]">
               {metric.label}
             </Text>
             <div className="rounded-lg bg-[#e9f0e4] dark:bg-[#2b322a] p-1.5">

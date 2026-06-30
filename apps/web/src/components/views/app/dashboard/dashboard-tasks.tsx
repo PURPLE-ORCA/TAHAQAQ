@@ -60,16 +60,16 @@ function TaskRow({ task }: TaskRowProps) {
         </Text>
 
         <div className="mt-1 flex flex-wrap items-center gap-2">
-          <span className="rounded-full bg-[#e9f0e4] px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[#006020]">
+          <span className="rounded-full bg-[#e9f0e4] px-2 py-0.5 font-mono text-[10px] tracking-[0.18em] text-[#006020]">
             {task.project}
           </span>
-          <span className={`rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] ${priorityStyles[task.priority]}`}>
+          <span className={`rounded-full border px-2 py-0.5 font-mono text-[10px] tracking-[0.18em] ${priorityStyles[task.priority]}`}>
             {task.priority}
           </span>
         </div>
       </div>
 
-      <span className="shrink-0 rounded-full bg-muted px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+      <span className="shrink-0 rounded-full bg-muted px-2.5 py-1 text-[10px] font-semibold tracking-[0.12em] text-muted-foreground">
         {task.due}
       </span>
     </li>

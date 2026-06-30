@@ -12,63 +12,63 @@ export const dashboardDate = "Saturday, Apr 26";
 export const dashboardGreeting = {
   title: "Good morning, Sean.",
   description:
-    "Operations are active. All core systems are operational, with 3 high-priority audits pending review.",
+    "Incoming submissions are flowing in. The queue is current, with a few fresh reports ready for triage and export.",
 };
 
 export const dashboardShortcuts: DashboardShortcut[] = [
   {
-    label: "New Verification",
-    description: "Launch manual document review",
+    label: "Review submissions",
+    description: "Open the latest intake records",
     iconName: "plus",
   },
   {
-    label: "Export Audit Log",
-    description: "Generate CSV for state portal",
+    label: "Export queue",
+    description: "Bundle grouped cases for export",
     iconName: "file-text",
   },
   {
-    label: "Rotate API Key",
-    description: "Manage system access tokens",
+    label: "Assign follow-up",
+    description: "Route a case to the right desk",
     iconName: "key",
   },
   {
-    label: "Manage Operators",
-    description: "Add or configure staff accounts",
+    label: "Open establishment",
+    description: "Jump to a linked establishment",
     iconName: "users",
   },
 ];
 
 export const dashboardMetrics: DashboardMetric[] = [
   {
-    label: "Pending Queue",
-    value: "24 Batches",
-    change: "-12% from yesterday",
+    label: "Incoming queue",
+    value: "8 submissions",
+    change: "3 new since this morning",
     trend: "down",
-    sub: "Target < 50",
+    sub: "Sorted newest first",
     iconName: "layers",
   },
   {
-    label: "Avg Verify Time",
-    value: "1.8s",
-    change: "-200ms vs last week",
+    label: "Average triage time",
+    value: "6.4 min",
+    change: "-48 sec vs yesterday",
     trend: "down",
-    sub: "SLA target 2.5s",
+    sub: "Focused review passes",
     iconName: "clock",
   },
   {
-    label: "Resolution Rate",
-    value: "99.94%",
-    change: "+0.02% since Mon",
+    label: "Grouped for export",
+    value: "2 cases",
+    change: "+1 since noon",
     trend: "up",
-    sub: "Total 4,821 resolved",
+    sub: "Ready for the next bundle",
     iconName: "check-circle",
   },
   {
-    label: "System Status",
-    value: "99.99% Uptime",
-    change: "Normal Operations",
+    label: "Sync status",
+    value: "live",
+    change: "Queue mirrors intake feed",
     trend: "neutral",
-    sub: "All instances active",
+    sub: "No stale rows detected",
     iconName: "activity",
   },
 ];
@@ -76,25 +76,25 @@ export const dashboardMetrics: DashboardMetric[] = [
 export const dashboardInsights: DashboardInsight[] = [
   {
     id: "insight-1",
-    title: "Casablanca Sector Bottleneck",
+    title: "Casablanca intake spike",
     description:
-      "Driving license verification load has increased by 45% in Casablanca-Anfa region.",
+      "Hospital and transit submissions from Casablanca-Anfa are up 45% this week.",
     type: "warning",
     time: "10m ago",
   },
   {
     id: "insight-2",
-    title: "API Performance Restored",
+    title: "Queue sync stabilized",
     description:
-      "Database query optimization has dropped response times by 14% across all endpoints.",
+      "The intake mirror is back to normal after the morning refresh.",
     type: "success",
     time: "1h ago",
   },
   {
     id: "insight-3",
-    title: "Security Keys Rotation Due",
+    title: "Export window due",
     description:
-      "Weekly rotation of administrator signatures is scheduled to trigger in 4 hours.",
+      "The next grouped export is scheduled to run in 4 hours.",
     type: "info",
     time: "2h ago",
   },
@@ -104,29 +104,29 @@ export const dashboardActivities: DashboardActivity[] = [
   {
     id: "act-1",
     time: "09:42 AM",
-    event: "Verification batch #8492 approved",
+    event: "New hospital submission moved to the queue",
     actor: "Amina El Idrissi",
     status: "success",
   },
   {
     id: "act-2",
     time: "09:15 AM",
-    event: "Casablanca database replica sync completed",
-    actor: "System Scheduler",
+    event: "Grouped market reports were bundled for export",
+    actor: "System scheduler",
     status: "info",
   },
   {
     id: "act-3",
     time: "08:30 AM",
-    event: "Weekly audit log exported to State Portal",
-    actor: "Sean (You)",
+    event: "Morning intake feed refreshed",
+    actor: "Sean",
     status: "success",
   },
   {
     id: "act-4",
     time: "07:00 AM",
-    event: "Automated cleanup: cleared 1,200 cache items",
-    actor: "Cron Worker",
+    event: "Stale queue rows were cleared",
+    actor: "Cron worker",
     status: "success",
   },
 ];
@@ -134,26 +134,26 @@ export const dashboardActivities: DashboardActivity[] = [
 export const dashboardSchedule: DashboardScheduleItem[] = [
   {
     time: "10:30",
-    title: "Review backlog",
+    title: "review backlog",
     subtitle: "12 documents pending approval",
     color: "bg-[#00A040]",
   },
   {
     time: "12:00",
-    title: "Field audit",
+    title: "field audit",
     subtitle: "Casablanca transport desk",
     color: "bg-[#F2C94C]",
   },
   {
     time: "14:15",
-    title: "Sync meeting",
-    subtitle: "Operations and compliance",
+    title: "sync meeting",
+    subtitle: "operations and compliance",
     color: "bg-[#006020]",
   },
   {
     time: "16:00",
-    title: "Key rotation",
-    subtitle: "Admin signatures refresh",
+    title: "key rotation",
+    subtitle: "admin signatures refresh",
     color: "bg-[#E0C080]",
   },
 ];
@@ -162,7 +162,7 @@ export const dashboardTasks: DashboardTask[] = [
   {
     id: "task-1",
     title: "Review pending identity verifications",
-    project: "Operations",
+    project: "operations",
     priority: "high",
     due: "Today",
     done: false,
@@ -170,7 +170,7 @@ export const dashboardTasks: DashboardTask[] = [
   {
     id: "task-2",
     title: "Refresh audit export job",
-    project: "Reporting",
+    project: "reporting",
     priority: "medium",
     due: "Tomorrow",
     done: true,
@@ -178,7 +178,7 @@ export const dashboardTasks: DashboardTask[] = [
   {
     id: "task-3",
     title: "Validate new operator onboarding",
-    project: "Security",
+    project: "security",
     priority: "low",
     due: "Fri",
     done: false,
@@ -196,7 +196,7 @@ export const dashboardReportData = [
 ];
 
 export const dashboardCategoryData = [
-  { name: "Verification", value: 35, color: "#1d8cf8" },
+  { name: "Submissions", value: 35, color: "#1d8cf8" },
   { name: "Audit", value: 25, color: "#00A040" },
   { name: "Security", value: 20, color: "#F2C94C" },
   { name: "Operations", value: 12, color: "#ba1a1a" },

@@ -16,12 +16,12 @@ export function DashboardHeader({ date, title, description }: DashboardHeaderPro
       <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div className="max-w-2xl space-y-3.5">
           <div className="flex items-center gap-2.5">
-            <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-white/90 backdrop-blur-md">
+            <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1 font-mono text-[10px] font-semibold tracking-[0.18em] text-white/90 backdrop-blur-md">
               {date}
             </span>
-            <span className="flex items-center gap-1.5 rounded-full border border-[#00A040]/30 bg-[#00A040]/40 px-3 py-1 text-[10px] font-medium tracking-wide text-white">
+            <span className="flex items-center gap-1.5 rounded-full border border-[#00A040]/30 bg-[#00A040]/40 px-3 py-1 text-[10px] font-medium tracking-[0.08em] text-white">
               <span className="size-1.5 animate-pulse rounded-full bg-[#7cfd8f]" />
-              All Systems Operational
+              all systems operational
             </span>
           </div>
 
@@ -38,10 +38,10 @@ export function DashboardHeader({ date, title, description }: DashboardHeaderPro
         <div className="flex shrink-0 items-center">
           <img
             src="/mascotExplaining.png"
-            alt="TAHAQAQ mascot"
+            alt="Tahaqaq mascot"
             className="size-28 object-contain drop-shadow-lg md:size-32"
           />
-</div>
+        </div>
       </div>
     </div>
   );

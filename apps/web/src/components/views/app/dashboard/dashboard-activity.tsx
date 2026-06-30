@@ -21,10 +21,10 @@ function ActivityIcon({ status }: { status: DashboardActivity["status"] }) {
 export function DashboardActivityFeed() {
   return (
     <DashboardCard
-      title="System Activity Feed"
+      title="Activity feed"
       trailing={
-        <Text as="span" variant="xs" className="font-mono text-muted-foreground uppercase tracking-wider">
-          Real-time
+        <Text as="span" className="font-mono text-[11px] text-muted-foreground tracking-[0.12em]">
+          live
         </Text>
       }
     >

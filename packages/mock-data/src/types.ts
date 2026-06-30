@@ -45,6 +45,27 @@ export type DashboardTask = {
   done: boolean;
 };
 
+export type SubmissionReviewStatus = "new" | "reviewed" | "grouped" | "exported";
+
+export type SubmissionAnswer = {
+  label: string;
+  value: string;
+};
+
+export type Submission = {
+  id: string;
+  establishmentId: string;
+  establishmentName: string;
+  category: string;
+  city: string;
+  region: string;
+  place: string;
+  submittedAt: string;
+  reviewStatus: SubmissionReviewStatus;
+  answers: SubmissionAnswer[];
+  note?: string;
+};
+
 export type EstablishmentStatus = "verified" | "watch" | "new" | "priority";
 
 export type Establishment = {

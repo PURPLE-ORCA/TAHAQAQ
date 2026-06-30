@@ -20,7 +20,7 @@ export function DashboardCard({ title, trailing, children, hasGoldAccent = false
       )}
     >
       <div className="flex items-center justify-between gap-4 border-b border-border/30 pb-3 mb-4">
-        <Text as="span" variant="xs" className="font-mono text-[#006020] dark:text-[#a1f6a4] font-semibold tracking-wider">
+        <Text as="span" className="font-mono text-[11px] text-[#006020] dark:text-[#a1f6a4] font-semibold tracking-wider">
           {title}
         </Text>
         {trailing}
