@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CalendarDays, Building2, MapPin, FileText, Layers3 } from "lucide-react";
+import { CalendarDays, Building2, MapPin, FileText, Layers3, Inbox } from "lucide-react";
 
-import { analystSubmissions, type Submission, type SubmissionReviewStatus } from "@tahaqaq/mock-data";
+import { type Submission, type SubmissionReviewStatus } from "@tahaqaq/mock-data";
 
 import { DashboardCard } from "./dashboard-card";
 import { Text } from "@/components/ui/text";
@@ -61,14 +61,7 @@ function buildQueueCounts(submissions: Submission[]) {
   );
 }
 
-export function DashboardSubmissionQueue() {
-  const submissions = useMemo(
-    () =>
-      [...analystSubmissions].sort(
-        (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime()
-      ),
-    []
-  );
+export function DashboardSubmissionQueue({ submissions }: { submissions: Submission[] }) {
   const counts = useMemo(() => buildQueueCounts(submissions), [submissions]);
   const [activeSubmissionId, setActiveSubmissionId] = useState<string | null>(null);
 
@@ -129,15 +122,19 @@ export function DashboardSubmissionQueue() {
             <span>linked to establishment records, ready for triage</span>
           </div>
 
-          <div className="flex flex-col gap-2.5">
-            {submissions.map((submission) => (
-              <SubmissionRow
-                key={submission.id}
-                submission={submission}
-                onOpen={() => setActiveSubmissionId(submission.id)}
-              />
-            ))}
-          </div>
+          {submissions.length === 0 ? (
+            <SubmissionEmptyState />
+          ) : (
+            <div className="flex flex-col gap-2.5">
+              {submissions.map((submission) => (
+                <SubmissionRow
+                  key={submission.id}
+                  submission={submission}
+                  onOpen={() => setActiveSubmissionId(submission.id)}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </DashboardCard>
 
@@ -302,6 +299,24 @@ function MetaCard({ label, value }: { label: string; value: string }) {
       <Text as="p" className="mt-1 text-sm font-medium leading-6 text-foreground">
         {value}
       </Text>
+    </div>
+  );
+}
+
+function SubmissionEmptyState() {
+  return (
+    <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-border/50 bg-[#f8fcf5] py-12 text-center">
+      <div className="flex size-12 items-center justify-center rounded-2xl bg-[#e9f0e4] text-[#006020]">
+        <Inbox className="size-6" />
+      </div>
+      <div className="space-y-1">
+        <Text as="p" className="text-sm font-semibold text-foreground">
+          no submissions match
+        </Text>
+        <Text as="p" className="text-xs text-muted-foreground">
+          adjust or clear your filters to see results
+        </Text>
+      </div>
     </div>
   );
 }

@@ -1,3 +1,6 @@
+"use client";
+
+import { useMemo, useState } from "react";
 import { AppShell } from "@/components/layout/app/app-shell";
 import { AppContentHeader } from "@/components/layout/app/app-content-header";
 import { dashboardDate, dashboardGreeting, dashboardShortcuts } from "@/components/data/dashboard";
@@ -11,15 +14,36 @@ import { DashboardVerificationChart } from "@/components/views/app/dashboard/das
 import { DashboardPerformanceChart } from "@/components/views/app/dashboard/dashboard-performance-chart";
 import { DashboardRiskAlerts } from "@/components/views/app/dashboard/dashboard-risk-alerts";
 import { DashboardPatterns } from "@/components/views/app/dashboard/dashboard-patterns";
+import { DashboardFilterBar } from "@/components/views/app/dashboard/dashboard-filter-bar";
+
+import {
+  analystSubmissions,
+  applySubmissionFilters,
+  EMPTY_FILTERS,
+  type SubmissionFilters,
+} from "@tahaqaq/mock-data";
+
+const sortedSubmissions = [...analystSubmissions].sort(
+  (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime()
+);
 
 export default function DashboardPage() {
+  const [filters, setFilters] = useState<SubmissionFilters>(EMPTY_FILTERS);
+
+  const filteredSubmissions = useMemo(
+    () => applySubmissionFilters(sortedSubmissions, filters),
+    [filters]
+  );
+
   return (
     <AppShell className="gap-5">
       <AppContentHeader title="Dashboard" />
 
       <DashboardHeader date={dashboardDate} title={dashboardGreeting.title} description={dashboardGreeting.description} />
 
-      <DashboardSubmissionQueue />
+      <DashboardFilterBar filters={filters} onChange={setFilters} />
+
+      <DashboardSubmissionQueue submissions={filteredSubmissions} />
 
       <DashboardShortcuts items={dashboardShortcuts} />
 
