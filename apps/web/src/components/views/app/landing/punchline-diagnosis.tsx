@@ -4,10 +4,10 @@ export function PunchlineDiagnosis() {
   return (
     <section className="max-w-3xl mx-auto text-center px-4 py-14">
       <Text variant="h2" className="text-foreground font-semibold leading-tight">
-        {"Problem is not reporting. Problem is what happens next."}
+        {"المشكلة ليست في تقديم البلاغ. المشكلة هي ما يحدث بعد ذلك."}
       </Text>
       <Text className="text-muted-foreground text-base leading-relaxed mt-4">
-        {"People already try to leave a trace. What breaks is follow-up: the case gets lost, delayed, or buried. TAHAQAQ captures it once, verifies it, and sends it down one clear path."}
+        {"يحاول الناس بالفعل توثيق شكاويهم. لكن الخلل يكمن في المتابعة: حيث تضيع القضية، أو تتأخر، أو تُدفن. تسجل TAHAQAQ الحالة مرة واحدة، وتتحقق منها، ثم ترسلها عبر مسار واحد واضح."}
       </Text>
       <div className="w-16 h-px bg-primary/30 mx-auto mt-8" />
     </section>

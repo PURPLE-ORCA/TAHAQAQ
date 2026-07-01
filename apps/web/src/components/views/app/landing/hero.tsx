@@ -28,7 +28,7 @@ export function HeroSection() {
 						)}
 						variant="h1"
 					>
-						File once. Route right.
+من قنوات متفرقة إلى معالجة أوضح.
 					</Text>
 
 					<Text
@@ -37,7 +37,7 @@ export function HeroSection() {
 						)}
 						variant="lead"
 					>
-						TAHAQAQ is where citizens fill a review or report once, then the case is verified, delegated, and routed to the right public-service institution.
+						TAHAQAQ هي منصة يقدم فيها المواطنون مراجعة أو بلاغاً مرة واحدة، ليتم بعد ذلك التحقق من الحالة، تفويضها، وتوجيهها إلى مؤسسة الخدمات العامة الصحيحة.
 					</Text>
 				</div>
 
@@ -55,7 +55,7 @@ export function HeroSection() {
 
 					<div className="relative z-10 flex w-full max-w-[480px] items-center justify-center">
 						<img
-							alt="paperwork golem presenting a verified public-service report"
+							alt="كائن ورقي يعرض بلاغاً موثقاً لخدمة عامة"
 							className="h-auto w-full max-w-[460px] object-contain drop-shadow-[0_24px_60px_rgba(0,96,32,0.18)]"
 							height={512}
 							src={mascotStanding.src}

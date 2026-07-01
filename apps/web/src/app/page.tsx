@@ -4,17 +4,19 @@ import { PunchlineDiagnosis } from "@/components/views/app/landing/punchline-dia
 import { PunchlineNormalization } from "@/components/views/app/landing/punchline-normalization";
 import { PunchlineEvidence } from "@/components/views/app/landing/punchline-evidence";
 import { ObservatoryShowcaseSection } from "@/components/views/app/landing/observatory-showcase";
+import { AuditFlow } from "@/components/views/app/landing/audit-flow";
 
 export default function Page() {
   return (
-    <div className="no-scrollbar min-h-screen">
+    <div className="no-scrollbar min-h-screen text-right" dir="rtl" lang="ar">
       <Header />
       <main>
         <HeroSection />
         <PunchlineDiagnosis />
-        <ObservatoryShowcaseSection />
-        <PunchlineNormalization />
         <PunchlineEvidence />
+        <ObservatoryShowcaseSection />
+        <AuditFlow />
+        <PunchlineNormalization />
       </main>
     </div>
   )

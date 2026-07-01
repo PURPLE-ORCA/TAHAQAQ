@@ -3,13 +3,13 @@ import { MapPin, Shield, AlertTriangle } from "lucide-react";
 
 export function ObservatoryShowcaseSection() {
 	return (
-		<section id="observatory-showcase" className="mx-auto w-full max-w-6xl px-4 py-16 scroll-mt-14">
+		<section id="dashboard-showcase" className="mx-auto w-full max-w-6xl px-4  scroll-mt-14">
 			<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 				{/* Left side — Video Mockup */}
 				<div className="lg:col-span-7 w-full">
 					<div className="relative rounded-2xl border border-border/30 bg-card shadow-lg overflow-hidden flex flex-col">
 						{/* Browser Chrome Header */}
-						<div className="flex items-center px-4 py-3 border-b border-border/30 bg-muted/20 gap-3">
+						<div className="flex items-center px-4 py-3 border-b border-border/30 bg-muted/20 gap-3" dir="ltr">
 							{/* 3 fake dots */}
 							<div className="flex gap-1.5 shrink-0">
 								<div className="size-2.5 rounded-full bg-red-500/60" />
@@ -19,7 +19,7 @@ export function ObservatoryShowcaseSection() {
 							{/* fake URL bar */}
 							<div className="flex-1 max-w-xs md:max-w-md mx-auto h-6 rounded-md bg-background/50 border border-border/20 flex items-center justify-center px-3">
 								<Text as="span" className="text-[10px] text-muted-foreground/60 font-mono truncate select-none">
-									tahaqaq.ma/observatory
+									tahaqaq.ma/dashboard
 								</Text>
 							</div>
 							<div className="w-12 shrink-0 hidden sm:block" />
@@ -27,7 +27,7 @@ export function ObservatoryShowcaseSection() {
 						{/* Video Container */}
 						<div className="relative aspect-video w-full overflow-hidden bg-background">
 							<video
-								src="https://ik.imagekit.io/purp1e770rca77/TAHAQAQ/dashboardShowcase-1.2x.mp4"
+								src="https://ik.imagekit.io/purp1e770rca77/TAHAQAQ/TAHAQAQV1.1SHOWCSE_1.2x_under100mb.mp4"
 								autoPlay
 								loop
 								muted
@@ -44,10 +44,10 @@ export function ObservatoryShowcaseSection() {
 				<div className="lg:col-span-5 flex flex-col justify-center space-y-6">
 					<div className="space-y-3">
 						<Text as="h2" variant="h2" className="font-semibold text-foreground leading-tight">
-							One queue. Clearer priorities.
+							لوحة واحدة. تحقق، توجيه، وتتبع.
 						</Text>
 						<Text variant="muted" className="text-base leading-relaxed">
-							Teams see submissions by establishment, category, and location in one workspace, then verify, route, and follow the cases that need action.
+							تجمع لوحة التحكم بلاغات QR وChikaya و3030 والبلاغات المحلية في قائمة موحدة. يراجع فريق INPPLC الحالات، يتحقق منها، يوجهها إلى الجهة المختصة، ويتابع حالة المعالجة حتى الإغلاق.
 						</Text>
 					</div>
 
@@ -58,11 +58,11 @@ export function ObservatoryShowcaseSection() {
 							<div className="flex items-center gap-1.5 text-primary">
 								<MapPin className="size-4 shrink-0" />
 								<Text as="span" className="font-semibold text-sm sm:text-base text-foreground tracking-tight leading-none">
-									live
+									موحدة
 								</Text>
 							</div>
 							<Text variant="muted" className="text-[10px] sm:text-xs font-medium leading-none">
-								queue
+								القنوات
 							</Text>
 						</div>
 
@@ -71,11 +71,11 @@ export function ObservatoryShowcaseSection() {
 							<div className="flex items-center gap-1.5 text-primary">
 								<Shield className="size-4 shrink-0" />
 								<Text as="span" className="font-semibold text-sm sm:text-base text-foreground tracking-tight leading-none">
-									verified
+									موجّهة
 								</Text>
 							</div>
 							<Text variant="muted" className="text-[10px] sm:text-xs font-medium leading-none">
-								cases
+								البلاغات
 							</Text>
 						</div>
 
@@ -84,11 +84,11 @@ export function ObservatoryShowcaseSection() {
 							<div className="flex items-center gap-1.5 text-primary">
 								<AlertTriangle className="size-4 shrink-0" />
 								<Text as="span" className="font-semibold text-sm sm:text-base text-foreground tracking-tight leading-none">
-									monthly
+									متابعة
 								</Text>
 							</div>
 							<Text variant="muted" className="text-[10px] sm:text-xs font-medium leading-none">
-								reports
+								المعالجة
 							</Text>
 						</div>
 					</div>

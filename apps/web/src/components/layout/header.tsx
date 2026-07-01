@@ -9,11 +9,11 @@ import { Button } from "@/components/ui/button";
 
 export const navLinks = [
 	{
-		label: "observatory",
-		href: "#observatory-showcase",
+		label: "لوحة التحكم",
+		href: "#dashboard-showcase",
 	},
 	{
-		label: "audit flow",
+		label: "مسار التدقيق",
 		href: "#audit-flow",
 	},
 ];
@@ -27,14 +27,16 @@ export function Header() {
 				"border-secondary-foreground/10 bg-secondary/95 backdrop-blur-md text-secondary-foreground": scrolled,
 				"bg-secondary/90 backdrop-blur-xs text-secondary-foreground": !scrolled,
 			})}
+			dir="ltr"
 		>
-			<nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4">
+			<nav className="relative mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4">
+				<div />
 				<Link
-					className="flex items-center gap-2 rounded-md p-2 transition-colors hover:bg-secondary-foreground/10"
+					className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 rounded-md p-2 transition-colors hover:bg-secondary-foreground/10"
 					href="/"
 				>
 					<img
-						alt="tahaqaq logo"
+						alt="شعار TAHAQAQ"
 						className="size-8 object-contain"
 						height={32}
 						src={tahaqouqLogo.src}
