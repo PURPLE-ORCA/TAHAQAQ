@@ -20,7 +20,7 @@ export function HeroSection() {
 
 			<div className="relative z-10 flex flex-col items-center gap-10 px-4 md:flex-row md:items-center md:gap-12 lg:gap-16">
 				{/* Left — Text */}
-				<div className="flex flex-1 flex-col gap-5">
+				<div className="flex flex-1 flex-col items-center gap-5 text-center">
 					<Text
 						as="h1"
 						className={cn(

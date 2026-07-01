@@ -42,7 +42,7 @@ export function ObservatoryShowcaseSection() {
 
 				{/* Right side — Copy */}
 				<div className="lg:col-span-5 flex flex-col justify-center space-y-6">
-					<div className="space-y-3">
+					<div className="space-y-3 text-center flex flex-col items-center">
 						<Text as="h2" variant="h2" className="font-semibold text-foreground leading-tight">
 							لوحة واحدة. تحقق، توجيه، وتتبع.
 						</Text>
